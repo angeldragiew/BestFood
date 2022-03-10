@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace BestFoodWebApp.Data
+namespace BestFood.Infrastructure.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

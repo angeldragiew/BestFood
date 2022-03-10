@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace BestFoodWebApp.Data.Migrations
+namespace BestFood.Infrastructure.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {

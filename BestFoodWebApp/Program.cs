@@ -1,5 +1,5 @@
 using BestFood.Core.Constants;
-using BestFoodWebApp.Data;
+using BestFood.Infrastructure.Data;
 using BestFoodWebApp.ModelBinders;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
