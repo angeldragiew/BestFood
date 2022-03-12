@@ -16,7 +16,7 @@ namespace BestFoodWebApp.Controllers
 
         public IActionResult Index()
         {
-            ViewData[MessageConstant.ErrorMessage] = "Нещо се случи!";
+            //ViewData[MessageConstant.ErrorMessage] = "Нещо се случи!";
             return View();
         }
 
