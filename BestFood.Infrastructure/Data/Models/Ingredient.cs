@@ -9,12 +9,15 @@ namespace BestFood.Infrastructure.Data.Models
 		[MaxLength(36)]
 		public string Id { get; set; } = Guid.NewGuid().ToString();
 
-		public decimal Price { get; set; }
+		[Required]
+        public string Name { get; set; }
+
+        public decimal Price { get; set; }
 
 		public IngredientType Type { get; set; }
 
-		public ICollection<ProductsIngredients> ProductsIngredients { get; set; } = new List<ProductsIngredients>();
+		public ICollection<ProductIngredient> ProductIngredients { get; set; } = new List<ProductIngredient>();
 
-		public ICollection<CategoriesIngredients> CategoriesIngredients { get; set; } = new List<CategoriesIngredients>();
+		public ICollection<CategoryIngredient> CategoryIngredients { get; set; } = new List<CategoryIngredient>();
 	}
 }

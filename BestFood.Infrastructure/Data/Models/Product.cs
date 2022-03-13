@@ -29,7 +29,9 @@ namespace BestFood.Infrastructure.Data.Models
         [ForeignKey(nameof(CategoryId))]
         public Category Category { get; set; }
 
-        public ICollection<ProductsIngredients> ProductsIngredients { get; set; } = new List<ProductsIngredients>();
+        public ICollection<ProductIngredient> ProductsIngredients { get; set; } = new List<ProductIngredient>();
+
+        public ICollection<ProductOrder> ProductOrders { get; set; } = new List<ProductOrder>();
 
         public ICollection<Review> Reviews { get; set; } = new List<Review>();
 	}
