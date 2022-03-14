@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BestFood.Infrastructure.Data.Repo
 {
-    public class Repository<T> : IRepository<T>, IDisposable
+    public class Repository<T> : IRepository<T>
         where T : class
     {
         private readonly ApplicationDbContext context;
@@ -18,9 +18,9 @@ namespace BestFood.Infrastructure.Data.Repo
             this.context = context;
             this.dbSet = context.Set<T>();
         }
-        public void AddAsync(T entity)
+        public async Task AddAsync(T entity)
         {
-            dbSet.AddAsync(entity);
+            await dbSet.AddAsync(entity);
         }
 
         public Task AddRangeAsync(IEnumerable<T> entities)
@@ -51,11 +51,6 @@ namespace BestFood.Infrastructure.Data.Repo
         public void Update(T entity)
         {
             dbSet.Update(entity);
-        }
-
-        public void Dispose()
-        {
-            this.context.Dispose();
         }
     }
 }

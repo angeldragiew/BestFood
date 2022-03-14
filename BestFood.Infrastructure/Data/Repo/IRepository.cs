@@ -11,7 +11,7 @@ namespace BestFood.Infrastructure.Data.Repo
     {
         IQueryable<T> All();
 
-        void AddAsync(T entity);
+        Task AddAsync(T entity);
 
         Task AddRangeAsync(IEnumerable<T> entities);
 
