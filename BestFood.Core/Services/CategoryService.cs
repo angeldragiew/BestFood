@@ -7,20 +7,21 @@ namespace BestFood.Core.Services
 {
     public class CategoryService : ICategoryService
     {
-        private readonly IRepository<Category> categoryRepo;
+        private readonly IRepository<Category> repo;
 
         public CategoryService(IRepository<Category> categoryRepo)
         {
-            this.categoryRepo = categoryRepo;
+            this.repo = categoryRepo;
         }
 
-        public IEnumerable<CreateCategoryViewModel> All()
+        public IEnumerable<CategoryViewModel> All()
         {
-            return categoryRepo
+            return repo
                 .All()
-                .Select(c => new CreateCategoryViewModel()
+                .Select(c => new CategoryViewModel()
                 {
-                    Name = c.Name, 
+                    Id = c.Id,
+                    Name = c.Name,
                     Image = c.Image
                 }).ToList();
 
@@ -34,8 +35,43 @@ namespace BestFood.Core.Services
                 Image = model.Image,
             };
 
-            await categoryRepo.AddAsync(category);
-            await categoryRepo.SaveChangesAsync();
+            await repo.AddAsync(category);
+            await repo.SaveChangesAsync();
         }
-    }
+
+        public async Task<bool> Delete(int id)
+        {
+            bool isDeleted = false;
+
+            Category category = repo.All().FirstOrDefault(e => e.Id == id);
+
+            if (category != null)
+            {
+                repo.Delete(category);
+                await repo.SaveChangesAsync();
+                isDeleted = true;
+            }
+            return isDeleted;
+        }
+
+		public async Task EditAsync(CategoryViewModel model)
+		{
+            Category category = repo.All().FirstOrDefault(e => e.Id == model.Id);
+
+            category.Name=model.Name;
+            category.Image = model.Image;
+
+            await repo.SaveChangesAsync();
+        }
+
+		public CategoryViewModel FindById(int id)
+		{
+            return repo.All().Select(e=> new CategoryViewModel()
+			{
+                Id=e.Id,
+                Name =e.Name,
+                Image=e.Image
+			}).FirstOrDefault(e=>e.Id == id);
+		}
+	}
 }

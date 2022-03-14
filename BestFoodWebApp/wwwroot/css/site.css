@@ -26,44 +26,4 @@ body {
     margin-bottom: 15px;
 }
 
-.categoryImage {
-    height: 200px;
-    object-fit: cover;
-}
 
-.categoryName {
-    color: white;
-    background-color: rgb(0, 0, 0, 0.5);
-    width: 100%;
-    margin-bottom: 0px;
-    text-align: center;
-    padding: 5px;
-}
-
-.category-admin-buttons {
-    text-decoration: none;
-    color: white;
-    padding: 5px;
-    text-align: center;
-    font-size: 1.2em;
-    width: 50%;
-    float: left;
-}
-
-    .category-admin-buttons:hover {
-        text-decoration: none;
-        color: white;
-        padding: 5px;
-        text-align: center;
-        font-size: 1.2em;
-        width: 50%;
-        float: left;
-    }
-
-.edit-category-button {
-    background-color: green;
-}
-
-.delete-category-button {
-    background-color: darkred;
-}

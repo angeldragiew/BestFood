@@ -4,7 +4,7 @@
 	ViewData["Controller"] = "Category";
 	ViewData["Action"] = "All";
 }
-@model IEnumerable<CreateCategoryViewModel>
+@model IEnumerable<CategoryViewModel>
 
 <div class="card card-success">
 	<div class="card-body">
@@ -20,13 +20,23 @@
 						@if (User.Identity.IsAuthenticated)
 						{
 							<div>
-								<a href="#" class="category-admin-buttons edit-category-button">Edit</a>
-								<a href="#" class="category-admin-buttons delete-category-button">Delete</a>
+								<a href="/Category/Edit/@category.Id" class="category-admin-buttons edit-category-button">Edit</a>
+								<a href="/Category/Delete/@category.Id" class="category-admin-buttons delete-category-button">Delete</a>
 							</div>
 						}
 					</div>
 				</div>
 			}
+			@if (User.Identity.IsAuthenticated)
+			{
+				<div class="col-md-12 col-lg-6 col-xl-4">
+					<a href="/Category/Create"><img class="add-image" src="~/img/addPhoto.jpg" /></a>
+				</div>
+			}
 		</div>
 	</div>
 </div>
+
+@section Head{
+<link rel="stylesheet" href="/css/categoryViews.css" />
+}
