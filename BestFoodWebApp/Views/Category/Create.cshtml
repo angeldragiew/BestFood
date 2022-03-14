@@ -1,0 +1,35 @@
+﻿@{
+	ViewData["Title"] = "Create Category";
+	ViewData["Controller"] = "Category";
+	ViewData["Action"] = "Create";
+}
+
+
+<div class="col-md-6">
+	<!-- general form elements -->
+	<div class="card card-primary">
+		<div class="card-header">
+			<h3 class="card-title">Category</h3>
+		</div>
+		<!-- /.card-header -->
+		<!-- form start -->
+		<form method= "post" action="Create">
+			<div class="card-body">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Category Name</label>
+					<input type="text" class="form-control" name = "Name" placeholder="Enter name">
+				</div>
+				<div class="form-group">
+					<label for="exampleInputPassword1">Category Image</label>
+					<input type="text" class="form-control" name = "Image" placeholder="Enter image link">
+				</div>
+			</div>
+			<!-- /.card-body -->
+
+			<div class="card-footer">
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</div>
+		</form>
+	</div>
+	<!-- /.card -->
+</div>

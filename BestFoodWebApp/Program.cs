@@ -1,5 +1,8 @@
 using BestFood.Core.Constants;
+using BestFood.Core.Services;
+using BestFood.Core.Services.Contracts;
 using BestFood.Infrastructure.Data;
+using BestFood.Infrastructure.Data.Repo;
 using BestFoodWebApp.ModelBinders;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +25,8 @@ builder.Services.AddControllersWithViews()
         options.ModelBinderProviders.Insert(2, new DoubleModelBinderProvider());
     });
 
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

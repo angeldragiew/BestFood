@@ -1,0 +1,32 @@
+﻿@using BestFood.Core.ViewModels.Category
+@{
+	ViewData["Title"] = "All Categories";
+	ViewData["Controller"] = "Category";
+	ViewData["Action"] = "All";
+}
+@model IEnumerable<CreateCategoryViewModel>
+
+<div class="card card-success">
+	<div class="card-body">
+		<div class="row">
+			@foreach (var category in Model)
+			{
+				<div class="col-md-12 col-lg-6 col-xl-4">
+					<div class="card mb-2 bg-gradient-dark">
+						<a href="#">
+							<img class="card-img-top categoryImage" src=@category.Image alt="Dist Photo 1">
+							<h3 class="categoryName">@category.Name</h3>
+						</a>
+						@if (User.Identity.IsAuthenticated)
+						{
+							<div>
+								<a href="#" class="category-admin-buttons edit-category-button">Edit</a>
+								<a href="#" class="category-admin-buttons delete-category-button">Delete</a>
+							</div>
+						}
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</div>
