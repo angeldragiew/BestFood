@@ -15,9 +15,9 @@ namespace BestFoodWebApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult All()
+        public async Task<IActionResult> All()
         {
-            List<CategoryViewModel> allCategories = categoryService.All().ToList();
+            var allCategories = await categoryService.All();
             return View(allCategories);
         }
 
@@ -35,54 +35,74 @@ namespace BestFoodWebApp.Controllers
                 string messages = string.Join("; ", ModelState.Values
                                         .SelectMany(x => x.Errors)
                                         .Select(x => x.ErrorMessage));
-                ViewData[MessageConstant.ErrorMessage] = messages;
-                return View();
+                TempData[MessageConstant.ErrorMessage] = messages;
+                return View(model);
             }
 
-            await categoryService.CreateAsync(model);
-
-            return Redirect("/Category/All");
+            try
+            {
+                await categoryService.CreateAsync(model);
+                return RedirectToAction("All", "Category");
+            }
+            catch(Exception)
+            {
+                TempData[MessageConstant.ErrorMessage] = "Could not create the category!";
+                return View(model);
+            }
         }
 
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            bool isDeleted = await categoryService.Delete(id);
-            if (!isDeleted)
+            try
             {
-                ViewData[MessageConstant.ErrorMessage] = "Неуспешно изтриване на категория";
+                await categoryService.Delete(id);
             }
-            return Redirect("/Category/All");
+            catch (ArgumentException ex)
+            {
+                TempData[MessageConstant.ErrorMessage] = ex.Message;
+            }
+            return RedirectToAction("All", "Category");
         }
 
-        
+
         [HttpGet]
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            CategoryViewModel model = categoryService.FindById(id);
-            if(model == null)
-			{
-                ViewData[MessageConstant.ErrorMessage] = "Неуспешно редактиране на категория";
-                return Redirect("/Category/All");
+            try
+            {
+                EditCategoryViewModel model = await categoryService.FindById(id);
+                return View(model);
             }
-            return View(model);
+            catch (ArgumentException ex)
+            {
+                TempData[MessageConstant.ErrorMessage] = ex.Message;
+                return RedirectToAction("All", "Category");
+            }
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(CategoryViewModel model)
+        public async Task<IActionResult> Edit(EditCategoryViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 string messages = string.Join("; ", ModelState.Values
                                         .SelectMany(x => x.Errors)
                                         .Select(x => x.ErrorMessage));
-                ViewData[MessageConstant.ErrorMessage] = messages;
-                return View();
+                TempData[MessageConstant.ErrorMessage] = messages;
+                return View(model);
             }
 
-            await categoryService.EditAsync(model);
+            try
+            {
+                await categoryService.EditAsync(model);
+            }
+            catch (ArgumentException ex)
+            {
+                TempData[MessageConstant.ErrorMessage] = ex.Message;
+            }
 
-            return Redirect("/Category/All");
+            return RedirectToAction("All", "Category");
         }
     }
 }

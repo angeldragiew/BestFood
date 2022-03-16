@@ -2,6 +2,7 @@
 using BestFood.Core.ViewModels.Category;
 using BestFood.Infrastructure.Data.Models;
 using BestFood.Infrastructure.Data.Repo;
+using Microsoft.EntityFrameworkCore;
 
 namespace BestFood.Core.Services
 {
@@ -9,21 +10,21 @@ namespace BestFood.Core.Services
     {
         private readonly IRepository<Category> repo;
 
-        public CategoryService(IRepository<Category> categoryRepo)
+        public CategoryService(IRepository<Category> repo)
         {
-            this.repo = categoryRepo;
+            this.repo = repo;
         }
 
-        public IEnumerable<CategoryViewModel> All()
+        public async Task<IEnumerable<CategoryViewModel>> All()
         {
-            return repo
+            return await repo
                 .All()
                 .Select(c => new CategoryViewModel()
                 {
                     Id = c.Id,
                     Name = c.Name,
                     Image = c.Image
-                }).ToList();
+                }).ToListAsync();
 
         }
 
@@ -39,39 +40,49 @@ namespace BestFood.Core.Services
             await repo.SaveChangesAsync();
         }
 
-        public async Task<bool> Delete(int id)
+        public async Task Delete(int id)
         {
-            bool isDeleted = false;
+            Category category = await repo.All().FirstOrDefaultAsync(e => e.Id == id);
 
-            Category category = repo.All().FirstOrDefault(e => e.Id == id);
-
-            if (category != null)
+            if (category == null)
             {
-                repo.Delete(category);
-                await repo.SaveChangesAsync();
-                isDeleted = true;
+                throw new ArgumentException("Unknown category!");
             }
-            return isDeleted;
+
+            repo.Delete(category);
+            await repo.SaveChangesAsync();
         }
 
-		public async Task EditAsync(CategoryViewModel model)
-		{
-            Category category = repo.All().FirstOrDefault(e => e.Id == model.Id);
+        public async Task EditAsync(EditCategoryViewModel model)
+        {
+            Category category = await repo.All().FirstOrDefaultAsync(e => e.Id == model.Id);
 
-            category.Name=model.Name;
+            if (category == null)
+            {
+                throw new AggregateException("Unknown category!");
+            }
+
+            category.Name = model.Name;
             category.Image = model.Image;
 
             await repo.SaveChangesAsync();
         }
 
-		public CategoryViewModel FindById(int id)
-		{
-            return repo.All().Select(e=> new CategoryViewModel()
-			{
-                Id=e.Id,
-                Name =e.Name,
-                Image=e.Image
-			}).FirstOrDefault(e=>e.Id == id);
-		}
-	}
+        public async Task<EditCategoryViewModel> FindById(int id)
+        {
+            EditCategoryViewModel category = await repo.All().Select(e => new EditCategoryViewModel()
+            {
+                Id = e.Id,
+                Name = e.Name,
+                Image = e.Image
+            }).FirstOrDefaultAsync(e => e.Id == id);
+
+            if (category == null)
+            {
+                throw new ArgumentException("Unknown category!");
+            }
+
+            return category;
+        }
+    }
 }

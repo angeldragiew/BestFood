@@ -4,11 +4,11 @@ namespace BestFood.Core.Services.Contracts
 {
     public interface ICategoryService
     {
-        IEnumerable<CategoryViewModel> All();
+        Task<IEnumerable<CategoryViewModel>> All();
         Task CreateAsync(CreateCategoryViewModel model);
-        Task EditAsync(CategoryViewModel model);
+        Task EditAsync(EditCategoryViewModel model);
 
-        Task<bool> Delete(int id);
-		CategoryViewModel FindById(int id);
+        Task Delete(int id);
+        Task<EditCategoryViewModel> FindById(int id);
 	}
 }
