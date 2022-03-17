@@ -4,6 +4,7 @@ using BestFood.Core.ViewModels.Ingredient;
 using BestFood.Infrastructure.Data.Models;
 using BestFood.Infrastructure.Data.Repo;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BestFoodWebApp.Controllers
 {
@@ -26,19 +27,9 @@ namespace BestFoodWebApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            var categories = repo
-                .All()
-                .Select(c => new CategoryCheckBoxViewModel
-                {
-                    CategoryId = c.Id,
-                    IsSelected = false,
-                    CategoryName = c.Name,
-                })
-                .ToList();
-
-            ViewBag.Categories = categories;
+            ViewBag.Categories =await ingredientService.LoadCategoriesForCreate();
             return View();
         }
 
@@ -57,13 +48,68 @@ namespace BestFoodWebApp.Controllers
             try
             {
                 await ingredientService.CreateAsync(model);
-                return RedirectToAction("Create", "Ingredient");
+                return RedirectToAction("All", "Ingredient");
             }
             catch (Exception)
             {
                 TempData[MessageConstant.ErrorMessage] = "Could not create the category!";
                 return RedirectToAction("Create", "Ingredient");
             }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(string id)
+        {
+            try
+            {
+                await ingredientService.Delete(id);
+            }
+            catch (ArgumentException ex)
+            {
+                TempData[MessageConstant.ErrorMessage] = ex.Message;
+            }
+            return RedirectToAction("All", "Ingredient");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(string id)
+        {
+            ViewBag.Categories = await ingredientService.LoadCategoriesForEdit(id);
+
+            try
+            {
+                EditIngredientViewModel model = await ingredientService.FindById(id);
+                return View(model);
+            }
+            catch (ArgumentException ex)
+            {
+                TempData[MessageConstant.ErrorMessage] = ex.Message;
+                return RedirectToAction("All", "Ingredient");
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(EditIngredientViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                string messages = string.Join("; ", ModelState.Values
+                                        .SelectMany(x => x.Errors)
+                                        .Select(x => x.ErrorMessage));
+                TempData[MessageConstant.ErrorMessage] = messages;
+                ViewBag.Categories = await ingredientService.LoadCategoriesForEdit(model.Id);
+                return View(model);
+            }
+
+            try
+            {
+                await ingredientService.EditAsync(model);
+            }
+            catch (ArgumentException ex)
+            {
+                TempData[MessageConstant.ErrorMessage] = ex.Message;
+            }
+            return RedirectToAction("All", "Ingredient");
         }
     }
 }
