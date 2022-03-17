@@ -1,9 +1,9 @@
 ﻿namespace BestFood.Infrastructure.Enums
 {
-	public enum IngredientType
-	{
-		Sauce,
-		Meat,
-		Vegetable
-	}
+    public enum IngredientType
+    {
+        Sauce = 1,
+        Meat = 2,
+        Vegetable = 3
+    }
 }

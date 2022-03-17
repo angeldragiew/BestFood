@@ -1,0 +1,81 @@
+﻿.categoryImage {
+    height: 200px;
+    object-fit: cover;
+}
+
+.categoryName {
+    color: white;
+    background-color: rgb(0, 0, 0, 0.5);
+    width: 100%;
+    margin-bottom: 0px;
+    text-align: center;
+    padding: 5px;
+}
+
+.category-admin-buttons {
+    text-decoration: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    font-size: 1.2em;
+    width: 50%;
+    float: left;
+}
+
+    .category-admin-buttons:hover {
+        text-decoration: none;
+        color: white;
+        padding: 5px;
+        text-align: center;
+        font-size: 1.2em;
+        width: 50%;
+        float: left;
+    }
+
+.edit-category-button {
+    background-color: green;
+}
+
+.delete-category-button {
+    background-color: darkred;
+}
+
+.create-category-form {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.5em;
+}
+.card-header {
+    background-color: coral !important;
+}
+
+.create-button {
+    background-color: coral;
+    border: none;
+    width:30%;
+}
+
+    .create-button:hover {
+        background-color: orangered;
+    }
+
+.add-image {
+    width: 60%;
+    margin-left:20%;
+    margin-top:5%;
+}
+
+.categories-selection {
+    border: 1px solid rgb(206, 212, 218);
+    border-radius: 5px;
+    margin-bottom:15px;
+    text-align:left;
+}
+
+    .categories-selection .form-check {
+        margin-left: 18px;
+    }

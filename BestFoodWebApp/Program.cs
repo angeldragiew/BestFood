@@ -27,6 +27,7 @@ builder.Services.AddControllersWithViews()
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IIngredientService, IngredientService>();
 
 var app = builder.Build();
 
