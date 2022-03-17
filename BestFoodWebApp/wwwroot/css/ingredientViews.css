@@ -79,3 +79,20 @@
     .categories-selection .form-check {
         margin-left: 18px;
     }
+
+
+.ingredient-tables{
+    margin-left: 15%;
+    width:70%;
+
+}
+
+.table-responsive {
+    height: 180px !important;
+    text-align: center;
+}
+td{
+    width:25%;
+}
+
+
