@@ -17,6 +17,6 @@ namespace BestFood.Core.ViewModels.Ingredient
 
 		public IngredientType Type { get; set; }
 
-		public ICollection<CategoryIngredient> CategoryIngredients { get; set; } = new List<CategoryIngredient>();
+		public ICollection<string> CategoryNames { get; set; } = new List<string>();
 	}
 }

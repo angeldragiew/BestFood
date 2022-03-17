@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace BestFood.Core.ViewModels.Ingredient
 {
-    public class CategoryCheckBoxViewModel
+    public class IngredientCategoryViewModel
     {
-        public string CategoryName { get; set; }
         public int CategoryId { get; set; }
+        public string CategoryName { get; set; }
         public bool IsSelected { get; set; }
-
-        
     }
 }
