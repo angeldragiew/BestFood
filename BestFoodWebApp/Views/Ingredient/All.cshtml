@@ -5,7 +5,7 @@
 }
 
 @model IEnumerable<IngredientViewModel>
-<div class="row">
+<div class="row ingredient-tables">
 	<div class="col-12">
 		<div class="card">
 			<div class="card-header">
@@ -17,8 +17,8 @@
 					<thead>
 						<tr>
 							<th>Name</th>
-							<th>Price</th>
-							<th>Type</th>
+							<th>Categories</th>
+							<th colspan="2">Actions</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -28,7 +28,62 @@
 							{
 								<tr>
 									<td>@ing.Name</td>
-									<td>@ing.Type</td>
+									<td>@(String.Join(", ",ing.CategoryNames))</td>
+									@if (User.Identity.IsAuthenticated)
+									{
+										<td>
+											<a href="/Ingredient/Edit/@ing.Id" class="btn btn-block btn-info btn-sm">Edit</a>
+										</td>
+										<td>
+											<a href="/Ingredient/Delete/@ing.Id" class="btn btn-block btn-danger btn-sm">Delete</a>
+										</td>
+									}
+								</tr>
+							}
+						}
+
+					</tbody>
+				</table>
+			</div>
+			<!-- /.card-body -->
+		</div>
+		<!-- /.card -->
+	</div>
+</div>
+
+<div class="row ingredient-tables">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-header">
+				<h3 class="card-title">Salads</h3>
+			</div>
+			<!-- /.card-header -->
+			<div class="card-body table-responsive p-0" style="height: 300px;">
+				<table class="table table-head-fixed text-nowrap">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Categories</th>
+							<th colspan="2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var ing in Model)
+						{
+							if (ing.Type == IngredientType.Vegetable)
+							{
+								<tr>
+									<td>@ing.Name</td>
+									<td>@(String.Join(", ",ing.CategoryNames))</td>
+									@if (User.Identity.IsAuthenticated)
+									{
+										<td>
+											<a href="/Ingredient/Edit/@ing.Id" class="btn btn-block btn-info btn-sm">Edit</a>
+										</td>
+										<td>
+											<a href="/Ingredient/Delete/@ing.Id" class="btn btn-block btn-danger btn-sm">Delete</a>
+										</td>
+									}
 								</tr>
 							}
 						}
@@ -41,11 +96,11 @@
 	</div>
 </div>
 
-<div class="row">
+<div class="row ingredient-tables">
 	<div class="col-12">
 		<div class="card">
 			<div class="card-header">
-				<h3 class="card-title">Sauces</h3>
+				<h3 class="card-title">Meats</h3>
 			</div>
 			<!-- /.card-header -->
 			<div class="card-body table-responsive p-0" style="height: 300px;">
@@ -53,18 +108,27 @@
 					<thead>
 						<tr>
 							<th>Name</th>
-							<th>Price</th>
-							<th>Type</th>
+							<th>Categories</th>
+							<th colspan="2">Actions</th>
 						</tr>
 					</thead>
 					<tbody>
 						@foreach (var ing in Model)
 						{
-							if (ing.Type == IngredientType.Vegetable)
+							if (ing.Type == IngredientType.Meat)
 							{
 								<tr>
 									<td>@ing.Name</td>
-									<td>@ing.Type</td>
+									<td>@(String.Join(", ",ing.CategoryNames))</td>
+									@if (User.Identity.IsAuthenticated)
+									{
+										<td>
+											<a href="/Ingredient/Edit/@ing.Id" class="btn btn-block btn-info btn-sm">Edit</a>
+										</td>
+										<td>
+											<a href="/Ingredient/Delete/@ing.Id" class="btn btn-block btn-danger btn-sm">Delete</a>
+										</td>
+									}
 								</tr>
 							}
 						}
@@ -76,3 +140,7 @@
 		<!-- /.card -->
 	</div>
 </div>
+
+@section Head{
+<link rel="stylesheet" href="~/css/ingredientViews.css" />
+}
