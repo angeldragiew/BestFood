@@ -28,7 +28,6 @@ namespace BestFood.Infrastructure.Data
             builder.Entity<ProductIngredient>().HasKey(pi => new { pi.ProductId, pi.IngredientId });
             builder.Entity<ProductOrder>().HasKey(po => new { po.ProductId, po.OrderId });
 
-            builder.Entity<Ingredient>().Property(i => i.Price).HasColumnType("decimal(18,4)");
             builder.Entity<Order>().Property(o => o.Amount).HasColumnType("decimal(18,4)");
             builder.Entity<Product>().Property(p => p.Price).HasColumnType("decimal(18,4)");
 
