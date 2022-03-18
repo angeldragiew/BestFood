@@ -18,5 +18,7 @@ namespace BestFood.Core.Services.Contracts
         Task<IEnumerable<IngredientCategoryViewModel>> LoadCategoriesForCreate();
 
         Task<IEnumerable<IngredientCategoryViewModel>> LoadCategoriesForEdit(string id);
+
+        void SaveSubmittedCategoryValues(IEnumerable<IngredientCategoryViewModel> categories, IList<int> categoryIds);
     }
 }

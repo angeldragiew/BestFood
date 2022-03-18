@@ -29,7 +29,7 @@ namespace BestFoodWebApp.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            ViewBag.Categories =await ingredientService.LoadCategoriesForCreate();
+            ViewBag.Categories = await ingredientService.LoadCategoriesForCreate();
             return View();
         }
 
@@ -42,7 +42,12 @@ namespace BestFoodWebApp.Controllers
                                         .SelectMany(x => x.Errors)
                                         .Select(x => x.ErrorMessage));
                 TempData[MessageConstant.ErrorMessage] = messages;
-                return RedirectToAction("Create", "Ingredient");
+                //ViewBag.Categories = await ingredientService.LoadCategoriesForCreate();
+
+                var categories = await ingredientService.LoadCategoriesForCreate();
+                ingredientService.SaveSubmittedCategoryValues(categories, model.CategoryIds);
+                ViewBag.Categories = categories;
+                return View(model);
             }
 
             try
@@ -97,7 +102,9 @@ namespace BestFoodWebApp.Controllers
                                         .SelectMany(x => x.Errors)
                                         .Select(x => x.ErrorMessage));
                 TempData[MessageConstant.ErrorMessage] = messages;
-                ViewBag.Categories = await ingredientService.LoadCategoriesForEdit(model.Id);
+                var categories = await ingredientService.LoadCategoriesForEdit(model.Id);
+                ingredientService.SaveSubmittedCategoryValues(categories, model.CategoryIds);
+                ViewBag.Categories = categories;
                 return View(model);
             }
 

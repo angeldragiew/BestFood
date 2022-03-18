@@ -13,16 +13,36 @@
 		</div>
 		<!-- /.card-header -->
 		<!-- form start -->
-		<form method="post" action="Create">
+		<form method="post">
 			@Html.HiddenFor(model => model.Id)
 			<div class="card-body">
 				<div class="form-group">
 					<label>Ingredient Name</label>
-					<input value="@Model.Name" type="text" class="form-control" name="Name" placeholder="Enter name">
+					@if (Model != null)
+					{
+						<input value="@Model.Name" type="text" class="form-control" name="Name" placeholder="Enter name">
+					}
+					else
+					{
+						<input type="text" class="form-control" name="Name" placeholder="Enter name">
+					}
+
 				</div>
 				<div class="form-group">
 					<label>Ingredient Type</label>
-					<select class="form-control" name="Type" asp-items="Html.GetEnumSelectList<IngredientType>()"><option>Select ingredient type...</option></select>
+					<select class="form-control" name="Type">
+						@foreach (IngredientType ingredient in (IngredientType[])Enum.GetValues(typeof(IngredientType)))
+						{
+							@if (ingredient == Model.Type)
+							{
+								<option value="@((int)ingredient)" selected>@ingredient</option>
+							}
+							else
+							{
+								<option value="@((int)ingredient)">@ingredient</option>
+							}
+						}
+					</select>
 				</div>
 				<!-- checkbox -->
 				<div class="form-group">
@@ -39,7 +59,7 @@
 				</div>
 
 				<div class="card-footer">
-					<button type="submit" class="btn btn-primary create-button">Create</button>
+					<button type="submit" class="btn btn-primary create-button">Edit</button>
 				</div>
 			</div>
 		</form>

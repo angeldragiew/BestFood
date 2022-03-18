@@ -104,6 +104,7 @@ namespace BestFood.Core.Services
             {
                 Id = e.Id,
                 Name = e.Name,
+                Type = e.Type,
                 CategoryIds = e.CategoryIngredients.Select(c => c.CategoryId).ToArray()
             }).FirstOrDefaultAsync(e => e.Id == id);
 
@@ -143,6 +144,21 @@ namespace BestFood.Core.Services
                     CategoryName = c.Name,
                 })
                 .ToListAsync();
+        }
+
+        public void SaveSubmittedCategoryValues(IEnumerable<IngredientCategoryViewModel> categories, IList<int> categoryIds)
+        {
+            foreach (var cat in categories)
+            {
+                if (categoryIds.Contains(cat.CategoryId))
+                {
+                    cat.IsSelected = true;
+                }
+                else
+                {
+                    cat.IsSelected = false;
+                }
+            }
         }
     }
 }
