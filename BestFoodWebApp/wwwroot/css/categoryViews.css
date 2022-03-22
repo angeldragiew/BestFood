@@ -13,34 +13,6 @@
     padding: 5px;
 }
 
-.category-admin-buttons {
-    text-decoration: none;
-    color: white;
-    padding: 5px;
-    text-align: center;
-    font-size: 1.2em;
-    width: 50%;
-    float: left;
-}
-
-    .category-admin-buttons:hover {
-        text-decoration: none;
-        color: white;
-        padding: 5px;
-        text-align: center;
-        font-size: 1.2em;
-        width: 50%;
-        float: left;
-    }
-
-.edit-category-button {
-    background-color: green;
-}
-
-.delete-category-button {
-    background-color: darkred;
-}
-
 .create-category-form {
   margin:auto;
   width:50%;
@@ -68,4 +40,11 @@
     width: 60%;
     margin-left:20%;
     margin-top:5%;
+}
+
+.admin-buttons {
+}
+
+.btn {
+    width: 50%;
 }

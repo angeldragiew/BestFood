@@ -2,6 +2,7 @@ using BestFood.Core.Constants;
 using BestFood.Core.Services;
 using BestFood.Core.Services.Contracts;
 using BestFood.Infrastructure.Data;
+using BestFood.Infrastructure.Data.Models;
 using BestFood.Infrastructure.Data.Repo;
 using BestFoodWebApp.ModelBinders;
 using Microsoft.AspNetCore.Identity;
@@ -15,8 +16,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<ApplicationUser>
+    (options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
 builder.Services.AddControllersWithViews()
     .AddMvcOptions(options =>
     {

@@ -17,9 +17,9 @@
 						</a>
 						@if (User.Identity.IsAuthenticated)
 						{
-							<div>
-								<a href="/Category/Edit/@category.Id" class="category-admin-buttons edit-category-button">Edit</a>
-								<a href="/Category/Delete/@category.Id" class="category-admin-buttons delete-category-button">Delete</a>
+							<div class="admin-buttons">
+								<a href="/Category/Edit/@category.Id" class="btn btn-block btn-info btn-sm">Edit</a>
+								<a href="/Category/Delete/@category.Id" class="btn btn-block btn-danger btn-sm">Delete</a>
 							</div>
 						}
 					</div>
