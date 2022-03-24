@@ -1,0 +1,43 @@
+﻿@using BestFood.Core.ViewModels.User
+@model IEnumerable<UserListViewModel>
+@{
+}
+
+<div class="row ingredient-tables">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-header">
+				<h3 class="card-title">Sauces</h3>
+			</div>
+			<!-- /.card-header -->
+			<div class="card-body table-responsive p-0" style="height: 300px;">
+				<table class="table table-head-fixed text-nowrap">
+					<thead>
+						<tr>
+							<th>User</th>
+							<th>Email</th>
+							<th colspan="2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var user in Model)
+						{
+							<tr>
+								<td>@user.Name</td>
+								<td>@user.Email</td>
+								<td>
+									<a asp-area="admin" asp-action="edit" asp-controller="user" asp-route-id="@user.Id" class="btn btn-block btn-info btn-sm">Edit</a>
+								</td>
+								<td>
+									<a asp-area="admin" asp-action="roles" asp-controller="user" asp-route-id="@user.Id" class="btn btn-block btn-danger btn-sm">Roles</a>
+								</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+			</div>
+			<!-- /.card-body -->
+		</div>
+		<!-- /.card -->
+	</div>
+</div>

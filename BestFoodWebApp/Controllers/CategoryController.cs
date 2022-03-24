@@ -58,7 +58,7 @@ namespace BestFoodWebApp.Controllers
             {
                 await categoryService.Delete(id);
             }
-            catch (ArgumentException ex)
+            catch (ArgumentNullException ex)
             {
                 TempData[MessageConstant.ErrorMessage] = ex.Message;
             }
@@ -74,7 +74,7 @@ namespace BestFoodWebApp.Controllers
                 EditCategoryViewModel model = await categoryService.FindById(id);
                 return View(model);
             }
-            catch (ArgumentException ex)
+            catch (ArgumentNullException ex)
             {
                 TempData[MessageConstant.ErrorMessage] = ex.Message;
                 return RedirectToAction("All", "Category");
@@ -97,7 +97,7 @@ namespace BestFoodWebApp.Controllers
             {
                 await categoryService.EditAsync(model);
             }
-            catch (ArgumentException ex)
+            catch (ArgumentNullException ex)
             {
                 TempData[MessageConstant.ErrorMessage] = ex.Message;
             }

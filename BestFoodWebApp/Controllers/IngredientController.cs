@@ -10,12 +10,10 @@ namespace BestFoodWebApp.Controllers
 {
     public class IngredientController : Controller
     {
-        private readonly IRepository<Category> repo;
         private readonly IIngredientService ingredientService;
 
-        public IngredientController(IRepository<Category> repo, IIngredientService ingredientService)
+        public IngredientController(IIngredientService ingredientService)
         {
-            this.repo = repo;
             this.ingredientService = ingredientService;
         }
 

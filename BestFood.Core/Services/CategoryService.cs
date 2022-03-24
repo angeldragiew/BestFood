@@ -46,7 +46,7 @@ namespace BestFood.Core.Services
 
             if (category == null)
             {
-                throw new ArgumentException("Unknown category!");
+                throw new ArgumentNullException("Unknown category!");
             }
 
             repo.Delete(category);
@@ -59,7 +59,7 @@ namespace BestFood.Core.Services
 
             if (category == null)
             {
-                throw new AggregateException("Unknown category!");
+                throw new ArgumentNullException("Unknown category!");
             }
 
             category.Name = model.Name;
@@ -79,7 +79,7 @@ namespace BestFood.Core.Services
 
             if (category == null)
             {
-                throw new ArgumentException("Unknown category!");
+                throw new ArgumentNullException("Unknown category!");
             }
 
             return category;
