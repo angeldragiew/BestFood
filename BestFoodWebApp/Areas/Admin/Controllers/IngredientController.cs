@@ -1,14 +1,11 @@
 ﻿using BestFood.Core.Constants;
 using BestFood.Core.Services.Contracts;
 using BestFood.Core.ViewModels.Ingredient;
-using BestFood.Infrastructure.Data.Models;
-using BestFood.Infrastructure.Data.Repo;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
-namespace BestFoodWebApp.Controllers
+namespace BestFoodWebApp.Areas.Admin.Controllers
 {
-    public class IngredientController : Controller
+    public class IngredientController : BaseController
     {
         private readonly IIngredientService ingredientService;
 

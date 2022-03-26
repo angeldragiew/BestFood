@@ -1,4 +1,5 @@
-﻿@using BestFood.Core.ViewModels.Category
+﻿@using BestFood.Core.Constants
+@using BestFood.Core.ViewModels.Category
 @{
 	ViewData["Title"] = "All Categories";
 }
@@ -15,20 +16,14 @@
 							<img class="card-img-top categoryImage" src=@category.Image alt="Dist Photo 1">
 							<h3 class="categoryName">@category.Name</h3>
 						</a>
-						@if (User.Identity.IsAuthenticated)
+						@if (User.IsInRole(UserConstants.Roles.Administrator))
 						{
 							<div class="admin-buttons">
-								<a href="/Category/Edit/@category.Id" class="btn btn-block btn-info btn-sm">Edit</a>
-								<a href="/Category/Delete/@category.Id" class="btn btn-block btn-danger btn-sm">Delete</a>
+								<a href="/admin/Category/Edit/@category.Id" class="btn btn-block btn-info btn-sm">Edit</a>
+								<a href="/admin/Category/Delete/@category.Id" class="btn btn-block btn-danger btn-sm">Delete</a>
 							</div>
 						}
 					</div>
-				</div>
-			}
-			@if (User.Identity.IsAuthenticated)
-			{
-				<div class="col-md-12 col-lg-6 col-xl-4">
-					<a href="/Category/Create"><img class="add-image" src="~/img/addPhoto.jpg" /></a>
 				</div>
 			}
 		</div>

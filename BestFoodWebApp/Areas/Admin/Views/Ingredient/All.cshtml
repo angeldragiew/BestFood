@@ -29,15 +29,13 @@
 								<tr>
 									<td>@ing.Name</td>
 									<td>@(String.Join(", ",ing.CategoryNames))</td>
-									@if (User.Identity.IsAuthenticated)
-									{
-										<td>
-											<a href="/Ingredient/Edit/@ing.Id" class="btn btn-block btn-info btn-sm">Edit</a>
-										</td>
-										<td>
-											<a href="/Ingredient/Delete/@ing.Id" class="btn btn-block btn-danger btn-sm">Delete</a>
-										</td>
-									}
+									<td>
+										<a asp-area="Admin" asp-controller="Ingredient" asp-action="Edit" asp-route-id="@ing.Id" class="btn btn-block btn-info btn-sm">Edit</a>
+
+									</td>
+									<td>
+										<a asp-area="Admin" asp-controller="Ingredient" asp-action="Delete" asp-route-id="@ing.Id" class="btn btn-block btn-danger btn-sm">Delete</a>
+									</td>
 								</tr>
 							}
 						}
@@ -75,15 +73,13 @@
 								<tr>
 									<td>@ing.Name</td>
 									<td>@(String.Join(", ",ing.CategoryNames))</td>
-									@if (User.Identity.IsAuthenticated)
-									{
-										<td>
-											<a href="/Ingredient/Edit/@ing.Id" class="btn btn-block btn-info btn-sm">Edit</a>
-										</td>
-										<td>
-											<a href="/Ingredient/Delete/@ing.Id" class="btn btn-block btn-danger btn-sm">Delete</a>
-										</td>
-									}
+									<td>
+										<a asp-area="Admin" asp-controller="Ingredient" asp-action="Edit" asp-route-id="@ing.Id" class="btn btn-block btn-info btn-sm">Edit</a>
+
+									</td>
+									<td>
+										<a asp-area="Admin" asp-controller="Ingredient" asp-action="Delete" asp-route-id="@ing.Id" class="btn btn-block btn-danger btn-sm">Delete</a>
+									</td>
 								</tr>
 							}
 						}
@@ -120,15 +116,13 @@
 								<tr>
 									<td>@ing.Name</td>
 									<td>@(String.Join(", ",ing.CategoryNames))</td>
-									@if (User.Identity.IsAuthenticated)
-									{
-										<td>
-											<a href="/Ingredient/Edit/@ing.Id" class="btn btn-block btn-info btn-sm">Edit</a>
-										</td>
-										<td>
-											<a href="/Ingredient/Delete/@ing.Id" class="btn btn-block btn-danger btn-sm">Delete</a>
-										</td>
-									}
+									<td>
+										<a asp-area="Admin" asp-controller="Ingredient" asp-action="Edit" asp-route-id="@ing.Id" class="btn btn-block btn-info btn-sm">Edit</a>
+
+									</td>
+									<td>
+										<a asp-area="Admin" asp-controller="Ingredient" asp-action="Delete" asp-route-id="@ing.Id" class="btn btn-block btn-danger btn-sm">Delete</a>
+									</td>
 								</tr>
 							}
 						}
