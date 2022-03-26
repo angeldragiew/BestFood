@@ -16,19 +16,20 @@
 		<form method="post">
 			<div class="card-body">
 				<div class="form-group">
-					<label>Ingredient Name</label>
+					<label asp-for="Name"></label>
 					@if (Model != null)
 					{
-						<input value="@Model.Name" type="text" class="form-control" name="Name" placeholder="Enter name">
+						<input asp-for="Name" type="text" value="@Model.Name" class="form-control" name="Name" placeholder="Enter name">
 					}
 					else
 					{
-						<input type="text" class="form-control" name="Name" placeholder="Enter name">
+						<input asp-for="Name" type="text" class="form-control" name="Name" placeholder="Enter name">
 					}
+					<span asp-validation-for="Name" class="text-danger"></span>
 				</div>
 				<div class="form-group">
-					<label>Ingredient Type</label>
-					<select class="form-control" name="Type">
+					<label asp-for="Type"></label>
+					<select asp-for="Type" class="form-control" name="Type">
 						@foreach (IngredientType ingredient in (IngredientType[])Enum.GetValues(typeof(IngredientType)))
 						{
 							@if (Model != null && ingredient == Model.Type)
@@ -41,10 +42,11 @@
 							}
 						}
 					</select>
+					<span asp-validation-for="Type" class="text-danger"></span>
 				</div>
 				<!-- checkbox -->
 				<div class="form-group">
-					<label>Ingredient Categories</label>
+					<label asp-for="CategoryIds"></label>
 					<div class="categories-selection">
 						@foreach (var cat in ViewBag.Categories)
 						{
@@ -66,4 +68,8 @@
 </div>
 @section Head{
 <link rel="stylesheet" href="~/css/ingredientViews.css" />
+}
+
+@section Scripts{
+	<partial name="_ValidationScriptsPartial" />
 }

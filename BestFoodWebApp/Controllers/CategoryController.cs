@@ -32,23 +32,20 @@ namespace BestFoodWebApp.Controllers
         {
             if (!ModelState.IsValid)
             {
-                string messages = string.Join("; ", ModelState.Values
-                                        .SelectMany(x => x.Errors)
-                                        .Select(x => x.ErrorMessage));
-                TempData[MessageConstant.ErrorMessage] = messages;
+                TempData[MessageConstant.ErrorMessage] = "Invalid data!";
                 return View(model);
             }
 
             try
             {
                 await categoryService.CreateAsync(model);
-                return RedirectToAction("All", "Category");
+                TempData[MessageConstant.SuccessMessage] = "Category created successfully!";
             }
             catch(Exception)
             {
                 TempData[MessageConstant.ErrorMessage] = "Could not create the category!";
-                return View(model);
             }
+            return RedirectToAction("All", "Category");
         }
 
         [HttpGet]
@@ -57,6 +54,7 @@ namespace BestFoodWebApp.Controllers
             try
             {
                 await categoryService.Delete(id);
+                TempData[MessageConstant.SuccessMessage] = "Category deleted successfully!";
             }
             catch (ArgumentNullException ex)
             {
@@ -86,16 +84,14 @@ namespace BestFoodWebApp.Controllers
         {
             if (!ModelState.IsValid)
             {
-                string messages = string.Join("; ", ModelState.Values
-                                        .SelectMany(x => x.Errors)
-                                        .Select(x => x.ErrorMessage));
-                TempData[MessageConstant.ErrorMessage] = messages;
+                TempData[MessageConstant.ErrorMessage] = "Invalid data!";
                 return View(model);
             }
 
             try
             {
                 await categoryService.EditAsync(model);
+                TempData[MessageConstant.SuccessMessage] = "Category editted successfully!";
             }
             catch (ArgumentNullException ex)
             {

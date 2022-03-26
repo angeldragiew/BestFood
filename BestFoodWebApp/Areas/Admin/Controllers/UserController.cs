@@ -79,7 +79,7 @@ namespace BestFoodWebApp.Areas.Admin.Controllers
             }
         }
 
-        [Microsoft.AspNetCore.Mvc.HttpPost]
+        [HttpPost]
         public async Task<IActionResult> Edit(EditUserViewModel model)
         {
             if (!ModelState.IsValid)

@@ -44,11 +44,13 @@ namespace BestFood.Core.Services
 
             foreach (var id in model.CategoryIds)
             {
-                ingredient.CategoryIngredients.Add(new CategoryIngredient()
-                {
-                    Ingredient = ingredient,
-                    CategoryId = id
-                });
+                if (categoryRepo.All().Any(c => c.Id == id)){
+                    ingredient.CategoryIngredients.Add(new CategoryIngredient()
+                    {
+                        Ingredient = ingredient,
+                        CategoryId = id
+                    });
+                }
             }
 
             await repo.AddAsync(ingredient);
@@ -84,15 +86,18 @@ namespace BestFood.Core.Services
 
             categoryIngredientRepo.DeleteRange(categoryIngredientRepo
                                                 .All()
-                                                .Where(c=> c.IngredientId == model.Id));
+                                                .Where(c => c.IngredientId == model.Id));
 
             foreach (var id in model.CategoryIds)
             {
-                ingredient.CategoryIngredients.Add(new CategoryIngredient()
+                if(categoryRepo.All().Any(c => c.Id == id))
                 {
-                    Ingredient = ingredient,
-                    CategoryId = id
-                });
+                    ingredient.CategoryIngredients.Add(new CategoryIngredient()
+                    {
+                        Ingredient = ingredient,
+                        CategoryId = id
+                    });
+                }
             }
 
             await repo.SaveChangesAsync();

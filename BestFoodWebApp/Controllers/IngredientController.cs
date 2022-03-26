@@ -36,11 +36,7 @@ namespace BestFoodWebApp.Controllers
         {
             if (!ModelState.IsValid)
             {
-                string messages = string.Join("; ", ModelState.Values
-                                        .SelectMany(x => x.Errors)
-                                        .Select(x => x.ErrorMessage));
-                TempData[MessageConstant.ErrorMessage] = messages;
-                //ViewBag.Categories = await ingredientService.LoadCategoriesForCreate();
+                TempData[MessageConstant.ErrorMessage] = "Invalid data!";
 
                 var categories = await ingredientService.LoadCategoriesForCreate();
                 ingredientService.SaveSubmittedCategoryValues(categories, model.CategoryIds);
@@ -51,13 +47,13 @@ namespace BestFoodWebApp.Controllers
             try
             {
                 await ingredientService.CreateAsync(model);
-                return RedirectToAction("All", "Ingredient");
+                TempData[MessageConstant.SuccessMessage] = "Ingredient created successfully!";
             }
             catch (Exception)
             {
-                TempData[MessageConstant.ErrorMessage] = "Could not create the category!";
-                return RedirectToAction("Create", "Ingredient");
+                TempData[MessageConstant.ErrorMessage] = "Could not create ingredient!";
             }
+            return RedirectToAction("All", "Ingredient");
         }
 
         [HttpGet]
@@ -66,6 +62,8 @@ namespace BestFoodWebApp.Controllers
             try
             {
                 await ingredientService.Delete(id);
+                TempData[MessageConstant.SuccessMessage] = "Ingredient deleted successfully!";
+
             }
             catch (ArgumentException ex)
             {
@@ -96,10 +94,7 @@ namespace BestFoodWebApp.Controllers
         {
             if (!ModelState.IsValid)
             {
-                string messages = string.Join("; ", ModelState.Values
-                                        .SelectMany(x => x.Errors)
-                                        .Select(x => x.ErrorMessage));
-                TempData[MessageConstant.ErrorMessage] = messages;
+                TempData[MessageConstant.ErrorMessage] = "Invalid data!";
                 var categories = await ingredientService.LoadCategoriesForEdit(model.Id);
                 ingredientService.SaveSubmittedCategoryValues(categories, model.CategoryIds);
                 ViewBag.Categories = categories;
@@ -109,6 +104,7 @@ namespace BestFoodWebApp.Controllers
             try
             {
                 await ingredientService.EditAsync(model);
+                TempData[MessageConstant.SuccessMessage] = "Ingredient editted successfully!";
             }
             catch (ArgumentException ex)
             {

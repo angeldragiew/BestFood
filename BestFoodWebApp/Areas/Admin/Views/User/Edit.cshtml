@@ -11,14 +11,15 @@
 				<form method="post">
 					<div class="card-body">
 						<input type="hidden" name="Id" value="@Model.Id" />
+						<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 						<div class="form-group">
-							<label for="FirstName">First Name</label>
-							<input value="@Model.FirstName" type="text" class="form-control" name="FirstName">
+							<label asp-for="FirstName" class="form-label"></label>
+							<input asp-for="FirstName" class="form-control"/>
 							<span asp-validation-for="FirstName" class="text-danger"></span>
 						</div>
 						<div class="form-group">
-							<label for="LastName">Last Name</label>
-							<input value="@Model.LastName" type="text" class="form-control" name="LastName">
+							<label asp-for="LastName" class="form-label"></label>
+							<input asp-for="LastName" class="form-control" autocomplete="current-password"/>
 							<span asp-validation-for="LastName" class="text-danger"></span>
 						</div>
 					</div>
@@ -33,5 +34,5 @@
 </div>
 
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+<partial name="_ValidationScriptsPartial" />
 }
