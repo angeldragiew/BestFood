@@ -5,9 +5,9 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BestFoodWebApp", "BestFoodWebApp\BestFoodWebApp.csproj", "{77AA184A-9DFD-408E-8EEB-ECAB69797830}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BestFood.Core", "BestFood.Core\BestFood.Core.csproj", "{74388C05-F596-4990-A9EF-91D24D67637B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BestFood.Core", "BestFood.Core\BestFood.Core.csproj", "{74388C05-F596-4990-A9EF-91D24D67637B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BestFood.Infrastructure", "BestFood.Infrastructure\BestFood.Infrastructure.csproj", "{ED60A27F-7B14-48C9-B68E-EE0A1ACB6057}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BestFood.Infrastructure", "BestFood.Infrastructure\BestFood.Infrastructure.csproj", "{ED60A27F-7B14-48C9-B68E-EE0A1ACB6057}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

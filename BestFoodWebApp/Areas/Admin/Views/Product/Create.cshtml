@@ -1,0 +1,130 @@
+﻿@using BestFood.Core.ViewModels.Product
+@using BestFood.Infrastructure.Data.Models
+
+@{
+}
+
+@model CreateProductViewModel
+<div class="background">
+	<!-- general form elements -->
+	<div class="card card-primary create-category-form">
+		<div class="card-header">
+			<h3 class="card-title">Category</h3>
+		</div>
+		<!-- /.card-header -->
+		<!-- form start -->
+		<form method="post">
+			<div class="card-body">
+				<div class="form-group">
+					<label asp-for="Name"></label>
+					@if (Model != null)
+					{
+						<input asp-for="Name" type="text" name="Name" value="@Model.Name" class="form-control" placeholder="Enter name" />
+					}
+					else
+					{
+						<input asp-for="Name" type="text" name="Name" class="form-control" placeholder="Enter name" />
+					}
+					<span asp-validation-for="Name" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="WeightInGrams"></label>
+					@if (Model != null)
+					{
+						<input asp-for="WeightInGrams" type="text" name="Image" value="@Model.WeightInGrams" class="form-control" placeholder="Enter image url" />
+					}
+					else
+					{
+						<input asp-for="WeightInGrams" type="text" name="Image" class="form-control" placeholder="Enter image url" />
+					}
+					<span asp-validation-for="WeightInGrams" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="Image"></label>
+					@if (Model != null)
+					{
+						<input asp-for="Image" type="text" name="Image" value="@Model.Image" class="form-control" placeholder="Enter image url" />
+					}
+					else
+					{
+						<input asp-for="Image" type="text" name="Image" class="form-control" placeholder="Enter image url" />
+					}
+					<span asp-validation-for="Image" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="Price"></label>
+					@if (Model != null)
+					{
+						<input asp-for="Price" type="text" name="Image" value="@Model.Price" class="form-control" placeholder="Enter image url" />
+					}
+					else
+					{
+						<input asp-for="Price" type="text" name="Image" class="form-control" placeholder="Enter image url" />
+					}
+					<span asp-validation-for="Price" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					@*<form id="categoryForm" asp-controller="Product" asp-action="LoadIngredients" data-ajax="true" data-ajax-method="POST" data-ajax-mode="Replace" data-ajax-update="ingredients">*@
+					<label asp-for="CategoryId"></label>
+					<select  id="categories" asp-for="CategoryId" class="form-control select2bs4 select2-hidden-accessible" name="CategoryId">
+						@foreach (ProductCategoryViewModel cat in ViewBag.Categories)
+						{
+							@if (Model != null && cat.CategoryId == Model.CategoryId)
+							{
+								<option value="@(cat.CategoryId)" selected onchange="$('#categoryForm').trigger('submit')">@cat.CategoryName</option>
+							}
+							else
+							{
+								<option value="@(cat.CategoryId)">@cat.CategoryName</option>
+							}
+						}
+					</select>
+					<span asp-validation-for="CategoryId" class="text-danger"></span>
+					@*</form>*@
+				</div>
+				<div class="form-group" id="ingredients">
+					@await Html.PartialAsync("_ProductIngredientsPartial")
+				</div>
+			</div>
+			<!-- /.card-body -->
+
+			<div class="card-footer">
+				<button type="submit" class="btn btn-primary create-button">Create</button>
+			</div>
+		</form>
+	</div>
+	<!-- /.card -->
+</div>
+
+@section Head{
+<link rel="stylesheet" href="~/css/productViews.css" />
+}
+
+@section Scripts{
+<partial name="_ValidationScriptsPartial" />
+
+<script type="text/javascript">
+ $("#categories").change(function () {  
+            $.ajax({  
+                url: "/admin/Product/LoadIngredients/"+this.value,  
+                success: function (result) {  
+                    document.getElementById("ingredients").innerHTML=result;  
+                }  
+            });  
+        });  
+</script>
+}
+
+
+@*<script type="text/javascript">
+$(function(){
+
+   $("#categories").change(function(e){
+     $.ajax({
+      url: '/admin/Product/LoadIngredients/'+this.value,
+   })
+
+
+   });
+});
+</script>*@

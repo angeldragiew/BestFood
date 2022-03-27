@@ -1,0 +1,21 @@
+﻿@using BestFood.Core.ViewModels.Product
+
+@{
+}
+
+@model IEnumerable<ProductIngredientViewModel>
+
+<select class="form-control select2bs4 select2-hidden-accessible">
+	@if (Model!=null)
+	{
+		@foreach (var ing in Model)
+		{
+			<option value="@ing.IngredientId">@ing.IngredientName</option>
+		}
+	}
+	else
+	{
+		<option value="1">null</option>
+	}
+</select>
+<p>	@DateTime.Now</p>
