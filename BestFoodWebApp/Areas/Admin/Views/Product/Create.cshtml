@@ -31,11 +31,11 @@
 					<label asp-for="WeightInGrams"></label>
 					@if (Model != null)
 					{
-						<input asp-for="WeightInGrams" type="text" name="Image" value="@Model.WeightInGrams" class="form-control" placeholder="Enter image url" />
+						<input asp-for="WeightInGrams" type="text" name="WeightInGrams" value="@Model.WeightInGrams" class="form-control" placeholder="Enter weight in grams" />
 					}
 					else
 					{
-						<input asp-for="WeightInGrams" type="text" name="Image" class="form-control" placeholder="Enter image url" />
+						<input asp-for="WeightInGrams" type="text" name="WeightInGrams" class="form-control" placeholder="Enter weight in grams" />
 					}
 					<span asp-validation-for="WeightInGrams" class="text-danger"></span>
 				</div>
@@ -55,23 +55,22 @@
 					<label asp-for="Price"></label>
 					@if (Model != null)
 					{
-						<input asp-for="Price" type="text" name="Image" value="@Model.Price" class="form-control" placeholder="Enter image url" />
+						<input asp-for="Price" type="text" name="Price" value="@Model.Price" class="form-control" placeholder="Enter price" />
 					}
 					else
 					{
-						<input asp-for="Price" type="text" name="Image" class="form-control" placeholder="Enter image url" />
+						<input asp-for="Price" type="text" name="Price" class="form-control" placeholder="Enter price" />
 					}
 					<span asp-validation-for="Price" class="text-danger"></span>
 				</div>
 				<div class="form-group">
-					@*<form id="categoryForm" asp-controller="Product" asp-action="LoadIngredients" data-ajax="true" data-ajax-method="POST" data-ajax-mode="Replace" data-ajax-update="ingredients">*@
 					<label asp-for="CategoryId"></label>
 					<select  id="categories" asp-for="CategoryId" class="form-control select2bs4 select2-hidden-accessible" name="CategoryId">
 						@foreach (ProductCategoryViewModel cat in ViewBag.Categories)
 						{
 							@if (Model != null && cat.CategoryId == Model.CategoryId)
 							{
-								<option value="@(cat.CategoryId)" selected onchange="$('#categoryForm').trigger('submit')">@cat.CategoryName</option>
+								<option value="@(cat.CategoryId)" selected>@cat.CategoryName</option>
 							}
 							else
 							{
@@ -80,9 +79,8 @@
 						}
 					</select>
 					<span asp-validation-for="CategoryId" class="text-danger"></span>
-					@*</form>*@
 				</div>
-				<div class="form-group" id="ingredients">
+				<div class="form-group" id="ingredients" >
 					@await Html.PartialAsync("_ProductIngredientsPartial")
 				</div>
 			</div>

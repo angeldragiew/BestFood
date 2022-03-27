@@ -5,17 +5,20 @@
 
 @model IEnumerable<ProductIngredientViewModel>
 
-<select class="form-control select2bs4 select2-hidden-accessible">
-	@if (Model!=null)
+<label>Multiple</label>
+@if (Model != null)
+{
+	@foreach (var ing in Model)
 	{
-		@foreach (var ing in Model)
-		{
-			<option value="@ing.IngredientId">@ing.IngredientName</option>
-		}
+		<div class="form-check">
+			<input type="checkbox" value="@ing.IngredientId" checked="@ing.IsSelected" name="IngredientIds" />
+			<label class="form-check-label">@ing.IngredientName</label>
+		</div>
 	}
-	else
-	{
-		<option value="1">null</option>
-	}
-</select>
+}
+
 <p>	@DateTime.Now</p>
+
+
+
+
