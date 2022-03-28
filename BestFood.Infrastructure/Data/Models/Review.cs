@@ -21,10 +21,18 @@ namespace BestFood.Infrastructure.Data.Models
 		[Range(1,5)]
 		public int Rating { get; set; }
 
+		public DateTime Date { get; set; } = DateTime.Now;
+
 		[Required]
 		public string ProductId { get; set; }
 		
 		[ForeignKey(nameof(ProductId))]
 		public Product Product { get; set; }
+
+		[Required]
+		public string ApplicationUserId { get; set; }
+
+		[ForeignKey(nameof(ApplicationUserId))]
+		public ApplicationUser ApplicationUser { get; set; }
 	}
 }

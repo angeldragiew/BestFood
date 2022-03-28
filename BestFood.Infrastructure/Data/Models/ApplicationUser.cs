@@ -14,5 +14,8 @@ namespace BestFood.Infrastructure.Data.Models
         public string? LastName { get; set; }
 
         public ICollection<Order> Orders { get; set; } = new List<Order>();
+
+        public ICollection<Review> Reviews { get; set; } = new List<Review>();
+
     }
 }
