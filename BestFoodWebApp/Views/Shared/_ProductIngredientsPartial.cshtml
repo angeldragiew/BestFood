@@ -3,12 +3,10 @@
 @{
 }
 
-@model IEnumerable<ProductIngredientViewModel>
-
 <label>Multiple</label>
-@if (Model != null)
+@if (ViewBag.ProductIngredients != null)
 {
-	@foreach (var ing in Model)
+	@foreach (var ing in ViewBag.ProductIngredients)
 	{
 		<div class="form-check">
 			<input type="checkbox" value="@ing.IngredientId" checked="@ing.IsSelected" name="IngredientIds" />

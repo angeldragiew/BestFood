@@ -31,6 +31,6 @@ namespace BestFood.Core.ViewModels.Product
 
 
         [Display(Name = "Product Ingredients")]
-        public IList<int> IngredientIds { get; set; } = new List<int>();
+        public IList<string> IngredientIds { get; set; } = new List<string>();
     }
 }

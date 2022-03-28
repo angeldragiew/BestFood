@@ -38,13 +38,6 @@
     text-align: center;
 }
 
-.card-title {
-    font-size: 1.5em;
-}
-
-.card-header {
-    background-color: #E77E00 !important;
-}
 
 .create-button {
     background-color: #E77E00;
@@ -56,3 +49,22 @@
         background-color: orangered;
     }
 
+img{
+    width:100%;
+}
+
+.commentSection {
+    margin-top:20px;
+    width:100%;
+}
+
+.productContent{
+    width:80%;
+    margin:auto;
+    margin-bottom:10px;
+}
+
+.comment {
+    border-bottom:1px solid black;
+    padding-left:10px;
+}

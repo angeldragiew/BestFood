@@ -24,21 +24,36 @@ namespace BestFoodWebApp.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateProductViewModel model)
         {
+            if(await productService.CategoryExists(model.CategoryId) == false)
+            {
+                ModelState.AddModelError("CategoryId", "Invalid Category!");
+            }
+
             if (!ModelState.IsValid)
             {
                 TempData[MessageConstant.ErrorMessage] = "Invalid data!";
+                ViewBag.Categories = await productService.LoadCategoriesForCreate();
                 return View(model);
             }
 
-            return View();
+            try
+            {
+                await productService.CreateAsync(model);
+                TempData[MessageConstant.SuccessMessage] = "Ingredient created successfully!";
+            }
+            catch (Exception)
+            {
+                TempData[MessageConstant.ErrorMessage] = "Could not create ingredient!";
+            }
+            return RedirectToAction("All", "Product");
         }
 
         [HttpGet]
         public async Task<IActionResult> LoadIngredients(int id)
         {
-            var ingredients = await productService.LoadIngredients(id);
+            ViewBag.ProductIngredients = await productService.LoadIngredients(id);
 
-            return PartialView("_ProductIngredientsPartial", ingredients);
+            return PartialView("_ProductIngredientsPartial");
         }
     }
 }

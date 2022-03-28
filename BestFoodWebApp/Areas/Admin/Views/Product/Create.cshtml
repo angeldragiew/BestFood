@@ -65,7 +65,8 @@
 				</div>
 				<div class="form-group">
 					<label asp-for="CategoryId"></label>
-					<select  id="categories" asp-for="CategoryId" class="form-control select2bs4 select2-hidden-accessible" name="CategoryId">
+					<select autocomplete="off"  id="categories" asp-for="CategoryId" class="form-control select2bs4 select2-hidden-accessible" name="CategoryId">
+						<option value = "-1">Select category...</option>
 						@foreach (ProductCategoryViewModel cat in ViewBag.Categories)
 						{
 							@if (Model != null && cat.CategoryId == Model.CategoryId)
@@ -110,6 +111,10 @@
                 }  
             });  
         });  
+
+		$(document).ready(function () {
+    $('#categories').val(-1);
+});
 </script>
 }
 
