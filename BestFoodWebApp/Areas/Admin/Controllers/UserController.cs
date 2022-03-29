@@ -52,7 +52,7 @@ namespace BestFoodWebApp.Areas.Admin.Controllers
                     .Select(r => new SelectListItem()
                     {
                         Text = r.Name,
-                        Value = r.Id,
+                        Value = r.Name,
                         Selected = userManager.IsInRoleAsync(user, r.Name).Result
                     });
 
@@ -63,6 +63,19 @@ namespace BestFoodWebApp.Areas.Admin.Controllers
                 TempData[MessageConstant.ErrorMessage] = ex.Message;
                 return RedirectToAction("ManageUsers", "User");
             }
+        }
+        [HttpPost]
+        public async Task<IActionResult> Roles(UserRolesViewModel model)
+        {
+            var user = await userService.GetUserById(model.UserId);
+            var userRoles = await userManager.GetRolesAsync(user);
+            await userManager.RemoveFromRolesAsync(user, userRoles);
+            if (model.RoleNames.Length > 0)
+            {
+                await userManager.AddToRolesAsync(user, model.RoleNames);
+            }
+
+            return RedirectToAction("ManageUsers", "User");
         }
 
         public async Task<IActionResult> Edit(string id)

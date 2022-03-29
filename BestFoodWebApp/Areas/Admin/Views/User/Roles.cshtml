@@ -1,6 +1,7 @@
 ﻿@using BestFood.Core.ViewModels.User
 @{
 	ViewData["Title"] = "User Roles";
+	var items = (IEnumerable<SelectListItem>)ViewBag.RoleItems;
 }
 
 @model UserRolesViewModel
@@ -11,22 +12,19 @@
 		<div class="background">
 			<div class="card card-primary create-category-form">
 				<div class="card-header">
-					<h3 class="card-title">Edit User</h3>
+					<h3 class="card-title">Edit Roles</h3>
 				</div>
 				<form method="post">
 					<div class="card-body">
-						<input type="hidden" name="Id" value="@Model.UserId" />
+						<input type="hidden" name="UserId" value="@Model.UserId" />
+						<input type="hidden" name="Name" value="@Model.Name" />
 						<div class="form-group">
-							@Html.DisplayFor(m=>m.Name)
+							<h3>User: @Html.DisplayFor(m=>m.Name)</h3>
 						</div>
 						<div class="form-group">
 							<label>User Roles</label>
-							<select asp-for="RoleIds" class="select2bs4" multiple="multiple" data-placeholder="Selects a State"
+							<select asp-for="RoleNames" asp-items="@items" class="select2bs4" multiple="multiple" data-placeholder="Selects a State"
 									style="width: 100%;">
-								@foreach(var role in (IEnumerable<SelectListItem>)ViewBag.RoleItems)
-								{
-									<option selected=@role.Selected value="@role.Value">@role.Text</option>
-								}
 							</select>
 						</div>
 					</div>
