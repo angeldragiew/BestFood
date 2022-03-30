@@ -2,10 +2,10 @@
 @using BestFood.Infrastructure.Data.Models
 
 @{
-	ViewData["Title"] = "Create Product";
+	ViewData["Title"] = "Edit Product";
 }
 
-@model CreateProductViewModel
+@model EditProductViewModel
 <div class="background">
 	<!-- general form elements -->
 	<div class="card card-primary create-category-form">
@@ -15,6 +15,7 @@
 		<!-- /.card-header -->
 		<!-- form start -->
 		<form method="post">
+			@Html.HiddenFor(model => model.Id)
 			<div class="card-body">
 				<div class="form-group">
 					<label asp-for="Name"></label>
@@ -56,7 +57,7 @@
 					<label asp-for="Price"></label>
 					@if (Model != null)
 					{
-						<input asp-for="Price" type="text" name="Price" value="@Model.Price" class="form-control" placeholder="Enter price" />
+						<input asp-for="Price" type="text" name="Price" value="@(Math.Round(Model.Price,2))" class="form-control" placeholder="Enter price" />
 					}
 					else
 					{
@@ -66,8 +67,8 @@
 				</div>
 				<div class="form-group">
 					<label asp-for="CategoryId"></label>
-					<select autocomplete="off"  id="categories" asp-for="CategoryId" class="form-control select2bs4 select2-hidden-accessible" name="CategoryId">
-						<option value = "-1">Select category...</option>
+					<select autocomplete="off" id="categories" asp-for="CategoryId" class="form-control select2bs4 select2-hidden-accessible" name="CategoryId">
+						@*<option value="-1">Select category...</option>*@
 						@foreach (ProductCategoryViewModel cat in ViewBag.Categories)
 						{
 							@if (Model != null && cat.CategoryId == Model.CategoryId)
@@ -82,7 +83,7 @@
 					</select>
 					<span asp-validation-for="CategoryId" class="text-danger"></span>
 				</div>
-				<div class="form-group" id="ingredients" >
+				<div class="form-group" id="ingredients">
 					@await Html.PartialAsync("_ProductIngredientsPartial")
 				</div>
 			</div>
@@ -104,36 +105,23 @@
 <partial name="_ValidationScriptsPartial" />
 
 <script type="text/javascript">
- $("#categories").change(function () {  
-            $.ajax({  
-                url: "/admin/Product/LoadIngredients/?categoryId="+this.value,  
-                success: function (result) {  
-                    document.getElementById("ingredients").innerHTML=result;  
-                }  
-            });  
-        });  
-
-	$(document).ready(function () {
+	 $("#categories").change(function () {
 				$.ajax({
-					url: "/admin/Product/LoadIngredients/?categoryId=@(Model != null ? Model.CategoryId : -1)",
+					url: "/admin/Product/LoadIngredients/?categoryId="+this.value + "&productId=@Model.Id",
 					success: function (result) {
 						document.getElementById("ingredients").innerHTML=result;
 					}
 				});
-});
+			});
+
+			$(document).ready(function () {
+				$.ajax({
+					url: "/admin/Product/LoadIngredients/"+"?categoryId=@Model.CategoryId&productId=@Model.Id",
+					success: function (result) {
+						document.getElementById("ingredients").innerHTML=result;
+					}
+				});
+			
+	});
 </script>
 }
-
-
-@*<script type="text/javascript">
-$(function(){
-
-   $("#categories").change(function(e){
-     $.ajax({
-      url: '/admin/Product/LoadIngredients/'+this.value,
-   })
-
-
-   });
-});
-</script>*@

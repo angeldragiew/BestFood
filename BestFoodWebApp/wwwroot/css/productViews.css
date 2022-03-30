@@ -32,6 +32,11 @@
         float: left;
     }*/
 
+.adminButtons a{
+    width:30%;
+    display:inline-block;
+}
+
 .create-category-form {
     margin: auto;
     width: 50%;
@@ -49,10 +54,6 @@
         background-color: orangered;
     }
 
-img{
-    width:100%;
-}
-
 .commentSection {
     margin-top:20px;
     width:100%;
@@ -67,4 +68,16 @@ img{
 .comment {
     border-bottom:1px solid black;
     padding-left:10px;
+}
+
+
+.productImage {
+    vertical-align: middle !important;
+}
+
+.product-image {
+    width: 100%;
+    vertical-align: middle !important;
+    height: 410px !important;
+    object-fit: cover;
 }

@@ -1,4 +1,5 @@
-﻿@using BestFood.Core.ViewModels.Product
+﻿@using BestFood.Core.Constants
+@using BestFood.Core.ViewModels.Product
 @{
 }
 
@@ -9,12 +10,12 @@
 	<div class="card card-solid productContent">
 		<div class="card-body">
 			<div class="row">
-				<div class="col-12 col-sm-6">
-					<div class="col-12">
+				<div class="col-12 col-sm-7 productImage">
+					<div class="col-14" >
 						<img src="@product.Image" class="product-image" alt="Product Image">
 					</div>
 				</div>
-				<div class="col-10 col-sm-6">
+				<div class="col-10 col-sm-5">
 					<h3 class="my-3">@product.Name</h3>
 					<hr>
 					@*<h4>Ingredients</h4>
@@ -41,10 +42,24 @@
 								<span class="info-box-number">@(product.WeightInGrams)g</span>
 							</div>
 						</div>
-						<a href="#" class="tn btn-outline-danger btn-block btn-sm">
-							<i class="fas fa-cart-plus fa-lg mr-2"></i>
-							Add to Cart
-						</a>
+						@if (User.IsInRole(UserConstants.Roles.Administrator))
+						{
+							<div class="adminButtons">
+								<a href="/admin/Product/Edit/@product.Id" class="tn btn-outline-danger btn-block btn-sm">
+									Edit
+								</a>
+								<a href="/admin/Product/Delete/@product.Id" class="tn btn-outline-danger btn-block btn-sm">
+									Delete
+								</a>
+							</div>
+						}
+						else
+						{
+							<a href="#" class="tn btn-outline-danger btn-block btn-sm">
+								<i class="fas fa-cart-plus fa-lg mr-2"></i>
+								Add to Cart
+							</a>
+						}
 					</div>
 				</div>
 				<div class="card card-outline card-primary commentSection">

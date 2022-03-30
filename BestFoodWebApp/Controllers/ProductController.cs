@@ -11,9 +11,11 @@ namespace BestFoodWebApp.Controllers
         {
             this.productService=productService;
         }
-        public async Task<IActionResult> All()
+
+        [HttpGet]
+        public async Task<IActionResult> All(int id)
         {
-            var products = await productService.All();
+            var products = await productService.All(id);
             return View(products);
         }
     }

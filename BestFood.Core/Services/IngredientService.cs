@@ -105,7 +105,7 @@ namespace BestFood.Core.Services
 
         public async Task<EditIngredientViewModel> FindById(string id)
         {
-            EditIngredientViewModel ingredient = await repo.All().Select(e => new EditIngredientViewModel()
+            EditIngredientViewModel product = await repo.All().Select(e => new EditIngredientViewModel()
             {
                 Id = e.Id,
                 Name = e.Name,
@@ -113,12 +113,12 @@ namespace BestFood.Core.Services
                 CategoryIds = e.CategoryIngredients.Select(c => c.CategoryId).ToArray()
             }).FirstOrDefaultAsync(e => e.Id == id);
 
-            if (ingredient == null)
+            if (product == null)
             {
-                throw new ArgumentException("Unknown ingredient!");
+                throw new ArgumentException("Unknown product!");
             }
 
-            return ingredient;
+            return product;
         }
 
         public async Task<IEnumerable<IngredientCategoryViewModel>> LoadCategoriesForCreate()

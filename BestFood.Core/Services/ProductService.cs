@@ -11,20 +11,24 @@ namespace BestFood.Core.Services
         private readonly IRepository<Category> categoryRepo;
         private readonly IRepository<Ingredient> ingredientRepo;
         private readonly IRepository<Product> productRepo;
+        private readonly IRepository<ProductIngredient> productIngredientRepo;
 
         public ProductService(IRepository<Category> categoryRepo,
             IRepository<Ingredient> ingredientRepo,
-            IRepository<Product> productRepo)
+            IRepository<Product> productRepo,
+            IRepository<ProductIngredient> productIngredientRepo)
         {
             this.categoryRepo = categoryRepo;
             this.ingredientRepo = ingredientRepo;
             this.productRepo = productRepo;
+            this.productIngredientRepo = productIngredientRepo;
         }
 
-        public async Task<IEnumerable<ProductViewModel>> All()
+        public async Task<IEnumerable<ProductViewModel>> All(int id)
         {
             return await productRepo
                 .All()
+                .Where(p=>p.CategoryId==id)
                 .Select(p => new ProductViewModel()
                 {
                     Id = p.Id,
@@ -34,13 +38,13 @@ namespace BestFood.Core.Services
                     Image = p.Image,
                     CategoryId = p.Category.Id,
                     IngredientsNames = p.ProductsIngredients.Select(pi => pi.Ingredient.Name).ToList(),
-                    Reviews = p.Reviews.Select(r=>new ProductReviewViewModel()
+                    Reviews = p.Reviews.Select(r => new ProductReviewViewModel()
                     {
-                        ReviewId=r.Id,
+                        ReviewId = r.Id,
                         ReviewUsername = r.ApplicationUser.UserName,
                         ReviewRating = r.Rating,
-                        Date=r.Date.ToString("d"),
-                        Text=r.Text
+                        Date = r.Date.ToString("d"),
+                        Text = r.Text
                     }).ToList()
                 }).ToListAsync();
         }
@@ -79,6 +83,76 @@ namespace BestFood.Core.Services
             await productRepo.SaveChangesAsync();
         }
 
+        public async Task Delete(string id)
+        {
+            Product product = await productRepo
+                .All()
+                .FirstOrDefaultAsync(p => p.Id == id);
+
+            if (product == null)
+            {
+                throw new ArgumentException("Unknown ingredient!");
+            }
+
+            productRepo.Delete(product);
+            await productRepo.SaveChangesAsync();
+        }
+
+        public async Task EditAsync(EditProductViewModel model)
+        {
+            Product product = await productRepo.All().FirstOrDefaultAsync(p => p.Id == model.Id);
+
+            if (product == null)
+            {
+                throw new AggregateException("Unknown product!");
+            }
+
+            product.Name = model.Name;
+            product.Price = model.Price;
+            product.CategoryId = model.CategoryId;
+            product.WeightInGrams = model.WeightInGrams;
+            product.Image = model.Image;
+
+            productIngredientRepo.DeleteRange(productIngredientRepo
+                                                .All()
+                                                .Where(pi => pi.ProductId == model.Id));
+
+            foreach (var id in model.IngredientIds)
+            {
+                if (ingredientRepo.All().Any(i => i.Id == id))
+                {
+                    product.ProductsIngredients.Add(new ProductIngredient()
+                    {
+                        Product = product,
+                        IngredientId = id
+                    });
+                }
+            }
+
+            await productRepo.SaveChangesAsync();
+        }
+
+        public async Task<EditProductViewModel> FindById(string id)
+        {
+            EditProductViewModel ingredient = await productRepo.All().Select(p => new EditProductViewModel()
+            {
+                Id = p.Id,
+                Name = p.Name,
+                WeightInGrams = p.WeightInGrams,
+                Image=p.Image,
+                Price = p.Price,
+                CategoryId = p.CategoryId,
+                IngredientIds = p.ProductsIngredients.Select(pc => pc.IngredientId).ToArray()
+            }).FirstOrDefaultAsync(e => e.Id == id);
+
+            if (ingredient == null)
+            {
+                throw new ArgumentException("Unknown ingredient!");
+            }
+
+            return ingredient;
+        }
+
         public async Task<IEnumerable<ProductCategoryViewModel>> LoadCategoriesForCreate()
         {
             return await categoryRepo
@@ -106,6 +180,18 @@ namespace BestFood.Core.Services
                 .ToListAsync();
         }
 
-
+        public async Task<IEnumerable<ProductIngredientViewModel>> LoadIngredients(int id, string productId)
+        {
+            return await ingredientRepo
+                .All()
+                .Where(i => i.CategoryIngredients.Any(i => i.Category.Id == id))
+                .Select(i => new ProductIngredientViewModel()
+                {
+                    IngredientId = i.Id,
+                    IngredientName = i.Name,
+                    IsSelected = i.ProductIngredients.Any(pi => pi.ProductId == productId && pi.IngredientId == i.Id)
+                })
+                .ToListAsync();
+        }
     }
 }

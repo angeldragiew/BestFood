@@ -24,7 +24,7 @@ namespace BestFoodWebApp.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateProductViewModel model)
         {
-            if(await productService.CategoryExists(model.CategoryId) == false)
+            if (await productService.CategoryExists(model.CategoryId) == false)
             {
                 ModelState.AddModelError("CategoryId", "Invalid Category!");
             }
@@ -45,13 +45,80 @@ namespace BestFoodWebApp.Areas.Admin.Controllers
             {
                 TempData[MessageConstant.ErrorMessage] = "Could not create ingredient!";
             }
-            return RedirectToAction("All", "Product");
+            return RedirectToAction("All", "Category", new { area = "" });
         }
 
         [HttpGet]
-        public async Task<IActionResult> LoadIngredients(int id)
+        public async Task<IActionResult> Edit(string id)
         {
-            ViewBag.ProductIngredients = await productService.LoadIngredients(id);
+            try
+            {
+                EditProductViewModel model = await productService.FindById(id);
+                ViewBag.Categories = await productService.LoadCategoriesForCreate();
+                return View(model);
+            }
+            catch (ArgumentNullException ex)
+            {
+                TempData[MessageConstant.ErrorMessage] = ex.Message;
+                return RedirectToAction("All", "Category", new { area = "" });
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(EditProductViewModel model)
+        {
+            if (await productService.CategoryExists(model.CategoryId) == false)
+            {
+                ModelState.AddModelError("CategoryId", "Invalid Category!");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                TempData[MessageConstant.ErrorMessage] = "Invalid data!";
+                ViewBag.Categories = await productService.LoadCategoriesForCreate();
+                return View(model);
+            }
+
+            try
+            {
+                await productService.EditAsync(model);
+                TempData[MessageConstant.SuccessMessage] = "Product editted successfully!";
+            }
+            catch (ArgumentNullException ex)
+            {
+                TempData[MessageConstant.ErrorMessage] = ex.Message;
+            }
+
+            return RedirectToAction("All", "Category", new { area = "" });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(string id)
+        {
+            try
+            {
+                await productService.Delete(id);
+                TempData[MessageConstant.SuccessMessage] = "Product deleted successfully!";
+            }
+            catch (ArgumentException ex)
+            {
+                TempData[MessageConstant.ErrorMessage] = ex.Message;
+            }
+            return RedirectToAction("All", "Category", new { area = "" });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> LoadIngredients(int categoryId, string productId)
+        {
+            if (productId != null)
+            {
+                ViewBag.ProductIngredients = await productService.LoadIngredients(categoryId, productId);
+            }
+            else
+            {
+                ViewBag.ProductIngredients = await productService.LoadIngredients(categoryId);
+            }
+
 
             return PartialView("_ProductIngredientsPartial");
         }
