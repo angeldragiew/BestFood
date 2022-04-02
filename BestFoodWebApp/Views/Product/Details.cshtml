@@ -22,7 +22,7 @@
 						<span class="info-box-icon bg-warning"><i class="fas fa-bacon"></i></span>
 						<div class="info-box-content">
 							<span class="info-box-number">Ingredients</span>
-							<span>@(String.Join(",", Model.IngredientsNames))</span>
+							<span>@(String.Join(", ", Model.IngredientsNames))</span>
 						</div>
 					</div>
 					<div class="info-box">
@@ -50,7 +50,7 @@
 							</a>
 						</div>
 					}
-					else
+					else if (User.Identity.IsAuthenticated)
 					{
 						<a href="#" class="tn btn-outline-danger btn-block btn-sm">
 							<i class="fas fa-cart-plus fa-lg mr-2"></i>
@@ -70,23 +70,26 @@
 
 				</div>
 				<div class="card-body" style="display: block;">
-					<div class="add-comment-section">
-						<form method="post" asp-controller="Product" asp-action="RateProduct">
-							<input type="hidden" name="ProductId" value="@Model.Id">
-							<input name="Text" type="text" placeholder="Add review...">
-							<div>
-								<select name="Rating">
-									<option>Choose rating..</option>
-									@for (int i = 1; i <= 5; i++)
-									{
-										<option value="@i">@i</option>
-									}
-								</select>
-								@*<a href="/Product/RateProduct" class="btn btn-block btn-dark btn-sm">Comment</a>*@
-								<button class="btn btn-block btn-dark btn-sm">Comment</button>
-							</div>
-						</form>
-					</div>
+					@if (User.Identity.IsAuthenticated && !Model.Reviews.Any(r=>r.ReviewUsername==User.Identity.Name))
+					{
+						<div class="add-comment-section">
+							<form method="post" asp-controller="Product" asp-action="RateProduct">
+								<input type="hidden" name="ProductId" value="@Model.Id">
+								<input name="Text" type="text" placeholder="Add review...">
+								<div>
+									<select name="Rating">
+										<option>Choose rating..</option>
+										@for (int i = 1; i <= 5; i++)
+										{
+											<option value="@i">@i</option>
+										}
+									</select>
+									@*<a href="/Product/RateProduct" class="btn btn-block btn-dark btn-sm">Comment</a>*@
+									<button class="btn btn-block btn-dark btn-sm">Comment</button>
+								</div>
+							</form>
+						</div>
+					}
 					@foreach (var review in Model.Reviews)
 					{
 						<div class="comment">

@@ -53,7 +53,7 @@
 	<div class="col-12">
 		<div class="card">
 			<div class="card-header">
-				<h3 class="card-title">Salads</h3>
+				<h3 class="card-title">Vegetables</h3>
 			</div>
 			<!-- /.card-header -->
 			<div class="card-body table-responsive p-0" style="height: 300px;">
@@ -69,6 +69,49 @@
 						@foreach (var ing in Model)
 						{
 							if (ing.Type == IngredientType.Vegetable)
+							{
+								<tr>
+									<td>@ing.Name</td>
+									<td>@(String.Join(", ",ing.CategoryNames))</td>
+									<td>
+										<a asp-area="Admin" asp-controller="Ingredient" asp-action="Edit" asp-route-id="@ing.Id" class="btn btn-block btn-info btn-sm">Edit</a>
+
+									</td>
+									<td>
+										<a asp-area="Admin" asp-controller="Ingredient" asp-action="Delete" asp-route-id="@ing.Id" class="btn btn-block btn-danger btn-sm">Delete</a>
+									</td>
+								</tr>
+							}
+						}
+					</tbody>
+				</table>
+			</div>
+			<!-- /.card-body -->
+		</div>
+		<!-- /.card -->
+	</div>
+</div>
+
+<div class="row ingredient-tables">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-header">
+				<h3 class="card-title">Diary</h3>
+			</div>
+			<!-- /.card-header -->
+			<div class="card-body table-responsive p-0" style="height: 300px;">
+				<table class="table table-head-fixed text-nowrap">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Categories</th>
+							<th colspan="2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var ing in Model)
+						{
+							if (ing.Type == IngredientType.Diary)
 							{
 								<tr>
 									<td>@ing.Name</td>

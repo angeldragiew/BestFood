@@ -4,6 +4,7 @@
     {
         Sauce = 1,
         Meat = 2,
-        Vegetable = 3
+        Vegetable = 3,
+        Diary = 4
     }
 }
