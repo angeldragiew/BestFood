@@ -1,0 +1,113 @@
+﻿@using BestFood.Core.Constants
+@using BestFood.Core.ViewModels.Product
+
+@{
+}
+
+@model ProductDetailsViewModel
+
+<div class="card card-solid productContent">
+	<div class="card-body">
+		<div class="row">
+			<div class="col-12 col-sm-7 productImage">
+				<div class="col-14">
+					<img src="@Model.Image" class="product-image" alt="Product Image">
+				</div>
+			</div>
+			<div class="col-10 col-sm-5">
+				<h3 class="my-3">@Model.Name</h3>
+				<hr>
+				<div class="col-sm-14">
+					<div class="info-box">
+						<span class="info-box-icon bg-warning"><i class="fas fa-bacon"></i></span>
+						<div class="info-box-content">
+							<span class="info-box-number">Ingredients</span>
+							<span>@(String.Join(",", Model.IngredientsNames))</span>
+						</div>
+					</div>
+					<div class="info-box">
+						<span class="info-box-icon bg-warning"><i class="far fa-money-bill-alt"></i></span>
+						<div class="info-box-content">
+							<span class="info-box-text">Price</span>
+							<span class="info-box-number">@(Math.Round(Model.Price,2)) lv.</span>
+						</div>
+					</div>
+					<div class="info-box">
+						<span class="info-box-icon bg-warning"><i class="fas fa-balance-scale-left"></i></span>
+						<div class="info-box-content">
+							<span class="info-box-text">Weight</span>
+							<span class="info-box-number">@(Model.WeightInGrams)g</span>
+						</div>
+					</div>
+					@if (User.IsInRole(UserConstants.Roles.Administrator))
+					{
+						<div class="adminButtons">
+							<a href="/admin/Product/Edit/@Model.Id" class="tn btn-outline-danger btn-block btn-sm">
+								Edit
+							</a>
+							<a href="/admin/Product/Delete/@Model.Id" class="tn btn-outline-danger btn-block btn-sm">
+								Delete
+							</a>
+						</div>
+					}
+					else
+					{
+						<a href="#" class="tn btn-outline-danger btn-block btn-sm">
+							<i class="fas fa-cart-plus fa-lg mr-2"></i>
+							Add to Cart
+						</a>
+					}
+				</div>
+			</div>
+			<div class="card card-outline card-primary commentSection">
+				<div class="card-header">
+					<h3 class="card-title">Comments</h3>
+					<div class="card-tools">
+						<button type="button" class="btn btn-tool" data-card-widget="collapse">
+							<i class="fas fa-minus"></i>
+						</button>
+					</div>
+
+				</div>
+				<div class="card-body" style="display: block;">
+					<div class="add-comment-section">
+						<form method="post" asp-controller="Product" asp-action="RateProduct">
+							<input type="hidden" name="ProductId" value="@Model.Id">
+							<input name="Text" type="text" placeholder="Add review...">
+							<div>
+								<select name="Rating">
+									<option>Choose rating..</option>
+									@for (int i = 1; i <= 5; i++)
+									{
+										<option value="@i">@i</option>
+									}
+								</select>
+								@*<a href="/Product/RateProduct" class="btn btn-block btn-dark btn-sm">Comment</a>*@
+								<button class="btn btn-block btn-dark btn-sm">Comment</button>
+							</div>
+						</form>
+					</div>
+					@foreach (var review in Model.Reviews)
+					{
+						<div class="comment">
+							<h4>@review.ReviewUsername</h4>
+							<span>
+								@for (int i = 0; i < review.ReviewRating; i++)
+								{
+									<i class="fas fa-star"></i>
+								}
+								@review.Date
+							</span>
+							<p>@review.Text</p>
+						</div>
+					}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+@section Head{
+<link rel="stylesheet" href="~/css/productViews.css" type="text/css" runat="server" />
+	}

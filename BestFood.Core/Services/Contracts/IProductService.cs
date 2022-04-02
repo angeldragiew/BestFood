@@ -1,11 +1,15 @@
 ﻿using BestFood.Core.ViewModels.Product;
+using BestFood.Core.ViewModels.Review;
 
 namespace BestFood.Core.Services.Contracts
 {
     public interface IProductService
     {
+        Task<ProductDetailsViewModel> Details(string id);
+
         Task<IEnumerable<ProductViewModel>> All(int id);
 
+        Task RateProdcutAsync(CreateReviewViewModel model, string username);
 
         Task CreateAsync(CreateProductViewModel model);
 
@@ -19,6 +23,7 @@ namespace BestFood.Core.Services.Contracts
 
         Task<IEnumerable<ProductIngredientViewModel>> LoadIngredients(int id);
         Task<IEnumerable<ProductIngredientViewModel>> LoadIngredients(int id, string productId);
+        Task<IEnumerable<ProductReviewViewModel>> LoadReviewsForProduct(string productId);
 
         Task<bool> CategoryExists(int id);
     }

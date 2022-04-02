@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BestFood.Core.ViewModels.Product
+﻿namespace BestFood.Core.ViewModels.Product
 {
     public class ProductReviewViewModel
     {

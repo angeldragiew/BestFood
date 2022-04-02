@@ -1,5 +1,6 @@
 ﻿using BestFood.Core.Services.Contracts;
 using BestFood.Core.ViewModels.Product;
+using BestFood.Core.ViewModels.Review;
 using BestFood.Infrastructure.Data.Models;
 using BestFood.Infrastructure.Data.Repo;
 using Microsoft.EntityFrameworkCore;
@@ -12,41 +13,68 @@ namespace BestFood.Core.Services
         private readonly IRepository<Ingredient> ingredientRepo;
         private readonly IRepository<Product> productRepo;
         private readonly IRepository<ProductIngredient> productIngredientRepo;
+        private readonly IRepository<ApplicationUser> userRepo;
+        private readonly IRepository<Review> reviewRepo;
 
         public ProductService(IRepository<Category> categoryRepo,
             IRepository<Ingredient> ingredientRepo,
             IRepository<Product> productRepo,
-            IRepository<ProductIngredient> productIngredientRepo)
+            IRepository<ProductIngredient> productIngredientRepo,
+            IRepository<ApplicationUser> userRepo,
+            IRepository<Review> reviewRepo)
         {
             this.categoryRepo = categoryRepo;
             this.ingredientRepo = ingredientRepo;
             this.productRepo = productRepo;
             this.productIngredientRepo = productIngredientRepo;
+            this.userRepo = userRepo;
+            this.reviewRepo = reviewRepo;
         }
 
         public async Task<IEnumerable<ProductViewModel>> All(int id)
         {
             return await productRepo
                 .All()
-                .Where(p=>p.CategoryId==id)
+                .Where(p => p.CategoryId == id)
                 .Select(p => new ProductViewModel()
                 {
                     Id = p.Id,
                     Name = p.Name,
-                    WeightInGrams = p.WeightInGrams,
-                    Price = p.Price,
                     Image = p.Image,
-                    CategoryId = p.Category.Id,
-                    IngredientsNames = p.ProductsIngredients.Select(pi => pi.Ingredient.Name).ToList(),
-                    Reviews = p.Reviews.Select(r => new ProductReviewViewModel()
-                    {
-                        ReviewId = r.Id,
-                        ReviewUsername = r.ApplicationUser.UserName,
-                        ReviewRating = r.Rating,
-                        Date = r.Date.ToString("d"),
-                        Text = r.Text
-                    }).ToList()
                 }).ToListAsync();
+        }
+
+
+        public async Task<ProductDetailsViewModel> Details(string id)
+        {
+            var product = await productRepo
+                 .All()
+                 .Select(p=> new ProductDetailsViewModel()
+                 {
+                     Id = p.Id,
+                     Name = p.Name,
+                     WeightInGrams = p.WeightInGrams,
+                     Price = p.Price,
+                     Image = p.Image,
+                     CategoryId = p.Category.Id,
+                     IngredientsNames = p.ProductsIngredients.Select(pi => pi.Ingredient.Name).ToList(),
+                     Reviews = p.Reviews.Select(r => new ProductReviewViewModel()
+                     {
+                         ReviewId = r.Id,
+                         ReviewUsername = r.ApplicationUser.UserName,
+                         ReviewRating = r.Rating,
+                         Date = r.Date.ToString("d"),
+                         Text = r.Text
+                     }).ToList()
+                 })
+                 .FirstOrDefaultAsync(p => p.Id == id);
+
+            if (product == null)
+            {
+                throw new ArgumentNullException("Unknown product");
+            }
+
+            return product;
         }
 
         public async Task<bool> CategoryExists(int id)
@@ -104,7 +132,7 @@ namespace BestFood.Core.Services
 
             if (product == null)
             {
-                throw new AggregateException("Unknown product!");
+                throw new ArgumentNullException("Unknown product!");
             }
 
             product.Name = model.Name;
@@ -139,7 +167,7 @@ namespace BestFood.Core.Services
                 Id = p.Id,
                 Name = p.Name,
                 WeightInGrams = p.WeightInGrams,
-                Image=p.Image,
+                Image = p.Image,
                 Price = p.Price,
                 CategoryId = p.CategoryId,
                 IngredientIds = p.ProductsIngredients.Select(pc => pc.IngredientId).ToArray()
@@ -192,6 +220,36 @@ namespace BestFood.Core.Services
                     IsSelected = i.ProductIngredients.Any(pi => pi.ProductId == productId && pi.IngredientId == i.Id)
                 })
                 .ToListAsync();
+        }
+
+        public async Task RateProdcutAsync(CreateReviewViewModel model, string username)
+        {
+            Review review = new Review()
+            {
+                ApplicationUserId = userRepo
+                                    .All()
+                                    .FirstOrDefault(u => u.UserName == username).Id,
+                Text = model.Text,
+                Rating = model.Rating,
+                ProductId = model.ProductId,
+            };
+
+            await reviewRepo.AddAsync(review);
+            await reviewRepo.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<ProductReviewViewModel>> LoadReviewsForProduct(string productId)
+        {
+            return await reviewRepo
+                .All()
+                .Select(r => new ProductReviewViewModel()
+                {
+                    ReviewId = r.Id,
+                    ReviewUsername = r.ApplicationUser.UserName,
+                    ReviewRating = r.Rating,
+                    Date = r.Date.ToString("d"),
+                    Text = r.Text
+                }).ToListAsync();
         }
     }
 }
