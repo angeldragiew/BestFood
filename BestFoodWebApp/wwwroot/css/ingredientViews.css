@@ -48,15 +48,17 @@
 
 .card-title {
     font-size: 1.5em;
+    color: #454545;
 }
 .card-header {
-    background-color: coral !important;
+    border-top: 5px solid #454545;
+    background-color:white !important;
 }
 
 .create-button {
-    background-color: coral;
+    background-color: #454545;
     border: none;
-    width:30%;
+    width: 30%;
 }
 
     .create-button:hover {
