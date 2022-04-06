@@ -32,15 +32,7 @@
         float: left;
     }
 
-.edit-category-button {
-    background-color: green;
-}
-
-.delete-category-button {
-    background-color: darkred;
-}
-
-.create-category-form {
+.create-ingredient-form {
     margin: auto;
     width: 50%;
     text-align: center;

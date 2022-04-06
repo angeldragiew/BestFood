@@ -39,11 +39,11 @@ namespace BestFoodWebApp.Areas.Admin.Controllers
             try
             {
                 await productService.CreateAsync(model);
-                TempData[MessageConstant.SuccessMessage] = "Ingredient created successfully!";
+                TempData[MessageConstant.SuccessMessage] = "Product created successfully!";
             }
             catch (Exception)
             {
-                TempData[MessageConstant.ErrorMessage] = "Could not create ingredient!";
+                TempData[MessageConstant.ErrorMessage] = "Could not create product!";
             }
             return RedirectToAction("All", "Category", new { area = "" });
         }

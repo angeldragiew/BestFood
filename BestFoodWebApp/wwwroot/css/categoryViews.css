@@ -6,34 +6,41 @@
 
 .categoryName {
     color: white;
-    background-color: rgb(0, 0, 0, 0.5);
+    background-color: #454545;
     width: 100%;
     margin-bottom: 0px;
     text-align: center;
     padding: 5px;
 }
 
+.card-header {
+    border-top: 5px solid #454545;
+    background-color: white !important;
+}
+
+.card-title {
+    font-size: 1.5em;
+    color: #454545;
+}
+
 .create-category-form {
-  margin:auto;
-  width:50%;
+    margin: auto;
+    width: 50%;
+    text-align: center;
 }
 
 .card-title {
     font-size:1.5em;
 }
-.card-header {
-    background-color: coral !important;
-}
 
 .create-button {
-    background-color: coral;
+    background-color: #454545;
     border: none;
-    width:30%;
-    margin-left:34%
+    width: 30%;
 }
 
     .create-button:hover {
-        background-color: orangered;
+        background-color: black;
     }
 
 .add-image {
@@ -43,8 +50,10 @@
 }
 
 .admin-buttons {
+    margin-bottom:10px;
 }
 
-.btn {
-    width: 50%;
-}
+    .admin-buttons .btn {
+        width: 90%;
+        margin-left:5%;
+    }

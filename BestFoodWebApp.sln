@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BestFood.Core", "BestFood.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BestFood.Infrastructure", "BestFood.Infrastructure\BestFood.Infrastructure.csproj", "{ED60A27F-7B14-48C9-B68E-EE0A1ACB6057}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BestFood.Tests", "BestFood.Tests\BestFood.Tests.csproj", "{32F4EBBD-C2E4-498D-9A64-FCEB5669155D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{ED60A27F-7B14-48C9-B68E-EE0A1ACB6057}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED60A27F-7B14-48C9-B68E-EE0A1ACB6057}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED60A27F-7B14-48C9-B68E-EE0A1ACB6057}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32F4EBBD-C2E4-498D-9A64-FCEB5669155D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32F4EBBD-C2E4-498D-9A64-FCEB5669155D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32F4EBBD-C2E4-498D-9A64-FCEB5669155D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32F4EBBD-C2E4-498D-9A64-FCEB5669155D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

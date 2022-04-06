@@ -16,14 +16,14 @@
 							<img class="card-img-top categoryImage" src=@category.Image alt="Dist Photo 1">
 							<h3 class="categoryName">@category.Name</h3>
 						</a>
-						@if (User.IsInRole(UserConstants.Roles.Administrator))
+					</div>
+					@if (User.IsInRole(UserConstants.Roles.Administrator))
 						{
 							<div class="admin-buttons">
-								<a href="/admin/Category/Edit/@category.Id" class="btn btn-block btn-info btn-sm">Edit</a>
-								<a href="/admin/Category/Delete/@category.Id" class="btn btn-block btn-danger btn-sm">Delete</a>
+								<a href="/admin/Category/Edit/@category.Id" class="btn btn-block btn-outline-warning btn-sm edit-btn">Edit</a>
+								<a href="/admin/Category/Delete/@category.Id" class="btn btn-block btn-outline-danger btn-sm delete-btn">Delete</a>
 							</div>
 						}
-					</div>
 				</div>
 			}
 		</div>
