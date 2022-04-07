@@ -9,8 +9,6 @@ namespace BestFood.Infrastructure.Data.Models
 {
     public class ProductOrder
     {
-		public string? Note { get; set; }
-
         public string ProductId { get; set; }
 
 		[ForeignKey(nameof(ProductId))]

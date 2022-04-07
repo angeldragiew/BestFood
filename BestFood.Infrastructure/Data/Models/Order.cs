@@ -18,13 +18,16 @@ namespace BestFood.Infrastructure.Data.Models
         [Required]
         public string Address { get; set; }
 
-        [Required]
-        public DateTime CreationDate { get; set; }
+        [MaxLength(600)]
+        public string? Note { get; set; }
+
+        public DateTime CreationDate { get; set; } = DateTime.Now;
 
 
         public decimal Amount { get; set; }
 
         public ICollection<ProductOrder> ProductOrders { get; set; } = new List<ProductOrder>();
+
 
         [Required]
         public string ApplicationUserId { get; set; }
