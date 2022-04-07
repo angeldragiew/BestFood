@@ -35,26 +35,5 @@ namespace BestFoodWebApp.Controllers
                 return RedirectToAction("All", "Category");
             }
         }
-
-        [HttpPost]
-        public async Task<IActionResult> RateProduct(CreateReviewViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                TempData[MessageConstant.ErrorMessage] = "Invalid data!";
-                return RedirectToAction("Details", "Product", new { id = model.ProductId });
-            }
-
-            try
-            {
-                await productService.RateProdcutAsync(model, User.Identity.Name);
-                TempData[MessageConstant.SuccessMessage] = "Review added successfully!";
-            }
-            catch (Exception)
-            {
-                TempData[MessageConstant.ErrorMessage] = "Could not add the review!";
-            }
-            return RedirectToAction("Details", "Product", new { id = model.ProductId });
-        }
     }
 }

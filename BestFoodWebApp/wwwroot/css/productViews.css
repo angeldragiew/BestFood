@@ -122,3 +122,13 @@
     border: none;
     width: 30%;
 }
+
+.product-review-action-buttons{
+    float:right;
+}
+
+.product-review-action-buttons button{
+    background-color:white;
+
+    border:none;
+}

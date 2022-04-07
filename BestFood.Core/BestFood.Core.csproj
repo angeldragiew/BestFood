@@ -10,8 +10,4 @@
     <ProjectReference Include="..\BestFood.Infrastructure\BestFood.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ViewModels\Review\" />
-  </ItemGroup>
-
 </Project>

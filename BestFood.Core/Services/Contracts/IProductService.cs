@@ -9,8 +9,6 @@ namespace BestFood.Core.Services.Contracts
 
         Task<IEnumerable<ProductViewModel>> All(int id);
 
-        Task RateProdcutAsync(CreateReviewViewModel model, string username);
-
         Task CreateAsync(CreateProductViewModel model);
 
         Task EditAsync(EditProductViewModel model);

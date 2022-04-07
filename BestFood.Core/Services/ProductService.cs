@@ -222,22 +222,6 @@ namespace BestFood.Core.Services
                 .ToListAsync();
         }
 
-        public async Task RateProdcutAsync(CreateReviewViewModel model, string username)
-        {
-            Review review = new Review()
-            {
-                ApplicationUserId = userRepo
-                                    .All()
-                                    .FirstOrDefault(u => u.UserName == username).Id,
-                Text = model.Text,
-                Rating = model.Rating,
-                ProductId = model.ProductId,
-            };
-
-            await reviewRepo.AddAsync(review);
-            await reviewRepo.SaveChangesAsync();
-        }
-
         public async Task<IEnumerable<ProductReviewViewModel>> LoadReviewsForProduct(string productId)
         {
             return await reviewRepo

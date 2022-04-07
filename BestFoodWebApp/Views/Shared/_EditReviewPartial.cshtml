@@ -1,0 +1,33 @@
+﻿@using BestFood.Core.ViewModels.Review
+@{
+}
+
+@model EditReviewViewModel
+
+<div class="add-comment-section">
+	<form method="post" asp-controller="Review" asp-action="Edit">
+		<input type="hidden" name="ProductId" value="@Model.ProductId">
+		<input type="hidden" name="Id" value="@Model.Id">
+		<input asp-for="Text" name="Text" value="@Model.Text" type="text" placeholder="Add review...">
+		<span asp-validation-for="Text" class="text-danger"></span>
+		<div>
+			<select asp-for="Rating" name="Rating">
+				<option>Choose rating..</option>
+				@for (int i = 1; i <= 5; i++)
+				{
+					@if (Model.Rating == i)
+					{
+						<option selected value="@i">@i</option>
+					}
+					else
+					{
+						<option value="@i">@i</option>
+					}
+				}
+			</select>
+			<span asp-validation-for="Rating" class="text-danger"></span>
+			@*<a href="/Product/RateProduct" class="btn btn-block btn-dark btn-sm">Comment</a>*@
+			<button class="btn btn-block btn-dark btn-sm">Save Changes</button>
+		</div>
+	</form>
+</div>
