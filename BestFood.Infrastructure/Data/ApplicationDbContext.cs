@@ -19,6 +19,7 @@ namespace BestFood.Infrastructure.Data
         public DbSet<ProductIngredient> ProductIngredient { get; set; }
         public DbSet<ProductOrder> ProductOrders { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<CartItem> ShoppingCartItems { get; set; }
 
 
 
