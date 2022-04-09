@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BestFood.Infrastructure.Data.Models
 {
@@ -11,8 +12,9 @@ namespace BestFood.Infrastructure.Data.Models
 
         public int Quantity { get; set; }
 
-        public string ProductId { get; set; }
 
+        [ForeignKey(nameof(Product))]
+        public string ProductId { get; set; }
         public Product Product { get; set; }
 
     }

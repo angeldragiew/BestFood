@@ -34,5 +34,7 @@ namespace BestFood.Infrastructure.Data.Models
         public ICollection<ProductOrder> ProductOrders { get; set; } = new List<ProductOrder>();
 
         public ICollection<Review> Reviews { get; set; } = new List<Review>();
-	}
+
+        public ICollection<CartItem> ShoppingCartItems { get; set; } = new List<CartItem>();
+    }
 }

@@ -35,7 +35,6 @@ namespace BestFood.Core.Services
                     ProductId = productId,
                     CartId = shoppingCartId,
                     Quantity = 1,
-                    Product = productRepository.All().SingleOrDefault(p => p.Id == productId)
                 };
 
                 await cartItemRepository.AddAsync(cartItem);
