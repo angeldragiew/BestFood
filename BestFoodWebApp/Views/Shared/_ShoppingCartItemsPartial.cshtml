@@ -1,0 +1,28 @@
+﻿@using BestFood.Core.ViewModels.Cart
+@{
+}
+@model IEnumerable<CartItemViewModel>
+
+@foreach (var cartItem in Model)
+{
+	<tr>
+		<td>
+			<div class="btn-group">
+				@*onclick="location.href='@Url.Action("DecreaseQuantity", "ShoppingCart", new{id=@cartItem.Id})'"*@
+				<button value="@cartItem.Id" type="button" class="btn btn-default decrease-button">-</button>
+				<span class="btn btn-default">@cartItem.Quantity</span>
+				<button value="@cartItem.Id" type="button" class="btn btn-default increase-button">+</button>
+			</div>
+		</td>
+		<td>@cartItem.Name</td>
+		<td>@(string.Join(", ", cartItem.IngredientNames))</td>
+		<td>@Math.Round(cartItem.Price*cartItem.Quantity,2) lv.</td>
+	</tr>
+}
+<tr>
+		<td></td>
+		<td></td>
+		<th style="text-align:right">Total Price:</th>
+		<th>@Math.Round(Model.Sum(c=>c.Price*c.Quantity),2) lv.</th>
+	</tr>
+

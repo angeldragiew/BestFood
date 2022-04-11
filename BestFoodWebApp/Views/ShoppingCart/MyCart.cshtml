@@ -20,22 +20,8 @@
 								<th>Price</th>
 							</tr>
 						</thead>
-						<tbody>
-							@foreach (var cartItem in Model)
-							{
-								<tr>
-									<td>
-										<div class="btn-group">
-											<button onclick="location.href='@Url.Action("DecreaseQuantity", "ShoppingCart", new{id=@cartItem.Id})'" type="button" class="btn btn-default decrease-button">-</button>
-											<span class="btn btn-default">@cartItem.Quantity</span>
-											<button type="button" onclick="location.href='@Url.Action("IncreaseQuantity", "ShoppingCart", new{id=@cartItem.Id})'" class="btn btn-default increase-button">+</button>
-										</div>
-									</td>
-									<td>@cartItem.Name</td>
-									<td>@(string.Join(", ", cartItem.IngredientNames))</td>
-									<td>@Math.Round(cartItem.Price,2) lv.</td>
-								</tr>
-							}
+						<tbody id="table-body">
+							@await Html.PartialAsync("_ShoppingCartItemsPartial", Model)
 						</tbody>
 					</table>
 				</div>
@@ -45,24 +31,22 @@
 			<div class="row">
 
 				<div class="col-6">
-					<textarea style="width:100%"></textarea>
+					<textarea placeholder="E.g. without tomatoes and onion on Cheese Burger.." style="width:100%"></textarea>
 				</div>
 
-				<div class="col-6">
-					<div class="table-responsive">
+				<div class="col-6 address-div">
+					@*<div class="table-responsive">
 						<table class="table">
 							<tbody>
-								<tr>
-									<th style="width:30%">Total Price:</th>
-									<td>@Math.Round(Model.Sum(c=>c.Price*c.Quantity),2) lv.</td>
-								</tr>
 								<tr>
 									<th style="width:30%">Address:</th>
 									<td><input placeholder="Enter address.." /></td>
 								</tr>
 							</tbody>
 						</table>
-					</div>
+					</div>*@
+					<h4>Address</h4>
+					<input placeholder="Iordan Iovkov 8.."/>
 				</div>
 
 			</div>
@@ -70,13 +54,11 @@
 
 			<div class="row no-print">
 				<div class="col-12">
-					<a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
-					<button type="button" class="btn btn-success float-right">
-						<i class="far fa-credit-card"></i> Submit
-						Payment
+					<button type="button" class="btn btn-success float-right"> 
+						Submit Order
 					</button>
 					<button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-						<i class="fas fa-download"></i> Generate PDF
+						Clear Cart
 					</button>
 				</div>
 			</div>
@@ -85,25 +67,30 @@
 	</div>
 </div>
 
-
-@*@section Scripts{
+@section Scripts{
 <script type="text/javascript">
-		 $( ".increase-button" ).click(function() {
+		$(document).on("click", ".increase-button",function () {
 	 $.ajax({
 					url: "/ShoppingCart/IncreaseQuantity/"+$(this).val(),
 					success: function (result) {
-						alert("result")
+						$("#table-body").html("");
+						document.getElementById("table-body").insertAdjacentHTML("afterbegin", result);
 					}
 				});
 	});
 
-	$( ".decrease-button" ).click(function() {
+	$(document).on("click", ".decrease-button",function () {
 	 $.ajax({
 					url: "/ShoppingCart/DecreaseQuantity/"+$(this).val(),
 					success: function (result) {
-						alert(result)
+						$("#table-body").html("");
+						document.getElementById("table-body").insertAdjacentHTML("afterbegin", result);
 					}
 				});
 	});
 </script>
-}*@
+}
+
+@section Head{
+	<link rel="stylesheet" href="~/css/myCart.css" />
+}

@@ -39,14 +39,17 @@ namespace BestFoodWebApp.Controllers
         {
             await shoppingCartService.IncreaseQuantityAsync(id, HttpContext.Session.GetString(CartSessionKey));
 
-            return RedirectToAction("MyCart", "ShoppingCart");
+            var cartItems = await shoppingCartService.AllAsync(HttpContext.Session.GetString(CartSessionKey));
+
+            return PartialView("_ShoppingCartItemsPartial",cartItems);
         }
 
         public async Task<IActionResult> DecreaseQuantity(string id)
         {
             await shoppingCartService.DecreaseQuantityAsync(id, HttpContext.Session.GetString(CartSessionKey));
+            var cartItems = await shoppingCartService.AllAsync(HttpContext.Session.GetString(CartSessionKey));
 
-            return RedirectToAction("MyCart", "ShoppingCart");
+            return PartialView("_ShoppingCartItemsPartial", cartItems);
         }
 
 
