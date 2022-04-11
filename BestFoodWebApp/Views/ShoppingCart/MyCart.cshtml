@@ -29,21 +29,23 @@
 
 			</div>
 
-			<form method="post">
+			<form method="post" asp-action="CreateOrder" asp-controller="Order">
 				<div class="row">
 					<div class="col-6">
 						<textarea asp-for="Note" name="Note" placeholder="E.g. without tomatoes and onion on Cheese Burger.." style="width:100%"></textarea>
+						<span asp-validation-for="Note" class="text-danger"></span>
 					</div>
 
 					<div class="col-6 address-div">
 						<h4>Address</h4>
 						<input asp-for="Address" name="Address" placeholder="Iordan Iovkov 8.." />
+						<span asp-validation-for="Address" class="text-danger"></span>
 					</div>
 				</div>
 
 				<div class="row no-print">
 					<div class="col-12">
-						<button type="button" class="btn btn-success float-right">
+						<button type="submit" class="btn btn-success float-right">
 							Submit Order
 						</button>
 						<button id="clear-cart-btn" type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
@@ -58,6 +60,8 @@
 </div>
 
 @section Scripts{
+<partial name="_ValidationScriptsPartial" />
+
 <script type="text/javascript">
 		$(document).on("click", ".increase-button",function () {
 	 $.ajax({

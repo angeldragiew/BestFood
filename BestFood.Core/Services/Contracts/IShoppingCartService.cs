@@ -8,6 +8,7 @@ namespace BestFood.Core.Services.Contracts
         Task AddItemToCartAsync(string shoppingCartId, string productId);
 
         Task<IEnumerable<CartItemViewModel>> AllAsync(string shoppingCartId);
+        Task ClearCart(string shoppingCartId);
         Task IncreaseQuantityAsync(string cartItemId, string shoppingCartId);
         Task DecreaseQuantityAsync(string cartItemId, string shoppingCartId);
     }
