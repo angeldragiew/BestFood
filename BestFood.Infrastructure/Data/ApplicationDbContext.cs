@@ -17,7 +17,6 @@ namespace BestFood.Infrastructure.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductIngredient> ProductIngredient { get; set; }
-        public DbSet<ProductOrder> ProductOrders { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<CartItem> ShoppingCartItems { get; set; }
 
@@ -27,7 +26,6 @@ namespace BestFood.Infrastructure.Data
         {
             builder.Entity<CategoryIngredient>().HasKey(ci => new { ci.IngredientId, ci.CategoryId });
             builder.Entity<ProductIngredient>().HasKey(pi => new { pi.ProductId, pi.IngredientId });
-            builder.Entity<ProductOrder>().HasKey(po => new { po.ProductId, po.OrderId });
 
             builder.Entity<Order>().Property(o => o.Amount).HasColumnType("decimal(18,4)");
             builder.Entity<Product>().Property(p => p.Price).HasColumnType("decimal(18,4)");

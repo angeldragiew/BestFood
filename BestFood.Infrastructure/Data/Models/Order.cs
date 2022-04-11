@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BestFood.Infrastructure.Enums;
 
 namespace BestFood.Infrastructure.Data.Models
 {
@@ -23,10 +24,11 @@ namespace BestFood.Infrastructure.Data.Models
 
         public DateTime CreationDate { get; set; } = DateTime.Now;
 
+        public OrderStatus OrderStatus { get; set; }
 
         public decimal Amount { get; set; }
 
-        public ICollection<ProductOrder> ProductOrders { get; set; } = new List<ProductOrder>();
+        public string ProductsInfo { get; set; }
 
 
         [Required]
