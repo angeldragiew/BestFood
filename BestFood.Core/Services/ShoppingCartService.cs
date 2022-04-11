@@ -62,6 +62,17 @@ namespace BestFood.Core.Services
                 }).ToListAsync();
         }
 
+        public async Task ClearCart(string shoppingCartId)
+        {
+            var cartItemsToDelete = await cartItemRepository
+                    .All()
+                    .Where(c => c.CartId == shoppingCartId)
+                    .ToListAsync();
+
+            cartItemRepository.DeleteRange(cartItemsToDelete);
+            await cartItemRepository.SaveChangesAsync();
+        }
+
         public async Task DecreaseQuantityAsync(string cartItemId, string shoppingCartId)
         {
             var cartItem = cartItemRepository
