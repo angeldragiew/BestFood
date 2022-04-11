@@ -24,32 +24,43 @@ namespace BestFoodWebApp.Controllers
             return RedirectToAction("MyCart", "ShoppingCart");
         }
 
+        public async Task<IActionResult> ClearCart()
+        {
+            if (HttpContext.Session.GetString(CartSessionKey) == null)
+            {
+                HttpContext.Session.SetString(CartSessionKey, User.Identity.Name);
+            }
+            await shoppingCartService.ClearCart(HttpContext.Session.GetString(CartSessionKey));
+
+            return PartialView("_ShoppingCartItemsPartial", null);
+        }
+
         public async Task<IActionResult> MyCart()
         {
             if (HttpContext.Session.GetString(CartSessionKey) == null)
             {
                 HttpContext.Session.SetString(CartSessionKey, User.Identity.Name);
             }
-            var cartItems = await shoppingCartService.AllAsync(HttpContext.Session.GetString(CartSessionKey));
+            ViewBag.CartItems = await shoppingCartService.AllAsync(HttpContext.Session.GetString(CartSessionKey));
 
-            return View(cartItems);
+            return View();
         }
 
         public async Task<IActionResult> IncreaseQuantity(string id)
         {
             await shoppingCartService.IncreaseQuantityAsync(id, HttpContext.Session.GetString(CartSessionKey));
 
-            var cartItems = await shoppingCartService.AllAsync(HttpContext.Session.GetString(CartSessionKey));
+            ViewBag.CartItems = await shoppingCartService.AllAsync(HttpContext.Session.GetString(CartSessionKey));
 
-            return PartialView("_ShoppingCartItemsPartial",cartItems);
+            return PartialView("_ShoppingCartItemsPartial");
         }
 
         public async Task<IActionResult> DecreaseQuantity(string id)
         {
             await shoppingCartService.DecreaseQuantityAsync(id, HttpContext.Session.GetString(CartSessionKey));
-            var cartItems = await shoppingCartService.AllAsync(HttpContext.Session.GetString(CartSessionKey));
+            ViewBag.CartItems = await shoppingCartService.AllAsync(HttpContext.Session.GetString(CartSessionKey));
 
-            return PartialView("_ShoppingCartItemsPartial", cartItems);
+            return PartialView("_ShoppingCartItemsPartial");
         }
 
 
