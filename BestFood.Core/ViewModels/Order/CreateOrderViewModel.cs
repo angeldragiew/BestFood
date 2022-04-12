@@ -10,9 +10,12 @@ namespace BestFood.Core.ViewModels.Order
     public class CreateOrderViewModel
     {
         [MaxLength(600)]
-        public string Note { get; set; }
+        public string? Note { get; set; }
 
         [Required]
         public string Address { get; set; }
+
+        [Required]
+        public string PhoneNumber { get; set; }
     }
 }

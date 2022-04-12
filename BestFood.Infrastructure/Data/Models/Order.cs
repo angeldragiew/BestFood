@@ -19,6 +19,10 @@ namespace BestFood.Infrastructure.Data.Models
         [Required]
         public string Address { get; set; }
 
+        [Required]
+        public string PhoneNumber { get; set; }
+
+
         [MaxLength(600)]
         public string? Note { get; set; }
 
