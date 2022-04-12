@@ -10,5 +10,7 @@ namespace BestFood.Core.Services.Contracts
     public interface IOrderService
     {
         Task CreateAsync(string shoppingCartId, string currentUserName, CreateOrderViewModel model);
+        Task<IEnumerable<OrderViewModel>> AllUserOrders(string userName);
+
     }
 }

@@ -32,14 +32,29 @@
 			<form method="post" asp-action="CreateOrder" asp-controller="Order">
 				<div class="row">
 					<div class="col-6">
-						<textarea asp-for="Note" name="Note" placeholder="E.g. without tomatoes and onion on Cheese Burger.." style="width:100%"></textarea>
+						<textarea asp-for="Note" name="Note" placeholder="E.g. 'Cheese Burger without onions'" style="width:100%"></textarea>
 						<span asp-validation-for="Note" class="text-danger"></span>
 					</div>
 
 					<div class="col-6 address-div">
-						<h4>Address</h4>
-						<input asp-for="Address" name="Address" placeholder="Iordan Iovkov 8.." />
-						<span asp-validation-for="Address" class="text-danger"></span>
+						<table class="table">
+							<tbody>
+								<tr>
+									<th style="width:20%">Address:</th>
+									<td>
+										<input asp-for="Address" name="Address" placeholder="Iordan Iovkov 8.." />
+										<span asp-validation-for="Address" class="text-danger"></span>
+									</td>
+								</tr>
+								<tr>
+									<th style="width:20%">Phone Number:</th>
+									<td>
+										<input asp-for="PhoneNumber" name="PhoneNumber" placeholder="089923.." />
+										<span asp-validation-for="PhoneNumber" class="text-danger"></span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 

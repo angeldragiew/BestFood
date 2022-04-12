@@ -22,6 +22,24 @@ namespace BestFood.Core.Services
             this.orderRepository = orderRepository;
         }
 
+        public async Task<IEnumerable<OrderViewModel>> AllUserOrders(string userName)
+        {
+            return await orderRepository
+                .All()
+                .Where(o => o.ApplicationUser.UserName == userName)
+                .Select(o => new OrderViewModel()
+                {
+                    Id = o.Id,
+                    Address = o.Address,
+                    CreationDate = o.CreationDate.ToString("d"),
+                    Amount = o.Amount.ToString("f2"),
+                    Note = o.Note,
+                    OrderStatus = o.OrderStatus,
+                    ProductsInfo = o.ProductsInfo,
+                    PhoneNumber = o.PhoneNumber
+                }).ToListAsync();
+        }
+
         public async Task CreateAsync(string shoppingCartId, string currentUserName, CreateOrderViewModel model)
         {
             var cartItems = await cartItemRepository
@@ -50,9 +68,10 @@ namespace BestFood.Core.Services
                 Note=model.Note,
                 OrderStatus = OrderStatus.Pending,
                 Amount = cartItems.Sum(ci=>ci.Product.Price*ci.Quantity),
-                ProductsInfo=string.Join(Environment.NewLine, cartItems
-                                .Select(ci=>$"{ci.Quantity} x {ci.Product.Name} - {ci.Product.Price*ci.Quantity:f2} lv.")),
-                ApplicationUser = user
+                ProductsInfo=string.Join(", ", cartItems
+                                .Select(ci=>$"{ci.Quantity} {ci.Product.Name} - {ci.Product.Price*ci.Quantity:f2} lv.")),
+                ApplicationUser = user,
+                PhoneNumber=model.PhoneNumber
             };
 
             await orderRepository.AddAsync(order);

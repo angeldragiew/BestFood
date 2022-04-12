@@ -34,11 +34,18 @@ namespace BestFoodWebApp.Controllers
             }
             catch (ArgumentException ex)
             {
-                return RedirectToAction("MyCart", "ShoppingCart");
                 TempData[MessageConstant.ErrorMessage] = ex.Message;
+                return RedirectToAction("MyCart", "ShoppingCart");
             }
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("MyOrders", "Order");
+        }
+
+        public async Task<IActionResult> MyOrders()
+        {
+            string name = User.Identity.Name;
+            var myOrders = await orderService.AllUserOrders(User.Identity.Name);
+            return View(myOrders);
         }
     }
 }

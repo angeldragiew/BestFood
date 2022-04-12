@@ -1,0 +1,14 @@
+﻿.order-card{
+    width:70%;
+    margin-left:15%;
+}
+
+.card-tools{
+    margin-top:-50px !important;
+}
+
+    .card-tools p {
+        margin-bottom: 0px !important;
+        margin-right: 10px !important;
+    }
+
