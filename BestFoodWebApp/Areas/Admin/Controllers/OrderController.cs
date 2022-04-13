@@ -34,5 +34,40 @@ namespace BestFoodWebApp.Areas.Admin.Controllers
                 return RedirectToAction("PendingOrders", "Order");
             }
         }
+
+        [HttpGet]
+        public async Task<IActionResult> All()
+        {
+            var orders = await orderService.All();
+            return View(orders);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AcceptOrder(string id)
+        {
+            try
+            {
+                await orderService.AcceptOrder(id);
+            }
+            catch (ArgumentException ex)
+            {
+                TempData[MessageConstant.ErrorMessage] = ex.Message;
+            }
+            return RedirectToAction("PendingOrders", "Order");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> RejectOrder(string id)
+        {
+            try
+            {
+                await orderService.RejectOrder(id);
+            }
+            catch (ArgumentException ex)
+            {
+                TempData[MessageConstant.ErrorMessage] = ex.Message;
+            }
+            return RedirectToAction("PendingOrders", "Order");
+        }
     }
 }

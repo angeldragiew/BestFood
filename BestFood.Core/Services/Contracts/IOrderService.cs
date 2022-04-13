@@ -12,7 +12,11 @@ namespace BestFood.Core.Services.Contracts
         Task CreateAsync(string shoppingCartId, string currentUserName, CreateOrderViewModel model);
         Task<IEnumerable<OrderDetailViewModel>> AllUserOrders(string userName);
         Task<IEnumerable<OrderViewModel>> AllPendingOrders();
+        Task<IEnumerable<OrderViewModel>> All();
         Task<OrderDetailViewModel> OrderDetails(string id);
+
+        Task AcceptOrder(string id);
+        Task RejectOrder(string id);
 
     }
 }

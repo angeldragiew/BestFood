@@ -22,6 +22,21 @@ namespace BestFood.Core.Services
             this.orderRepository = orderRepository;
         }
 
+		public async Task<IEnumerable<OrderViewModel>> All()
+		{
+            return await orderRepository
+                .All()
+                .OrderByDescending(o=>o.CreationDate)
+                .Select(o => new OrderViewModel()
+                {
+                    Id = o.Id,
+                    Address = o.Address,
+                    CreationDate = o.CreationDate.ToString("dd.MM.yyyy HH:mm"),
+                    OrderStatus = o.OrderStatus,
+                    PhoneNumber = o.PhoneNumber
+                }).ToListAsync();
+        }
+
         public async Task<IEnumerable<OrderViewModel>> AllPendingOrders()
         {
             return await orderRepository
@@ -116,5 +131,35 @@ namespace BestFood.Core.Services
             };
             return orderDetails;
         }
-    }
+
+        public async Task AcceptOrder(string id)
+        {
+            Order order = orderRepository
+                .All()
+                .FirstOrDefault(o => o.Id == id);
+
+            if (order == null)
+            {
+                throw new ArgumentException("Unknown order");
+            }
+
+            order.OrderStatus = OrderStatus.Accepted;
+            await orderRepository.SaveChangesAsync();
+        }
+
+        public async Task RejectOrder(string id)
+		{
+            Order order = orderRepository
+                .All()
+                .FirstOrDefault(o => o.Id == id);
+
+            if (order == null)
+            {
+                throw new ArgumentException("Unknown order");
+            }
+
+            order.OrderStatus = OrderStatus.Rejected;
+            await orderRepository.SaveChangesAsync();
+        }
+	}
 }
