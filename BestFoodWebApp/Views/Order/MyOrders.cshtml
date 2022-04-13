@@ -1,10 +1,18 @@
 ﻿@using BestFood.Core.ViewModels.Order
 @using BestFood.Infrastructure.Enums
 @{
+	ViewData["Title"] = "My Orders";
 }
 
-@model IEnumerable<OrderViewModel>
-@foreach (var order in Model)
+@model IEnumerable<OrderDetailViewModel>
+
+@if(Model.Count() == 0)
+{
+	<h3>No order history!</h3>
+}
+else
+{
+	@foreach (var order in Model)
 {
 	<div class="order-card card">
 		<div class="card-header  border-bottom mb-3">
@@ -56,18 +64,20 @@
 					<span class="text-muted">ORDERED PRODUCTS</span>
 				</p>
 			</div>
-
-			<div class="d-flex justify-content-between align-items-center border-bottom mb-3">
-				<p>
-					@order.Note
-				</p>
-				<p class="d-flex flex-column text-right">
-					<span class="font-weight-bold">
-						<i class="fas fa-sticky-note text-danger"></i>
-					</span>
-					<span class="text-muted">NOTE</span>
-				</p>
-			</div>
+			@if (!string.IsNullOrEmpty(order.Note))
+			{
+				<div class="d-flex justify-content-between align-items-center border-bottom mb-3">
+					<p>
+						@order.Note
+					</p>
+					<p class="d-flex flex-column text-right">
+						<span class="font-weight-bold">
+							<i class="fas fa-sticky-note text-danger"></i>
+						</span>
+						<span class="text-muted">NOTE</span>
+					</p>
+				</div>
+			}
 
 			<div class="d-flex justify-content-between align-items-center">
 				<p></p>
@@ -82,6 +92,8 @@
 		</div>
 	</div>
 }
+}
+
 
 @section Head{
 <link rel="stylesheet" href="~/css/order.css" />

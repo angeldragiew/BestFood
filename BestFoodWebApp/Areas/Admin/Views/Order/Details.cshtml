@@ -1,0 +1,91 @@
+﻿@using BestFood.Core.ViewModels.Order
+@using BestFood.Infrastructure.Enums
+@{
+}
+
+@model OrderDetailViewModel
+<div class="order-card card">
+	<div class="card-header  border-bottom mb-3">
+		<h3 class="card-title ">Order: @Model.Id</h3>
+		<br>
+		<span class="btn btn-tool">
+			Address: @Model.Address
+		</span>
+		<br>
+		<span class="btn btn-tool">
+			Phone Number: @Model.Address
+		</span>
+		<div class="card-tools">
+			<p class="d-flex flex-column text-right">
+				<span class="font-weight-bold">
+					@if (Model.OrderStatus == OrderStatus.Pending)
+					{
+						<i class="fab fa-first-order-alt text-warning"></i> @Model.OrderStatus
+					}
+					else if (Model.OrderStatus == OrderStatus.Accepted)
+					{
+						<i class="fab fa-first-order-alt text-success"></i> @Model.OrderStatus
+					}
+					else
+					{
+						<i class="fab fa-first-order-alt text-danger"></i> @Model.OrderStatus
+					}
+				</span>
+				<span class="text-muted">ORDER STATUS</span>
+			</p>
+			<span class="btn btn-tool">
+				Date: @Model.CreationDate
+			</span>
+		</div>
+	</div>
+	<div class="card-body">
+		<div class="d-flex justify-content-between align-items-center border-bottom mb-3">
+			<p>
+				@foreach (var product in Model.ProductsInfo.Split(", "))
+				{
+					@product
+					<br />
+				}
+			</p>
+			<p class="d-flex flex-column text-right">
+				<span class="font-weight-bold">
+					<i class="fas fa-hamburger text-warning"></i>
+				</span>
+				<span class="text-muted">ORDERED PRODUCTS</span>
+			</p>
+		</div>
+
+		@if (!string.IsNullOrEmpty(Model.Note))
+		{
+			<div class="d-flex justify-content-between align-items-center border-bottom mb-3">
+				<p>
+					@Model.Note
+				</p>
+				<p class="d-flex flex-column text-right">
+					<span class="font-weight-bold">
+						<i class="fas fa-sticky-note text-danger"></i>
+					</span>
+					<span class="text-muted">NOTE</span>
+				</p>
+			</div>
+		}
+
+		<div class="d-flex justify-content-between align-items-center">
+			<p>
+				<button type="button" class="btn btn-block bg-gradient-success btn-sm">Accept Order</button>
+				<button type="button" class="btn btn-block bg-gradient-danger btn-sm">Reject Order</button>
+			</p>
+			<p class="d-flex flex-column text-right">
+				<span class="font-weight-bold">
+					<i class="fas fa-money-bill-wave-alt text-success"></i> @Model.Amount lv.
+				</span>
+				<span class="text-muted">TOTAL AMOUNT</span>
+			</p>
+		</div>
+
+	</div>
+</div>
+
+@section Head{
+<link rel="stylesheet" href="~/css/order.css" />
+}

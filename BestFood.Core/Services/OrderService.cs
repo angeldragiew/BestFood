@@ -22,12 +22,27 @@ namespace BestFood.Core.Services
             this.orderRepository = orderRepository;
         }
 
-        public async Task<IEnumerable<OrderViewModel>> AllUserOrders(string userName)
+        public async Task<IEnumerable<OrderViewModel>> AllPendingOrders()
+        {
+            return await orderRepository
+                .All()
+                .Where(o => o.OrderStatus == OrderStatus.Pending)
+                .Select(o => new OrderViewModel()
+                {
+                    Id = o.Id,
+                    Address = o.Address,
+                    CreationDate = o.CreationDate.ToString("d"),
+                    OrderStatus = o.OrderStatus,
+                    PhoneNumber = o.PhoneNumber
+                }).ToListAsync();
+        }
+
+        public async Task<IEnumerable<OrderDetailViewModel>> AllUserOrders(string userName)
         {
             return await orderRepository
                 .All()
                 .Where(o => o.ApplicationUser.UserName == userName)
-                .Select(o => new OrderViewModel()
+                .Select(o => new OrderDetailViewModel()
                 {
                     Id = o.Id,
                     Address = o.Address,
@@ -44,7 +59,7 @@ namespace BestFood.Core.Services
         {
             var cartItems = await cartItemRepository
                 .All()
-                .Include(ci=>ci.Product)
+                .Include(ci => ci.Product)
                 .Where(c => c.CartId == shoppingCartId)
                 .ToListAsync();
 
@@ -54,7 +69,7 @@ namespace BestFood.Core.Services
             }
 
             var user = userRepository.All()
-                .SingleOrDefault(u=>u.UserName== currentUserName);
+                .SingleOrDefault(u => u.UserName == currentUserName);
 
             if (user == null)
             {
@@ -65,18 +80,41 @@ namespace BestFood.Core.Services
             Order order = new Order()
             {
                 Address = model.Address,
-                Note=model.Note,
+                Note = model.Note,
                 OrderStatus = OrderStatus.Pending,
-                Amount = cartItems.Sum(ci=>ci.Product.Price*ci.Quantity),
-                ProductsInfo=string.Join(", ", cartItems
-                                .Select(ci=>$"{ci.Quantity} {ci.Product.Name} - {ci.Product.Price*ci.Quantity:f2} lv.")),
+                Amount = cartItems.Sum(ci => ci.Product.Price * ci.Quantity),
+                ProductsInfo = string.Join(", ", cartItems
+                                .Select(ci => $"{ci.Quantity} {ci.Product.Name} - {ci.Product.Price * ci.Quantity:f2} lv.")),
                 ApplicationUser = user,
-                PhoneNumber=model.PhoneNumber
+                PhoneNumber = model.PhoneNumber
             };
 
             await orderRepository.AddAsync(order);
             await orderRepository.SaveChangesAsync();
         }
 
+        public async Task<OrderDetailViewModel> OrderDetails(string id)
+        {
+            var order = await orderRepository
+                .All()
+                .FirstOrDefaultAsync(o => o.Id == id);
+
+			if (order == null)
+			{
+                throw new ArgumentException("Unknown order!");
+            }
+            OrderDetailViewModel orderDetails = new OrderDetailViewModel()
+            {
+                Id = order.Id,
+                Address = order.Address,
+                CreationDate = order.CreationDate.ToString("d"),
+                Amount = order.Amount.ToString("f2"),
+                Note = order.Note,
+                OrderStatus = order.OrderStatus,
+                ProductsInfo = order.ProductsInfo,
+                PhoneNumber = order.PhoneNumber
+            };
+            return orderDetails;
+        }
     }
 }
