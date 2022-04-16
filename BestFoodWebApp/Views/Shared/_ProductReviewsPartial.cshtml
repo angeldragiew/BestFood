@@ -1,0 +1,98 @@
+﻿@using BestFood.Core.ViewModels.Product
+@{
+	string currentUserReviewId = "";
+	var currentUserReview = Model.FirstOrDefault(r => r.ReviewUsername == User.Identity.Name);
+	if (currentUserReview != null)
+	{
+		currentUserReviewId = currentUserReview.ReviewId;
+	}
+}
+
+@model IEnumerable<ProductReviewViewModel>
+
+@if (User.Identity.IsAuthenticated && !Model.Any(r => r.ReviewUsername == User.Identity.Name))
+{
+	<div class="add-comment-section">
+		<form method="post" asp-controller="Review" asp-action="RateProduct">
+			<input type="hidden" name="ProductId" value="@(ViewBag.ProductId)">
+			<input maxlength="300" name="Text" type="text" placeholder="Add review...">
+			<div>
+				<select name="Rating">
+					<option>Choose rating..</option>
+					@for (int i = 1; i <= 5; i++)
+					{
+						<option value="@i">@i</option>
+					}
+				</select>
+				<button id="add-comment-btn" class="btn btn-block btn-dark btn-sm">Comment</button>
+			</div>
+		</form>
+	</div>
+}
+@foreach (var review in Model)
+{
+	@if (review.ReviewUsername == User.Identity.Name)
+	{
+		<div class="comment" id="current-user-review">
+			<div class="btn-group product-review-action-buttons">
+				<button type="button" data-toggle="dropdown" aria-expanded="false">
+					<i class="fas fa-ellipsis-h"></i>
+				</button>
+				<ul class="dropdown-menu" style="">
+					<li value="@review.ReviewId" id="edit-review" class="dropdown-item">Edit</li>
+					<li><a class="dropdown-item" id="delete-review">Delete</a></li>
+				</ul>
+			</div>
+			<h4>@review.ReviewUsername</h4>
+			<span>
+				@for (int i = 0; i < review.ReviewRating; i++)
+				{
+					<i class="fas fa-star"></i>
+				}
+				@review.Date
+			</span>
+			<p>@review.Text</p>
+		</div>
+	}
+	else
+	{
+		<div class="comment">
+			<h4>@review.ReviewUsername</h4>
+			<span>
+				@for (int i = 0; i < review.ReviewRating; i++)
+				{
+					<i class="fas fa-star"></i>
+				}
+				@review.Date
+			</span>
+			<p>@review.Text</p>
+		</div>
+	}
+}
+
+<script>
+	$( "#edit-review" ).click(function() {
+	 $.ajax({
+					url: "/Review/Edit/?reviewId=@currentUserReviewId&productId=@ViewBag.ProductId",
+					success: function (result) {
+						$("#current-user-review").html("");
+						document.getElementById("current-user-review").insertAdjacentHTML("afterend", result);
+					}
+				});
+	});
+
+	$( "#delete-review" ).click(function() {
+	 $.ajax({
+					url: "/Review/AllReviews/@ViewBag.ProductId",
+					success: function (result) {
+						alert(result);
+						$("#comments-body").html("");
+						document.getElementById("comments-body").insertAdjacentHTML("afterend", result);
+					}
+				});
+	});
+</script>
+
+@section Head{
+<link rel="stylesheet" href="~/css/productViews.css" type="text/css" runat="server" />
+	}
