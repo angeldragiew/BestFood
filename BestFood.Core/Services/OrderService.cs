@@ -41,12 +41,13 @@ namespace BestFood.Core.Services
         {
             return await orderRepository
                 .All()
+                .OrderByDescending(o => o.CreationDate)
                 .Where(o => o.OrderStatus == OrderStatus.Pending)
                 .Select(o => new OrderViewModel()
                 {
                     Id = o.Id,
                     Address = o.Address,
-                    CreationDate = o.CreationDate.ToString("d"),
+                    CreationDate = o.CreationDate.ToString("dd.MM.yyyy HH: mm"),
                     OrderStatus = o.OrderStatus,
                     PhoneNumber = o.PhoneNumber
                 }).ToListAsync();
@@ -57,11 +58,12 @@ namespace BestFood.Core.Services
             return await orderRepository
                 .All()
                 .Where(o => o.ApplicationUser.UserName == userName)
+                .OrderByDescending(o => o.CreationDate)
                 .Select(o => new OrderDetailViewModel()
                 {
                     Id = o.Id,
                     Address = o.Address,
-                    CreationDate = o.CreationDate.ToString("d"),
+                    CreationDate = o.CreationDate.ToString("dd.MM.yyyy HH:mm"),
                     Amount = o.Amount.ToString("f2"),
                     Note = o.Note,
                     OrderStatus = o.OrderStatus,
