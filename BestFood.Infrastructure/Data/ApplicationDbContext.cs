@@ -30,6 +30,11 @@ namespace BestFood.Infrastructure.Data
             builder.Entity<Order>().Property(o => o.Amount).HasColumnType("decimal(18,4)");
             builder.Entity<Product>().Property(p => p.Price).HasColumnType("decimal(18,4)");
 
+            builder.Entity<Product>()
+                .HasOne(x => x.Category)
+                .WithMany(x => x.Products)
+                .OnDelete(DeleteBehavior.SetNull);
+
             base.OnModelCreating(builder);
         }
     }

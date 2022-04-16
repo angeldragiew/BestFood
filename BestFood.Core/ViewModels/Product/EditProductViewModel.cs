@@ -28,7 +28,7 @@ namespace BestFood.Core.ViewModels.Product
 
 
         [Display(Name = "Product Category")]
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
 
 
         [Display(Name = "Product Ingredients")]

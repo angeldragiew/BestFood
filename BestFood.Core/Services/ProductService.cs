@@ -77,7 +77,7 @@ namespace BestFood.Core.Services
             return product;
         }
 
-        public async Task<bool> CategoryExists(int id)
+        public async Task<bool> CategoryExists(int? id)
         {
             return await categoryRepo
                 .All()

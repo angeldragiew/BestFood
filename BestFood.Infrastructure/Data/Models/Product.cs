@@ -23,11 +23,10 @@ namespace BestFood.Infrastructure.Data.Models
         public decimal Price { get; set; }
 
 
-        [Required]
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
 
         [ForeignKey(nameof(CategoryId))]
-        public Category Category { get; set; }
+        public Category? Category { get; set; }
 
         public ICollection<ProductIngredient> ProductsIngredients { get; set; } = new List<ProductIngredient>();
 

@@ -23,6 +23,6 @@ namespace BestFood.Core.Services.Contracts
         Task<IEnumerable<ProductIngredientViewModel>> LoadIngredients(int id, string productId);
         Task<IEnumerable<ProductReviewViewModel>> LoadReviewsForProduct(string productId);
 
-        Task<bool> CategoryExists(int id);
+        Task<bool> CategoryExists(int? id);
     }
 }
