@@ -49,7 +49,7 @@ namespace BestFood.Core.Services
         {
             var product = await productRepo
                  .All()
-                 .Select(p=> new ProductDetailsViewModel()
+                 .Select(p => new ProductDetailsViewModel()
                  {
                      Id = p.Id,
                      Name = p.Name,
@@ -234,6 +234,20 @@ namespace BestFood.Core.Services
                     Date = r.Date.ToString("d"),
                     Text = r.Text
                 }).ToListAsync();
+        }
+
+        public async Task<IEnumerable<ProductViewModel>> UncategorizedProducts()
+        {
+            return await productRepo
+                .All()
+                .Where(p => p.Category == null)
+                .Select(p => new ProductViewModel()
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Image = p.Image
+                })
+                .ToListAsync();
         }
     }
 }

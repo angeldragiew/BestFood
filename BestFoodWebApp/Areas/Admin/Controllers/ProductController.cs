@@ -14,6 +14,14 @@ namespace BestFoodWebApp.Areas.Admin.Controllers
             this.productService = productService;
         }
 
+
+        [HttpGet]
+        public async Task<IActionResult> Uncategorized()
+        {
+            var uncategorizedProducts = await productService.UncategorizedProducts();
+            return View(uncategorizedProducts);
+        }
+
         [HttpGet]
         public async Task<IActionResult> Create()
         {
