@@ -1,8 +1,10 @@
 ﻿using BestFood.Core.Services.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BestFoodWebApp.Controllers
 {
+    [Authorize]
     public class ShoppingCartController : Controller
     {
         public const string CartSessionKey = "CartId";
@@ -34,7 +36,6 @@ namespace BestFoodWebApp.Controllers
 
             return PartialView("_ShoppingCartItemsPartial", null);
         }
-
         public async Task<IActionResult> MyCart()
         {
             if (HttpContext.Session.GetString(CartSessionKey) == null)

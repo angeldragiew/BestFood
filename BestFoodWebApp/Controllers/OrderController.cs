@@ -1,10 +1,12 @@
 ﻿using BestFood.Core.Constants;
 using BestFood.Core.Services.Contracts;
 using BestFood.Core.ViewModels.Order;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BestFoodWebApp.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         public const string CartSessionKey = "CartId";

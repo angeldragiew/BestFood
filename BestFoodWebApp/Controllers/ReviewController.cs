@@ -1,10 +1,12 @@
 ﻿using BestFood.Core.Constants;
 using BestFood.Core.Services.Contracts;
 using BestFood.Core.ViewModels.Review;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BestFoodWebApp.Controllers
 {
+    [Authorize]
     public class ReviewController : Controller
     {
 
