@@ -1,0 +1,39 @@
+﻿.profileDiv
+{
+    margin-left: 35%;
+    width:30%;
+}
+
+.edit-profile-button {
+    background-color: #454545;
+    border: none;
+    width: 30%;
+    margin-left:35%;
+    margin-bottom:20px;
+}
+
+.card-header {
+    border-top: 5px solid #454545;
+    background-color: white !important;
+}
+
+.edit-user-form {
+    margin: auto;
+    width: 30%;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.5em;
+    color: #454545;
+}
+
+.create-button {
+    background-color: #454545;
+    border: none;
+    width: 30%;
+}
+
+    .create-button:hover {
+        background-color: black;
+    }

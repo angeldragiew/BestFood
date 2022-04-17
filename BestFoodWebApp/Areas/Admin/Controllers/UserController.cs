@@ -23,10 +23,6 @@ namespace BestFoodWebApp.Areas.Admin.Controllers
             this.userManager = userManager;
             this.userService = userService;
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
 
         public async Task<IActionResult> ManageUsers()
         {
@@ -70,52 +66,13 @@ namespace BestFoodWebApp.Areas.Admin.Controllers
             var user = await userService.GetUserById(model.UserId);
             var userRoles = await userManager.GetRolesAsync(user);
             await userManager.RemoveFromRolesAsync(user, userRoles);
-            if (model.RoleNames.Length > 0)
+            if (model.RoleNames != null && model.RoleNames.Length > 0)
             {
                 await userManager.AddToRolesAsync(user, model.RoleNames);
             }
 
             return RedirectToAction("ManageUsers", "User");
         }
-
-        public async Task<IActionResult> Edit(string id)
-        {
-            try
-            {
-                var model = await userService.GetUserForEdit(id);
-                return View(model);
-            }
-            catch (ArgumentNullException ex)
-            {
-                TempData[MessageConstant.ErrorMessage] = ex.Message;
-                return RedirectToAction("ManageUsers", "User");
-            }
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Edit(EditUserViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                TempData[MessageConstant.ErrorMessage] = "Invalid data!";
-                return View(model);
-            }
-
-            try
-            {
-                await userService.EditAsync(model);
-                TempData[MessageConstant.SuccessMessage] = "Successfully edited!";
-            }
-            catch (ArgumentNullException ex)
-            {
-                TempData[MessageConstant.ErrorMessage] = ex.Message;
-            }
-
-            return RedirectToAction("ManageUsers", "User");
-        }
-
-
-
         public async Task<IActionResult> CreateRole()
         {
             //await roleManager.CreateAsync(new IdentityRole()

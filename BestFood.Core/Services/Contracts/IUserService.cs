@@ -7,10 +7,12 @@ namespace BestFood.Core.Services.Contracts
     {
         Task<IEnumerable<UserListViewModel>> GetUsers();
 
+        Task<ApplicationUser> GetUserById(string id);
+
         Task<EditUserViewModel> GetUserForEdit(string id);
 
+        Task<UserViewModel> GetUserProfile(string username);
         Task EditAsync(EditUserViewModel model);
-
-        Task<ApplicationUser> GetUserById(string id);
+        Task<UserAddressAndPhoneNumber> GetUserAddressAndPhoneNUmber(string username);
     }
 }

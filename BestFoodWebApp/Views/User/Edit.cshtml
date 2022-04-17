@@ -1,0 +1,83 @@
+﻿@using BestFood.Core.ViewModels.User
+@{
+	ViewData["Title"] = "Edit Profile";
+}
+
+@model EditUserViewModel
+<div class="background">
+	<!-- general form elements -->
+	<div class="card card-primary edit-user-form">
+		<div class="card-header">
+			<h3 class="card-title">User Profile</h3>
+		</div>
+		<!-- /.card-header -->
+		<!-- form start -->
+		<form method="post">
+			@Html.HiddenFor(model => model.Id)
+			<div class="card-body">
+				<div class="form-group">
+					<label asp-for="FirstName"></label>
+					@if (Model.FirstName != null)
+					{
+						<input asp-for="FirstName" type="text" name="FirstName" value="@Model.FirstName" class="form-control" placeholder="Enter first name.." />
+					}
+					else
+					{
+						<input asp-for="FirstName" type="text" name="FirstName" class="form-control" placeholder="Enter first name.." />
+					}
+					<span asp-validation-for="FirstName" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="LastName"></label>
+					@if (Model.LastName != null)
+					{
+						<input asp-for="LastName" type="text" name="LastName" value="@Model.LastName" class="form-control" placeholder="Enter last name.." />
+					}
+					else
+					{
+						<input asp-for="LastName" type="text" name="LastName" class="form-control" placeholder="Enter last name.." />
+					}
+					<span asp-validation-for="LastName" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="PhoneNumber"></label>
+					@if (Model.PhoneNumber != null)
+					{
+						<input asp-for="PhoneNumber" type="text" name="PhoneNumber" value="@Model.PhoneNumber" class="form-control" placeholder="Enter phone number.." />
+					}
+					else
+					{
+						<input asp-for="PhoneNumber" type="text" name="PhoneNumber" class="form-control" placeholder="Enter phone number.." />
+					}
+					<span asp-validation-for="PhoneNumber" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="Address"></label>
+					@if (Model.Address != null)
+					{
+						<input asp-for="Address" type="text" name="Address" value="@Model.Address" class="form-control" placeholder="Enter address.." />
+					}
+					else
+					{
+						<input asp-for="Address" type="text" name="Address" class="form-control" placeholder="Enter address.." />
+					}
+					<span asp-validation-for="Address" class="text-danger"></span>
+				</div>
+			</div>
+			<!-- /.card-body -->
+
+			<div class="card-footer">
+				<button type="submit" class="btn btn-primary create-button">Save Changes</button>
+			</div>
+		</form>
+	</div>
+	<!-- /.card -->
+</div>
+@section Head{
+<link rel="stylesheet" href="~/css/user.css" />
+}
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}
+
