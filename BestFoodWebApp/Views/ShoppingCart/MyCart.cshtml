@@ -42,14 +42,28 @@
 								<tr>
 									<th style="width:20%">Address:</th>
 									<td>
-										<input asp-for="Address" name="Address" placeholder="Iordan Iovkov 8.." />
+										@if (ViewBag.Address != null)
+										{
+											<input asp-for="Address" value="@ViewBag.Address" name="Address" placeholder="Enter order address.." />
+										}
+										else
+										{
+											<input asp-for="Address" name="Address" placeholder="Enter order address.." />
+										}
 										<span asp-validation-for="Address" class="text-danger"></span>
 									</td>
 								</tr>
 								<tr>
 									<th style="width:20%">Phone Number:</th>
 									<td>
-										<input asp-for="PhoneNumber" name="PhoneNumber" placeholder="089923.." />
+										@if (ViewBag.PhoneNumber != null)
+										{
+											<input asp-for="PhoneNumber" value="@ViewBag.PhoneNumber" name="PhoneNumber" placeholder="Enter phone number.." />
+										}
+										else
+										{
+											<input asp-for="PhoneNumber" name="PhoneNumber" placeholder="Enter phone number.." />
+										}
 										<span asp-validation-for="PhoneNumber" class="text-danger"></span>
 									</td>
 								</tr>

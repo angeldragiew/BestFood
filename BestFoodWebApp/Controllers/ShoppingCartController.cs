@@ -9,10 +9,13 @@ namespace BestFoodWebApp.Controllers
     {
         public const string CartSessionKey = "CartId";
         private readonly IShoppingCartService shoppingCartService;
+        private readonly IUserService userService;
 
-        public ShoppingCartController(IShoppingCartService shoppingCartService)
+        public ShoppingCartController(IShoppingCartService shoppingCartService,
+            IUserService userService)
         {
             this.shoppingCartService = shoppingCartService;
+            this.userService = userService;
         }
 
         public async Task<IActionResult> AddToCart(string id)
@@ -42,6 +45,12 @@ namespace BestFoodWebApp.Controllers
             {
                 HttpContext.Session.SetString(CartSessionKey, User.Identity.Name);
             }
+
+            var addressAndPhone = await userService.GetUserAddressAndPhoneNUmber(User.Identity.Name);
+
+            ViewBag.Address = addressAndPhone.Address;
+            ViewBag.PhoneNumber = addressAndPhone.PhoneNumber;
+
             ViewBag.CartItems = await shoppingCartService.AllAsync(HttpContext.Session.GetString(CartSessionKey));
 
             return View();
