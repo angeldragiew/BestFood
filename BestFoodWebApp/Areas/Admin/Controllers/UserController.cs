@@ -77,7 +77,7 @@ namespace BestFoodWebApp.Areas.Admin.Controllers
         {
             //await roleManager.CreateAsync(new IdentityRole()
             //{
-            //    Name = "Administrator"
+            //    Name = "User"
             //});
 
             return Ok();
