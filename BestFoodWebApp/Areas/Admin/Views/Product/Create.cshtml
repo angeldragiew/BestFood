@@ -108,7 +108,7 @@
             $.ajax({  
                 url: "/admin/Product/LoadIngredients/?categoryId="+this.value,  
                 success: function (result) {  
-                    document.getElementById("ingredients").innerHTML=result;  
+                    $("#ingredients").html(result);  
                 }  
             });  
         });  
@@ -117,7 +117,7 @@
 				$.ajax({
 					url: "/admin/Product/LoadIngredients/?categoryId=@(Model != null ? Model.CategoryId : -1)",
 					success: function (result) {
-						document.getElementById("ingredients").innerHTML=result;
+						 $("#ingredients").html(result);  
 					}
 				});
 });

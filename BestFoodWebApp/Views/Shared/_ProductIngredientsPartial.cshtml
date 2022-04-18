@@ -2,10 +2,9 @@
 
 @{
 }
-
-<label>Multiple</label>
 @if (ViewBag.ProductIngredients != null)
 {
+	<label>Ingredients</label>
 	@foreach (var ing in ViewBag.ProductIngredients)
 	{
 		<div class="form-check">
