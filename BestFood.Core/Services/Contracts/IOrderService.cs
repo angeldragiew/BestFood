@@ -16,7 +16,7 @@ namespace BestFood.Core.Services.Contracts
         Task<OrderDetailViewModel> OrderDetails(string id);
 
         Task AcceptOrder(string id);
-        Task RejectOrder(string id);
+        Task RejectOrder(RejectOrderViewModel model);
 
     }
 }

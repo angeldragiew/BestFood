@@ -1,5 +1,6 @@
 ﻿using BestFood.Core.Constants;
 using BestFood.Core.Services.Contracts;
+using BestFood.Core.ViewModels.Order;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BestFoodWebApp.Areas.Admin.Controllers
@@ -56,12 +57,17 @@ namespace BestFoodWebApp.Areas.Admin.Controllers
             return RedirectToAction("PendingOrders", "Order");
         }
 
-        [HttpGet]
-        public async Task<IActionResult> RejectOrder(string id)
+        [HttpPost]
+        public async Task<IActionResult> RejectOrder(RejectOrderViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                TempData[MessageConstant.ErrorMessage] = "Invalid Data!";
+            }
+
             try
             {
-                await orderService.RejectOrder(id);
+                await orderService.RejectOrder(model);
             }
             catch (ArgumentException ex)
             {

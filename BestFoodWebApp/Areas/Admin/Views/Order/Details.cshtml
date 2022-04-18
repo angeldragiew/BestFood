@@ -75,7 +75,23 @@
 				@if (Model.OrderStatus == OrderStatus.Pending)
 				{
 					<a href="/admin/Order/AcceptOrder/@Model.Id" class="btn btn-block bg-gradient-success btn-sm">Accept Order</a>
-					<a href="/admin/Order/RejectOrder/@Model.Id" class="btn btn-block bg-gradient-danger btn-sm">Reject Order</a>
+					@*<a href="/admin/Order/RejectOrder/@Model.Id" class="btn btn-block bg-gradient-danger btn-sm">Reject Order</a>*@
+					<button class="btn btn-block bg-gradient-danger btn-sm" id="myBtn">Reject</button>
+					<div id="myModal" class="modal">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h2>Rejection Note</h2>
+								<span class="close">&times;</span>
+							</div>
+							<div class="modal-body">
+								<form asp-action="RejectOrder" asp-controller="Order">
+									<input type="hidden" name="RejectOrderId" value="@Model.Id">
+									<textarea name="RejectOrderNote"></textarea>
+									<button class="btn btn-primary reject-button" type="submit">Reject Order</button>
+								</form>
+							</div>
+						</div>
+					</div>
 				}
 			</p>
 			<p class="d-flex flex-column text-right">
@@ -92,3 +108,5 @@
 @section Head{
 <link rel="stylesheet" href="~/css/order.css" />
 }
+
+<script src="~/js/modal.js"></script>

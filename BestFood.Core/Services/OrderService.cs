@@ -149,11 +149,11 @@ namespace BestFood.Core.Services
             await orderRepository.SaveChangesAsync();
         }
 
-        public async Task RejectOrder(string id)
+        public async Task RejectOrder(RejectOrderViewModel model)
 		{
             Order order = orderRepository
                 .All()
-                .FirstOrDefault(o => o.Id == id);
+                .FirstOrDefault(o => o.Id == model.RejectOrderId);
 
             if (order == null)
             {
@@ -161,6 +161,11 @@ namespace BestFood.Core.Services
             }
 
             order.OrderStatus = OrderStatus.Rejected;
+            if (!String.IsNullOrEmpty(model.RejectOrderNote))
+            {
+                order.Note += $"\nRejection note: {model.RejectOrderNote}";
+            }
+
             await orderRepository.SaveChangesAsync();
         }
 	}
