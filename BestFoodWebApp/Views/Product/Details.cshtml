@@ -76,7 +76,7 @@
 
 				</div>
 				<div class="card-body" style="display: block;">
-					@if (User.Identity.IsAuthenticated && !Model.Reviews.Any(r => r.ReviewUsername == User.Identity.Name))
+					@if (User.Identity.IsAuthenticated && !User.IsInRole(UserConstants.Roles.Administrator) && !Model.Reviews.Any(r => r.ReviewUsername == User.Identity.Name))
 					{
 						<div class="add-comment-section">
 							<form method="post" asp-controller="Review" asp-action="RateProduct">
