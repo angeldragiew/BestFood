@@ -1,0 +1,122 @@
+[
+    {
+        "Id": "272970b2-99e5-489e-862f-0a40115b888d",
+        "Name": "Breaded Chicken",
+        "WeightInGrams": "300",
+        "Image": "https://flaevor.com/wp-content/uploads/2020/09/SambalFriedChickenBurgerRecipe.jpg",
+        "Price": "4.50",
+        "CategoryId": "1"
+    },
+    {
+        "Id": "ce94928c-75eb-402d-a905-9ac43aa78067",
+        "Name": "Beef",
+        "WeightInGrams": "350",
+        "Image": "https://embed.widencdn.net/img/beef/tlxkgiiioj/1120x840px/lean-mean-cheeseburgers-horizotnal.tif?keep=c&u=7fueml",
+        "Price": "5",
+        "CategoryId": "1"
+    },
+    {
+        "Id": "0cac471e-e654-4afc-bbde-bd2134be8ede",
+        "Name": "Cheese With Meatball",
+        "WeightInGrams": "320",
+        "Image": "https://www.oliveandmango.com/images/uploads/2021_06_21_classic_grilled_cheeseburger_1.jpg",
+        "Price": "5",
+        "CategoryId": "1"
+    },
+    {
+        "Id": "88f9cd46-13dc-4033-8a57-151d09f24c8f",
+        "Name": "Margherita",
+        "WeightInGrams": "400",
+        "Image": "https://www.jocooks.com/wp-content/uploads/2012/03/margherita-pizza-11.jpg",
+        "Price": "8.20",
+        "CategoryId": "2"
+    },
+    {
+        "Id": "6076b0f5-75d1-4e24-85be-1a3cf3654e61",
+        "Name": "Calzone",
+        "WeightInGrams": "500",
+        "Image": "https://www.happyfoodstube.com/wp-content/uploads/2016/03/calzone-pizza-recipe.jpg",
+        "Price": "10.50",
+        "CategoryId": "2"
+    },
+    {
+        "Id": "84cbe7b0-01cf-472d-9745-509d00ca9b72",
+        "Name": "Pepperoni",
+        "WeightInGrams": "400",
+        "Image": "https://myfoodbook.com.au/sites/default/files/styles/schema_img/public/recipe_photo/pepperoni-pizza.jpg",
+        "Price": "9.40",
+        "CategoryId": "2"
+    },
+    {
+        "Id": "98e94aef-bef9-4cdf-b9db-ad946ad7a9b9",
+        "Name": "Small Chicken Doner",
+        "WeightInGrams": "200",
+        "Image": "https://www.recipetineats.com/wp-content/uploads/2017/11/Chicken-Doner-Kebab-1-SQ.jpg",
+        "Price": "3",
+        "CategoryId": "3"
+    },
+    {
+        "Id": "60b297c4-61f1-4992-8952-d09759dff272",
+        "Name": "Middle Chicken Doner",
+        "WeightInGrams": "300",
+        "Image": "https://www.recipetineats.com/wp-content/uploads/2017/11/Chicken-Doner-Kebab-1-SQ.jpg",
+        "Price": "4",
+        "CategoryId": "3"
+    },
+    {
+        "Id": "87c6bea9-31f0-4d82-94f8-4cd522b6c90f",
+        "Name": "Big Chicken Doner",
+        "WeightInGrams": "400",
+        "Image": "https://www.recipetineats.com/wp-content/uploads/2017/11/Chicken-Doner-Kebab-1-SQ.jpg",
+        "Price": "5",
+        "CategoryId": "3"
+    },
+    {
+        "Id": "f969642a-bc37-4107-871d-c5ce4d10b163",
+        "Name": "Small Pork Doner",
+        "WeightInGrams": "200",
+        "Image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/slow-cooker-lamb-kebab-1584109373.jpg",
+        "Price": "3",
+        "CategoryId": "3"
+    },
+    {
+        "Id": "576ac9e8-633f-4693-9a18-d9f88f939560",
+        "Name": "Middle Pork Doner",
+        "WeightInGrams": "300",
+        "Image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/slow-cooker-lamb-kebab-1584109373.jpg",
+        "Price": "4",
+        "CategoryId": "3"
+    },
+    {
+        "Id": "b758ca67-6daf-46d6-83d1-4d637fd25543",
+        "Name": "Big Pork Doner",
+        "WeightInGrams": "400",
+        "Image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/slow-cooker-lamb-kebab-1584109373.jpg",
+        "Price": "5",
+        "CategoryId": "3"
+    },
+    {
+        "Id": "f4bfdd80-22cb-44c6-a416-b370dc471e21",
+        "Name": "Rissoto With Meat",
+        "WeightInGrams": "300",
+        "Image": "https://embed.widencdn.net/img/beef/xsoogkvab0/1120x840px/slow-cooked-beef-risotto.eps?keep=c&u=7fueml",
+        "Price": "4.50",
+        "CategoryId": "4"
+    },
+    {
+        "Id": "d7860f6f-6d66-495c-b84c-dae0a7c3c00c",
+        "Name": "Rissoto With Vegetables",
+        "WeightInGrams": "300",
+        "Image": "https://img.taste.com.au/xNrBHHXt/taste/2016/11/chicken-and-vegetable-risotto-76118-1.jpeg",
+        "Price": "3.50",
+        "CategoryId": "4"
+    },
+    {
+        "Id": "64920379-597e-4bad-bd45-e2d2b5b7ada0",
+        "Name": "Ham And Cheese",
+        "WeightInGrams": "200",
+        "Image": "https://www.thespruceeats.com/thmb/jJqSQhrXRmVbPeihyHS-JNy5DCk=/3465x2599/smart/filters:no_upscale()/croque-monsieur-classic-french-grilled-cheese-996061-hero-01-cbf77c357af042fa89080019757916f0.jpg",
+        "Price": "3",
+        "CategoryId": "5"
+    }
+]

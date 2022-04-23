@@ -1,0 +1,344 @@
+[
+    {
+        "ProductId": "272970b2-99e5-489e-862f-0a40115b888d",
+        "IngredientId": "f6903024-2ae3-403e-b7f4-a5cf074e4af7"
+    },
+    {
+        "ProductId": "272970b2-99e5-489e-862f-0a40115b888d",
+        "IngredientId": "4e3b02ca-c436-4827-bc1d-6a283ba44a54"
+    },
+    {
+        "ProductId": "272970b2-99e5-489e-862f-0a40115b888d",
+        "IngredientId": "20f84ff4-662d-4f0a-bc66-e9170c215a2a"
+    },
+    {
+        "ProductId": "272970b2-99e5-489e-862f-0a40115b888d",
+        "IngredientId": "2a63b060-acc5-41ad-844d-31209d33fa10"
+    },
+    {
+        "ProductId": "272970b2-99e5-489e-862f-0a40115b888d",
+        "IngredientId": "0b11bbb6-0d3d-4233-8f94-c6e11f9682fb"
+    },
+    {
+        "ProductId": "272970b2-99e5-489e-862f-0a40115b888d",
+        "IngredientId": "813bde29-b392-4c16-9a3f-65734d667b08"
+    },
+
+    {
+        "ProductId": "ce94928c-75eb-402d-a905-9ac43aa78067",
+        "IngredientId": "f6903024-2ae3-403e-b7f4-a5cf074e4af7"
+    },
+    {
+        "ProductId": "ce94928c-75eb-402d-a905-9ac43aa78067",
+        "IngredientId": "f6dec5d8-15c5-4074-afa9-0b218f18a5f3"
+    },
+    {
+        "ProductId": "ce94928c-75eb-402d-a905-9ac43aa78067",
+        "IngredientId": "20f84ff4-662d-4f0a-bc66-e9170c215a2a"
+    },
+    {
+        "ProductId": "ce94928c-75eb-402d-a905-9ac43aa78067",
+        "IngredientId": "2a63b060-acc5-41ad-844d-31209d33fa10"
+    },
+    {
+        "ProductId": "ce94928c-75eb-402d-a905-9ac43aa78067",
+        "IngredientId": "0b11bbb6-0d3d-4233-8f94-c6e11f9682fb"
+    },
+    {
+        "ProductId": "ce94928c-75eb-402d-a905-9ac43aa78067",
+        "IngredientId": "813bde29-b392-4c16-9a3f-65734d667b08"
+    },
+
+    {
+        "ProductId": "0cac471e-e654-4afc-bbde-bd2134be8ede",
+        "IngredientId": "f6903024-2ae3-403e-b7f4-a5cf074e4af7"
+    },
+    {
+        "ProductId": "0cac471e-e654-4afc-bbde-bd2134be8ede",
+        "IngredientId": "53d5a668-8b04-45d3-be64-60e8ae439894"
+    },
+    {
+        "ProductId": "0cac471e-e654-4afc-bbde-bd2134be8ede",
+        "IngredientId": "20f84ff4-662d-4f0a-bc66-e9170c215a2a"
+    },
+    {
+        "ProductId": "0cac471e-e654-4afc-bbde-bd2134be8ede",
+        "IngredientId": "2a63b060-acc5-41ad-844d-31209d33fa10"
+    },
+    {
+        "ProductId": "0cac471e-e654-4afc-bbde-bd2134be8ede",
+        "IngredientId": "0b11bbb6-0d3d-4233-8f94-c6e11f9682fb"
+    },
+    {
+        "ProductId": "0cac471e-e654-4afc-bbde-bd2134be8ede",
+        "IngredientId": "813bde29-b392-4c16-9a3f-65734d667b08"
+    },
+    {
+        "ProductId": "0cac471e-e654-4afc-bbde-bd2134be8ede",
+        "IngredientId": "58fbb498-4393-41d2-a0e7-d0c364a36cc5"
+    },
+    {
+        "ProductId": "88f9cd46-13dc-4033-8a57-151d09f24c8f",
+        "IngredientId": "0ad836b1-0b01-4b4a-ba36-9ded54ebaa85"
+    },
+    {
+        "ProductId": "88f9cd46-13dc-4033-8a57-151d09f24c8f",
+        "IngredientId": "5e27ab2b-8ed1-4f3b-87bd-cc52394088b4"
+    },
+    {
+        "ProductId": "88f9cd46-13dc-4033-8a57-151d09f24c8f",
+        "IngredientId": "a3b2844c-a654-40cd-8045-e93d89826173"
+    },
+    {
+        "ProductId": "6076b0f5-75d1-4e24-85be-1a3cf3654e61",
+        "IngredientId": "0ad836b1-0b01-4b4a-ba36-9ded54ebaa85"
+    },
+    {
+        "ProductId": "6076b0f5-75d1-4e24-85be-1a3cf3654e61",
+        "IngredientId": "bb1979e9-4c7b-412c-9e84-4598bfa0524e"
+    },
+    {
+        "ProductId": "6076b0f5-75d1-4e24-85be-1a3cf3654e61",
+        "IngredientId": "c20d21eb-326f-4011-b8ba-058399d972c6"
+    },
+    {
+        "ProductId": "6076b0f5-75d1-4e24-85be-1a3cf3654e61",
+        "IngredientId": "e9bf191c-3475-4240-885c-19daba91ca80"
+    },
+    {
+        "ProductId": "6076b0f5-75d1-4e24-85be-1a3cf3654e61",
+        "IngredientId": "0b11bbb6-0d3d-4233-8f94-c6e11f9682fb"
+    },
+    {
+        "ProductId": "6076b0f5-75d1-4e24-85be-1a3cf3654e61",
+        "IngredientId": "392ff29a-68b8-4c7c-81d6-a5deb6d5a0c2"
+    },
+    {
+        "ProductId": "6076b0f5-75d1-4e24-85be-1a3cf3654e61",
+        "IngredientId": "5e27ab2b-8ed1-4f3b-87bd-cc52394088b4"
+    },
+    {
+        "ProductId": "6076b0f5-75d1-4e24-85be-1a3cf3654e61",
+        "IngredientId": "9ad3222f-77f7-4d4e-b9a3-66030e993e67"
+    },
+    {
+        "ProductId": "84cbe7b0-01cf-472d-9745-509d00ca9b72",
+        "IngredientId": "0ad836b1-0b01-4b4a-ba36-9ded54ebaa85"
+    },
+    {
+        "ProductId": "84cbe7b0-01cf-472d-9745-509d00ca9b72",
+        "IngredientId": "c20d21eb-326f-4011-b8ba-058399d972c6"
+    },
+    {
+        "ProductId": "84cbe7b0-01cf-472d-9745-509d00ca9b72",
+        "IngredientId": "5e27ab2b-8ed1-4f3b-87bd-cc52394088b4"
+    },
+    {
+        "ProductId": "84cbe7b0-01cf-472d-9745-509d00ca9b72",
+        "IngredientId": "e9bf191c-3475-4240-885c-19daba91ca80"
+    },
+    {
+        "ProductId": "98e94aef-bef9-4cdf-b9db-ad946ad7a9b9",
+        "IngredientId": "d9979ac9-3401-4257-aded-cc37edd3becb"
+    },
+    {
+        "ProductId": "98e94aef-bef9-4cdf-b9db-ad946ad7a9b9",
+        "IngredientId": "33458ae4-b21f-4c39-8dff-44e87844a6a2"
+    },
+    {
+        "ProductId": "98e94aef-bef9-4cdf-b9db-ad946ad7a9b9",
+        "IngredientId": "e7791135-4cd6-4c94-afe9-1867dc19c338"
+    },
+    {
+        "ProductId": "98e94aef-bef9-4cdf-b9db-ad946ad7a9b9",
+        "IngredientId": "20f84ff4-662d-4f0a-bc66-e9170c215a2a"
+    },
+    {
+        "ProductId": "98e94aef-bef9-4cdf-b9db-ad946ad7a9b9",
+        "IngredientId": "2a63b060-acc5-41ad-844d-31209d33fa10"
+    },
+    {
+        "ProductId": "98e94aef-bef9-4cdf-b9db-ad946ad7a9b9",
+        "IngredientId": "0b11bbb6-0d3d-4233-8f94-c6e11f9682fb"
+    },
+    {
+        "ProductId": "98e94aef-bef9-4cdf-b9db-ad946ad7a9b9",
+        "IngredientId": "b48f7dc6-4077-4bfb-8ed4-8f4e8d616908"
+    },
+    {
+        "ProductId": "60b297c4-61f1-4992-8952-d09759dff272",
+        "IngredientId": "d9979ac9-3401-4257-aded-cc37edd3becb"
+    },
+    {
+        "ProductId": "60b297c4-61f1-4992-8952-d09759dff272",
+        "IngredientId": "33458ae4-b21f-4c39-8dff-44e87844a6a2"
+    },
+    {
+        "ProductId": "60b297c4-61f1-4992-8952-d09759dff272",
+        "IngredientId": "e7791135-4cd6-4c94-afe9-1867dc19c338"
+    },
+    {
+        "ProductId": "60b297c4-61f1-4992-8952-d09759dff272",
+        "IngredientId": "20f84ff4-662d-4f0a-bc66-e9170c215a2a"
+    },
+    {
+        "ProductId": "60b297c4-61f1-4992-8952-d09759dff272",
+        "IngredientId": "2a63b060-acc5-41ad-844d-31209d33fa10"
+    },
+    {
+        "ProductId": "60b297c4-61f1-4992-8952-d09759dff272",
+        "IngredientId": "0b11bbb6-0d3d-4233-8f94-c6e11f9682fb"
+    },
+    {
+        "ProductId": "60b297c4-61f1-4992-8952-d09759dff272",
+        "IngredientId": "b48f7dc6-4077-4bfb-8ed4-8f4e8d616908"
+    },
+    {
+        "ProductId": "87c6bea9-31f0-4d82-94f8-4cd522b6c90f",
+        "IngredientId": "d9979ac9-3401-4257-aded-cc37edd3becb"
+    },
+    {
+        "ProductId": "87c6bea9-31f0-4d82-94f8-4cd522b6c90f",
+        "IngredientId": "33458ae4-b21f-4c39-8dff-44e87844a6a2"
+    },
+    {
+        "ProductId": "87c6bea9-31f0-4d82-94f8-4cd522b6c90f",
+        "IngredientId": "e7791135-4cd6-4c94-afe9-1867dc19c338"
+    },
+    {
+        "ProductId": "87c6bea9-31f0-4d82-94f8-4cd522b6c90f",
+        "IngredientId": "20f84ff4-662d-4f0a-bc66-e9170c215a2a"
+    },
+    {
+        "ProductId": "87c6bea9-31f0-4d82-94f8-4cd522b6c90f",
+        "IngredientId": "2a63b060-acc5-41ad-844d-31209d33fa10"
+    },
+    {
+        "ProductId": "87c6bea9-31f0-4d82-94f8-4cd522b6c90f",
+        "IngredientId": "0b11bbb6-0d3d-4233-8f94-c6e11f9682fb"
+    },
+    {
+        "ProductId": "87c6bea9-31f0-4d82-94f8-4cd522b6c90f",
+        "IngredientId": "b48f7dc6-4077-4bfb-8ed4-8f4e8d616908"
+    },
+    {
+        "ProductId": "f969642a-bc37-4107-871d-c5ce4d10b163",
+        "IngredientId": "d9979ac9-3401-4257-aded-cc37edd3becb"
+    },
+    {
+        "ProductId": "f969642a-bc37-4107-871d-c5ce4d10b163",
+        "IngredientId": "33458ae4-b21f-4c39-8dff-44e87844a6a2"
+    },
+    {
+        "ProductId": "f969642a-bc37-4107-871d-c5ce4d10b163",
+        "IngredientId": "c751debf-36b1-4801-af56-8c9096f34309"
+    },
+    {
+        "ProductId": "f969642a-bc37-4107-871d-c5ce4d10b163",
+        "IngredientId": "20f84ff4-662d-4f0a-bc66-e9170c215a2a"
+    },
+    {
+        "ProductId": "f969642a-bc37-4107-871d-c5ce4d10b163",
+        "IngredientId": "2a63b060-acc5-41ad-844d-31209d33fa10"
+    },
+    {
+        "ProductId": "f969642a-bc37-4107-871d-c5ce4d10b163",
+        "IngredientId": "0b11bbb6-0d3d-4233-8f94-c6e11f9682fb"
+    },
+    {
+        "ProductId": "f969642a-bc37-4107-871d-c5ce4d10b163",
+        "IngredientId": "b48f7dc6-4077-4bfb-8ed4-8f4e8d616908"
+    },
+    {
+        "ProductId": "576ac9e8-633f-4693-9a18-d9f88f939560",
+        "IngredientId": "d9979ac9-3401-4257-aded-cc37edd3becb"
+    },
+    {
+        "ProductId": "576ac9e8-633f-4693-9a18-d9f88f939560",
+        "IngredientId": "33458ae4-b21f-4c39-8dff-44e87844a6a2"
+    },
+    {
+        "ProductId": "576ac9e8-633f-4693-9a18-d9f88f939560",
+        "IngredientId": "c751debf-36b1-4801-af56-8c9096f34309"
+    },
+    {
+        "ProductId": "576ac9e8-633f-4693-9a18-d9f88f939560",
+        "IngredientId": "20f84ff4-662d-4f0a-bc66-e9170c215a2a"
+    },
+    {
+        "ProductId": "576ac9e8-633f-4693-9a18-d9f88f939560",
+        "IngredientId": "2a63b060-acc5-41ad-844d-31209d33fa10"
+    },
+    {
+        "ProductId": "576ac9e8-633f-4693-9a18-d9f88f939560",
+        "IngredientId": "0b11bbb6-0d3d-4233-8f94-c6e11f9682fb"
+    },
+    {
+        "ProductId": "576ac9e8-633f-4693-9a18-d9f88f939560",
+        "IngredientId": "b48f7dc6-4077-4bfb-8ed4-8f4e8d616908"
+    },
+    {
+        "ProductId": "b758ca67-6daf-46d6-83d1-4d637fd25543",
+        "IngredientId": "d9979ac9-3401-4257-aded-cc37edd3becb"
+    },
+    {
+        "ProductId": "b758ca67-6daf-46d6-83d1-4d637fd25543",
+        "IngredientId": "33458ae4-b21f-4c39-8dff-44e87844a6a2"
+    },
+    {
+        "ProductId": "b758ca67-6daf-46d6-83d1-4d637fd25543",
+        "IngredientId": "c751debf-36b1-4801-af56-8c9096f34309"
+    },
+    {
+        "ProductId": "b758ca67-6daf-46d6-83d1-4d637fd25543",
+        "IngredientId": "20f84ff4-662d-4f0a-bc66-e9170c215a2a"
+    },
+    {
+        "ProductId": "b758ca67-6daf-46d6-83d1-4d637fd25543",
+        "IngredientId": "2a63b060-acc5-41ad-844d-31209d33fa10"
+    },
+    {
+        "ProductId": "b758ca67-6daf-46d6-83d1-4d637fd25543",
+        "IngredientId": "0b11bbb6-0d3d-4233-8f94-c6e11f9682fb"
+    },
+    {
+        "ProductId": "b758ca67-6daf-46d6-83d1-4d637fd25543",
+        "IngredientId": "b48f7dc6-4077-4bfb-8ed4-8f4e8d616908"
+    },
+    {
+        "ProductId": "f4bfdd80-22cb-44c6-a416-b370dc471e21",
+        "IngredientId": "e7791135-4cd6-4c94-afe9-1867dc19c338"
+    },
+    {
+        "ProductId": "d7860f6f-6d66-495c-b84c-dae0a7c3c00c",
+        "IngredientId": "20f84ff4-662d-4f0a-bc66-e9170c215a2a"
+    },
+    {
+        "ProductId": "d7860f6f-6d66-495c-b84c-dae0a7c3c00c",
+        "IngredientId": "2a63b060-acc5-41ad-844d-31209d33fa10"
+    },
+    {
+        "ProductId": "d7860f6f-6d66-495c-b84c-dae0a7c3c00c",
+        "IngredientId": "b8ae6779-3469-4669-89f2-932b49d46fdc"
+    },
+    {
+        "ProductId": "d7860f6f-6d66-495c-b84c-dae0a7c3c00c",
+        "IngredientId": "0b11bbb6-0d3d-4233-8f94-c6e11f9682fb"
+    },
+    {
+        "ProductId": "64920379-597e-4bad-bd45-e2d2b5b7ada0",
+        "IngredientId": "2f723a91-bc11-4104-bb01-6d4ebbc60fc5"
+    },
+    {
+        "ProductId": "64920379-597e-4bad-bd45-e2d2b5b7ada0",
+        "IngredientId": "20f84ff4-662d-4f0a-bc66-e9170c215a2a"
+    },
+    {
+        "ProductId": "64920379-597e-4bad-bd45-e2d2b5b7ada0",
+        "IngredientId": "2a63b060-acc5-41ad-844d-31209d33fa10"
+    },
+    {
+        "ProductId": "64920379-597e-4bad-bd45-e2d2b5b7ada0",
+        "IngredientId": "58fbb498-4393-41d2-a0e7-d0c364a36cc5"
+    }
+]

@@ -1,0 +1,200 @@
+[
+
+    {
+        "Id": "0ad836b1-0b01-4b4a-ba36-9ded54ebaa85",
+        "Name": "Tomato Sauce",
+        "Type": "1"
+    },
+    {
+        "Id": "d9979ac9-3401-4257-aded-cc37edd3becb",
+        "Name": "Ketchup",
+        "Type": "1"
+    },
+    {
+        "Id": "256a3217-f445-436e-b763-26829df121c6",
+        "Name": "Mayonnaise",
+        "Type": "1"
+    },
+    {
+        "Id": "f6903024-2ae3-403e-b7f4-a5cf074e4af7",
+        "Name": "Burger Sauce",
+        "Type": "1"
+    },
+    {
+        "Id": "0f1fa492-6a74-4b89-bde7-0f8d73d66277",
+        "Name": "Chili Sauce",
+        "Type": "1"
+    },
+    {
+        "Id": "33458ae4-b21f-4c39-8dff-44e87844a6a2",
+        "Name": "Garlic Sauce",
+        "Type": "1"
+    },
+    {
+        "Id": "e4726844-83be-4631-8adb-b4e0ed0e4145",
+        "Name": "Mustard",
+        "Type": "1"
+    },
+    {
+        "Id": "2f723a91-bc11-4104-bb01-6d4ebbc60fc5",
+        "Name": "Ham",
+        "Type": "2"
+    },
+    {
+        "Id": "b372fe32-ee80-4d63-9019-9e9d9c87cd99",
+        "Name": "Ground Beef",
+        "Type": "2"
+    },
+    {
+        "Id": "bb1979e9-4c7b-412c-9e84-4598bfa0524e",
+        "Name": "Sausage",
+        "Type": "2"
+    },
+    {
+        "Id": "8b596d55-2f13-45c0-80e3-b023434a14df",
+        "Name": "Prosciutto",
+        "Type": "2"
+    },
+    {
+        "Id": "8eb5383e-2440-4075-8aab-a774351a6153",
+        "Name": "Bacon",
+        "Type": "2"
+    },
+    {
+        "Id": "c20d21eb-326f-4011-b8ba-058399d972c6",
+        "Name": "Pepperoni",
+        "Type": "2"
+    },
+    {
+        "Id": "f6dec5d8-15c5-4074-afa9-0b218f18a5f3",
+        "Name": "Beef Meatball",
+        "Type": "2"
+    },
+    {
+        "Id": "6d1898d5-e4e5-4c4e-aed5-a9208b1ccf2b",
+        "Name": "Pork Meatball",
+        "Type": "2"
+    },
+    {
+        "Id": "53d5a668-8b04-45d3-be64-60e8ae439894",
+        "Name": "Minced Meatball",
+        "Type": "2"
+    },
+    {
+        "Id": "84def27a-0f81-4532-9907-1645aa7ee027",
+        "Name": "Pork Loin",
+        "Type": "2"
+    },
+    {
+        "Id": "55fc746a-0a85-4923-a3ce-7a8beb914370",
+        "Name": "Chicken fillet",
+        "Type": "2"
+    },
+    {
+        "Id": "e7791135-4cd6-4c94-afe9-1867dc19c338",
+        "Name": "Chicken",
+        "Type": "2"
+    },
+    {
+        "Id": "c751debf-36b1-4801-af56-8c9096f34309",
+        "Name": "Pork",
+        "Type": "2"
+    },
+    {
+        "Id": "4e3b02ca-c436-4827-bc1d-6a283ba44a54",
+        "Name": "Breaded Chicken",
+        "Type": "2"
+    },
+    {
+        "Id": "68f92dc1-85aa-4876-b86a-8ed4313deaae",
+        "Name": "Cornflake Chicken",
+        "Type": "2"
+    },
+    {
+        "Id": "20f84ff4-662d-4f0a-bc66-e9170c215a2a",
+        "Name": "Tomato",
+        "Type": "3"
+    },
+    {
+        "Id": "2a63b060-acc5-41ad-844d-31209d33fa10",
+        "Name": "Cucumber",
+        "Type": "3"
+    },
+    {
+        "Id": "b8ae6779-3469-4669-89f2-932b49d46fdc",
+        "Name": "Corn",
+        "Type": "3"
+    },
+    {
+        "Id": "0b11bbb6-0d3d-4233-8f94-c6e11f9682fb",
+        "Name": "Onion",
+        "Type": "3"
+    },
+    {
+        "Id": "b48f7dc6-4077-4bfb-8ed4-8f4e8d616908",
+        "Name": "Cabbage",
+        "Type": "3"
+    },
+    {
+        "Id": "813bde29-b392-4c16-9a3f-65734d667b08",
+        "Name": "Lettuce",
+        "Type": "3"
+    },
+    {
+        "Id": "e9bf191c-3475-4240-885c-19daba91ca80",
+        "Name": "Bell Peppers",
+        "Type": "3"
+    },
+    {
+        "Id": "5bb1a785-d1f7-4c2d-9da5-cf456df1bfaa",
+        "Name": "Spicy Red Pepper",
+        "Type": "3"
+    },
+    {
+        "Id": "e9fbd357-86b4-4f6d-9368-c6434b7a318f",
+        "Name": "Arugula",
+        "Type": "3"
+    },
+    {
+        "Id": "392ff29a-68b8-4c7c-81d6-a5deb6d5a0c2",
+        "Name": "Spinach",
+        "Type": "3"
+    },
+    {
+        "Id": "a3b2844c-a654-40cd-8045-e93d89826173",
+        "Name": "Basil",
+        "Type": "3"
+    },
+    {
+        "Id": "4762b0c6-1d7f-468a-b4a9-a71d8b1c20f2",
+        "Name": "White Cheese",
+        "Type": "4"
+    },
+    {
+        "Id": "5e27ab2b-8ed1-4f3b-87bd-cc52394088b4",
+        "Name": "Mozzarella",
+        "Type": "4"
+    },
+    {
+        "Id": "71a2378d-74de-4c9a-a64b-237820a5b6b9",
+        "Name": "Parmesan",
+        "Type": "4"
+    },
+    {
+        "Id": "9ad3222f-77f7-4d4e-b9a3-66030e993e67",
+        "Name": "Cheddar",
+        "Type": "4"
+    },
+    {
+        "Id": "58fbb498-4393-41d2-a0e7-d0c364a36cc5",
+        "Name": "Yellow Cheese",
+        "Type": "4"
+    },
+    {
+        "Id": "b1b16da7-738b-4211-a5e2-b8f6f62cd986",
+        "Name": "Butter",
+        "Type": "4"
+    }
+
+
+]

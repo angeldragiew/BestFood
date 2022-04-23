@@ -57,3 +57,6 @@
         width: 90%;
         margin-left:5%;
     }
+.row{
+    justify-content:center;
+}
