@@ -13,14 +13,14 @@ namespace BestFood.Infrastructure.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "8881f953-e7cc-4d0d-8937-9a74413e60c5", "bf92c9a9-a34d-4d04-ad50-4cc3f790ccb5", "Administrator", "ADMINISTRATOR" },
-                    { "df578c9e-41dc-48e6-b352-5f4f33577c63", "1e802d12-994d-4c3f-99a0-91b8ff032857", "User", "USER" }
+                    { "8881f953-e7cc-4d0d-8937-9a74413e60c5", "df8dc182-f408-4dcd-82d7-0c6ae14ccfe3", "Administrator", "ADMINISTRATOR" },
+                    { "df578c9e-41dc-48e6-b352-5f4f33577c63", "5938b091-e31f-47d4-a92d-781a3306074c", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "Address", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "bcc9e639-b998-466b-8d67-5e7dda1dfe5a", 0, null, "472d1614-7386-4f0b-a1e8-b84723705567", "myadmin@gmail.com", false, null, null, false, null, "MYADMIN@GMAIL.COM", "MYADMIN", "AQAAAAEAACcQAAAAEMtV0yGNfGvT2o9zL9vlj1gkBYHEeLqMsKTNIXEzjwf4EizpLmjDrc1+kAohO7ZhPA==", null, false, "6bc9710e-d106-4b59-9dd2-62528314f2f9", false, "myadmin" });
+                values: new object[] { "bcc9e639-b998-466b-8d67-5e7dda1dfe5a", 0, null, "60e38fc0-ea77-4385-a95e-2cb21fceb770", "myadmin@gmail.com", false, null, null, false, null, "MYADMIN@GMAIL.COM", "MYADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAEPdGKRarAFI9aEPFvqW9OUcGqERe6Nyl5O1BN59eRnLLpBRgKTB3tmwYTC0BFYL7pg==", null, false, "3ab2869f-5246-407b-9a2e-9779a73531f4", false, "myadmin@gmail.com" });
 
             migrationBuilder.InsertData(
                 table: "Categories",

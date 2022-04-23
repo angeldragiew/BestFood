@@ -43,8 +43,8 @@ namespace BestFood.Infrastructure.Data
             var user = new ApplicationUser
             {
                 Id = "bcc9e639-b998-466b-8d67-5e7dda1dfe5a", // primary key
-                UserName = "myadmin",
-                NormalizedUserName = "MYADMIN",
+                UserName = "myadmin@gmail.com",
+                NormalizedUserName = "MYADMIN@GMAIL.COM",
                 Email = "myadmin@gmail.com",
                 NormalizedEmail = "MYADMIN@GMAIL.COM"
             };

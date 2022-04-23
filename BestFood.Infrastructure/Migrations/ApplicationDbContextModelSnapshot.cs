@@ -103,17 +103,17 @@ namespace BestFood.Infrastructure.Data.Migrations
                         {
                             Id = "bcc9e639-b998-466b-8d67-5e7dda1dfe5a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "472d1614-7386-4f0b-a1e8-b84723705567",
+                            ConcurrencyStamp = "60e38fc0-ea77-4385-a95e-2cb21fceb770",
                             Email = "myadmin@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "MYADMIN@GMAIL.COM",
-                            NormalizedUserName = "MYADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMtV0yGNfGvT2o9zL9vlj1gkBYHEeLqMsKTNIXEzjwf4EizpLmjDrc1+kAohO7ZhPA==",
+                            NormalizedUserName = "MYADMIN@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPdGKRarAFI9aEPFvqW9OUcGqERe6Nyl5O1BN59eRnLLpBRgKTB3tmwYTC0BFYL7pg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6bc9710e-d106-4b59-9dd2-62528314f2f9",
+                            SecurityStamp = "3ab2869f-5246-407b-9a2e-9779a73531f4",
                             TwoFactorEnabled = false,
-                            UserName = "myadmin"
+                            UserName = "myadmin@gmail.com"
                         });
                 });
 
@@ -1607,14 +1607,14 @@ namespace BestFood.Infrastructure.Data.Migrations
                         new
                         {
                             Id = "8881f953-e7cc-4d0d-8937-9a74413e60c5",
-                            ConcurrencyStamp = "bf92c9a9-a34d-4d04-ad50-4cc3f790ccb5",
+                            ConcurrencyStamp = "df8dc182-f408-4dcd-82d7-0c6ae14ccfe3",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "df578c9e-41dc-48e6-b352-5f4f33577c63",
-                            ConcurrencyStamp = "1e802d12-994d-4c3f-99a0-91b8ff032857",
+                            ConcurrencyStamp = "5938b091-e31f-47d4-a92d-781a3306074c",
                             Name = "User",
                             NormalizedName = "USER"
                         });
