@@ -78,7 +78,7 @@ namespace BestFood.Core.Services
 
             if (ingredient == null)
             {
-                throw new AggregateException("Unknown ingredient!");
+                throw new ArgumentException("Unknown ingredient!");
             }
 
             ingredient.Name = model.Name;
@@ -115,7 +115,7 @@ namespace BestFood.Core.Services
 
             if (product == null)
             {
-                throw new ArgumentException("Unknown product!");
+                throw new ArgumentException("Unknown ingredient!");
             }
 
             return product;
@@ -150,6 +150,7 @@ namespace BestFood.Core.Services
                 })
                 .ToListAsync();
         }
+
 
         public void SaveSubmittedCategoryValues(IEnumerable<IngredientCategoryViewModel> categories, IList<int> categoryIds)
         {
