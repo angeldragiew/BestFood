@@ -86,7 +86,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 							<img src="~/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
 						</div>
 						<div class="info">
-							<a href="#" class="d-block">@User.Identity?.Name</a>
+							<a href="/User/MyProfile" class="d-block">@(User.Identity?.Name.Split("@")[0])</a>
 						</div>
 					</div>
 				}
