@@ -105,7 +105,7 @@ namespace BestFood.Tests
             var service = serviceProvider.GetService<IIngredientService>();
             var repo = serviceProvider.GetService<IRepository<Ingredient>>();
 
-            service.Delete("64b1ab46-d9e5-4cb0-bb3b-cce5ecf2e778");
+            await service.Delete("64b1ab46-d9e5-4cb0-bb3b-cce5ecf2e778");
 
             Assert.That(repo.All().Any(c => c.Id == "64b1ab46-d9e5-4cb0-bb3b-cce5ecf2e778") == false);
         }
@@ -135,7 +135,7 @@ namespace BestFood.Tests
             {
                 Id = "64b1ab46-d9e5-4cb0-bb3b-cce5ecf2e778",
                 Name = "EditedIngredient",
-                Type = IngredientType.Sauce,
+                Type = IngredientType.Meat,
                 CategoryIds = new List<int>() { 1 }
             };
 
@@ -143,9 +143,7 @@ namespace BestFood.Tests
 
             var editedIngredient = repo.All().FirstOrDefault(i => i.Id == "64b1ab46-d9e5-4cb0-bb3b-cce5ecf2e778");
 
-            Assert.That(editedIngredient.CategoryIngredients.Any(ci => ci.CategoryId == 1));
-            Assert.That(editedIngredient.CategoryIngredients.Any(ci => ci.CategoryId == 2) == false);
-            Assert.That(editedIngredient.Type == editIngredientViewModel.Type);
+            Assert.AreEqual(editIngredientViewModel.Name, editedIngredient.Name);
         }
 
         [Test]
@@ -158,7 +156,7 @@ namespace BestFood.Tests
             {
                 Id = "64b1ab46-d9e5-4cb0-bb3b-cce5ecf2e778",
                 Name = "EditedIngredient",
-                Type = IngredientType.Meat,
+                Type = IngredientType.Sauce,
                 CategoryIds = new List<int>() { 1 }
             };
 
@@ -166,7 +164,9 @@ namespace BestFood.Tests
 
             var editedIngredient = repo.All().FirstOrDefault(i => i.Id == "64b1ab46-d9e5-4cb0-bb3b-cce5ecf2e778");
 
-            Assert.AreEqual(editIngredientViewModel.Name, editedIngredient.Name);
+            Assert.That(editedIngredient.CategoryIngredients.Any(ci => ci.CategoryId == 1));
+            Assert.That(editedIngredient.CategoryIngredients.Any(ci => ci.CategoryId == 2) == false);
+            Assert.That(editedIngredient.Type == editIngredientViewModel.Type);
         }
 
         [Test]
