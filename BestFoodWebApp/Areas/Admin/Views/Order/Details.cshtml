@@ -65,7 +65,14 @@
 					<span class="font-weight-bold">
 						<i class="fas fa-sticky-note text-danger"></i>
 					</span>
-					<span class="text-muted">NOTE</span>
+					@if (Model.OrderStatus == OrderStatus.Rejected)
+					{
+						<span class="text-muted">REJECTION NOTE</span>
+					}
+					else
+					{
+						<span class="text-muted">NOTE</span>
+					}
 				</p>
 			</div>
 		}
@@ -109,4 +116,6 @@
 <link rel="stylesheet" href="~/css/order.css" />
 }
 
+@section Scripts{
 <script src="~/js/modal.js"></script>
+}

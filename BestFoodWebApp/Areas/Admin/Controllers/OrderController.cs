@@ -62,7 +62,8 @@ namespace BestFoodWebApp.Areas.Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
-                TempData[MessageConstant.ErrorMessage] = "Invalid Data!";
+                TempData[MessageConstant.ErrorMessage] = String.Join("; ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
+                return RedirectToAction("Details", "Order", new { id = model.RejectOrderId });
             }
 
             try

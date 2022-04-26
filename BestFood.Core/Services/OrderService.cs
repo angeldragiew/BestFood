@@ -163,7 +163,7 @@ namespace BestFood.Core.Services
             order.OrderStatus = OrderStatus.Rejected;
             if (!String.IsNullOrEmpty(model.RejectOrderNote))
             {
-                order.Note += $"\nRejection note: {model.RejectOrderNote}";
+                order.Note =$"{model.RejectOrderNote}";
             }
 
             await orderRepository.SaveChangesAsync();

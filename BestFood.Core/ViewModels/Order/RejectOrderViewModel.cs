@@ -11,7 +11,7 @@ namespace BestFood.Core.ViewModels.Order
     {
         public string RejectOrderId { get; set; }
 
-        [MaxLength(300)]
+        [StringLength(300, MinimumLength = 5)]
         public string RejectOrderNote { get; set; }
     }
 }
