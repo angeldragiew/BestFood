@@ -186,7 +186,6 @@ namespace BestFood.Core.Services
                 {
                     CategoryId = c.Id,
                     CategoryName = c.Name,
-                    IsSelected = false
                 })
                 .ToListAsync();
         }
