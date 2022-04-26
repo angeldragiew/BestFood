@@ -13,21 +13,18 @@ namespace BestFood.Core.Services
         private readonly IRepository<Ingredient> ingredientRepo;
         private readonly IRepository<Product> productRepo;
         private readonly IRepository<ProductIngredient> productIngredientRepo;
-        private readonly IRepository<ApplicationUser> userRepo;
         private readonly IRepository<Review> reviewRepo;
 
         public ProductService(IRepository<Category> categoryRepo,
             IRepository<Ingredient> ingredientRepo,
             IRepository<Product> productRepo,
             IRepository<ProductIngredient> productIngredientRepo,
-            IRepository<ApplicationUser> userRepo,
             IRepository<Review> reviewRepo)
         {
             this.categoryRepo = categoryRepo;
             this.ingredientRepo = ingredientRepo;
             this.productRepo = productRepo;
             this.productIngredientRepo = productIngredientRepo;
-            this.userRepo = userRepo;
             this.reviewRepo = reviewRepo;
         }
 
