@@ -25,7 +25,7 @@ namespace BestFoodWebApp.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            ViewBag.Categories = await productService.LoadCategoriesForCreate();
+            ViewBag.Categories = await productService.LoadCategories();
             return View();
         }
 
@@ -40,7 +40,7 @@ namespace BestFoodWebApp.Areas.Admin.Controllers
             if (!ModelState.IsValid)
             {
                 TempData[MessageConstant.ErrorMessage] = "Invalid data!";
-                ViewBag.Categories = await productService.LoadCategoriesForCreate();
+                ViewBag.Categories = await productService.LoadCategories();
                 return View(model);
             }
 
@@ -62,7 +62,7 @@ namespace BestFoodWebApp.Areas.Admin.Controllers
             try
             {
                 EditProductViewModel model = await productService.FindById(id);
-                ViewBag.Categories = await productService.LoadCategoriesForCreate();
+                ViewBag.Categories = await productService.LoadCategories();
                 return View(model);
             }
             catch (ArgumentNullException ex)
@@ -83,7 +83,7 @@ namespace BestFoodWebApp.Areas.Admin.Controllers
             if (!ModelState.IsValid)
             {
                 TempData[MessageConstant.ErrorMessage] = "Invalid data!";
-                ViewBag.Categories = await productService.LoadCategoriesForCreate();
+                ViewBag.Categories = await productService.LoadCategories();
                 return View(model);
             }
 

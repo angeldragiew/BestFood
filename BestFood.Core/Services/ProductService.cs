@@ -68,7 +68,7 @@ namespace BestFood.Core.Services
 
             if (product == null)
             {
-                throw new ArgumentNullException("Unknown product");
+                throw new ArgumentNullException("Unknown product!");
             }
 
             return product;
@@ -116,7 +116,7 @@ namespace BestFood.Core.Services
 
             if (product == null)
             {
-                throw new ArgumentException("Unknown ingredient!");
+                throw new ArgumentException("Unknown product!");
             }
 
             productRepo.Delete(product);
@@ -159,7 +159,7 @@ namespace BestFood.Core.Services
 
         public async Task<EditProductViewModel> FindById(string id)
         {
-            EditProductViewModel ingredient = await productRepo.All().Select(p => new EditProductViewModel()
+            EditProductViewModel product = await productRepo.All().Select(p => new EditProductViewModel()
             {
                 Id = p.Id,
                 Name = p.Name,
@@ -170,15 +170,15 @@ namespace BestFood.Core.Services
                 IngredientIds = p.ProductsIngredients.Select(pc => pc.IngredientId).ToArray()
             }).FirstOrDefaultAsync(e => e.Id == id);
 
-            if (ingredient == null)
+            if (product == null)
             {
-                throw new ArgumentException("Unknown ingredient!");
+                throw new ArgumentException("Unknown product!");
             }
 
-            return ingredient;
+            return product;
         }
 
-        public async Task<IEnumerable<ProductCategoryViewModel>> LoadCategoriesForCreate()
+        public async Task<IEnumerable<ProductCategoryViewModel>> LoadCategories()
         {
             return await categoryRepo
                 .All()

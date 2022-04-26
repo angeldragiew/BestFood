@@ -19,7 +19,7 @@ namespace BestFood.Core.Services.Contracts
 
         Task<EditProductViewModel> FindById(string id);
 
-        Task<IEnumerable<ProductCategoryViewModel>> LoadCategoriesForCreate();
+        Task<IEnumerable<ProductCategoryViewModel>> LoadCategories();
 
         Task<IEnumerable<ProductIngredientViewModel>> LoadIngredients(int id);
         Task<IEnumerable<ProductIngredientViewModel>> LoadIngredients(int id, string productId);
