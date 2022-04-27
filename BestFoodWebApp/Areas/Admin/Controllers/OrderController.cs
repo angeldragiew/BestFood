@@ -15,9 +15,9 @@ namespace BestFoodWebApp.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> PendingOrders()
+        public async Task<IActionResult> PendingOrders(int p = 1, int s = 10)
         {
-            var pendingOrders = await orderService.AllPendingOrders();
+            var pendingOrders = await orderService.AllPendingOrders(p, s);
             return View(pendingOrders);
         }
 
@@ -37,9 +37,9 @@ namespace BestFoodWebApp.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> All()
+        public async Task<IActionResult> All(int p = 1, int s = 10)
         {
-            var orders = await orderService.All();
+            var orders = await orderService.All(p, s);
             return View(orders);
         }
 

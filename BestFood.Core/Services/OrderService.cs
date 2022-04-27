@@ -22,11 +22,19 @@ namespace BestFood.Core.Services
             this.orderRepository = orderRepository;
         }
 
-		public async Task<IEnumerable<OrderViewModel>> All()
-		{
-            return await orderRepository
+        public async Task<OrderListViewModel> All(int pageNo, int pageSize)
+        {
+            OrderListViewModel result = new OrderListViewModel()
+            {
+                PageNo = pageNo,
+                PageSize = pageSize
+            };
+
+            result.TotalRecords = await orderRepository.All().CountAsync();
+
+            result.Orders = await orderRepository
                 .All()
-                .OrderByDescending(o=>o.CreationDate)
+                .OrderByDescending(o => o.CreationDate)
                 .Select(o => new OrderViewModel()
                 {
                     Id = o.Id,
@@ -34,12 +42,28 @@ namespace BestFood.Core.Services
                     CreationDate = o.CreationDate.ToString("dd.MM.yyyy HH:mm"),
                     OrderStatus = o.OrderStatus,
                     PhoneNumber = o.PhoneNumber
-                }).ToListAsync();
+                })
+                .Skip(pageNo * pageSize - pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return result;
         }
 
-        public async Task<IEnumerable<OrderViewModel>> AllPendingOrders()
+        public async Task<OrderListViewModel> AllPendingOrders(int pageNo, int pageSize)
         {
-            return await orderRepository
+            OrderListViewModel result = new OrderListViewModel()
+            {
+                PageNo = pageNo,
+                PageSize = pageSize
+            };
+
+            result.TotalRecords = await orderRepository
+                .All()
+                .Where(o => o.OrderStatus == OrderStatus.Pending)
+                .CountAsync();
+
+            result.Orders = await orderRepository
                 .All()
                 .OrderByDescending(o => o.CreationDate)
                 .Where(o => o.OrderStatus == OrderStatus.Pending)
@@ -50,7 +74,12 @@ namespace BestFood.Core.Services
                     CreationDate = o.CreationDate.ToString("dd.MM.yyyy HH: mm"),
                     OrderStatus = o.OrderStatus,
                     PhoneNumber = o.PhoneNumber
-                }).ToListAsync();
+                })
+                .Skip(pageNo * pageSize - pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return result;
         }
 
         public async Task<IEnumerable<OrderDetailViewModel>> AllUserOrders(string userName)
@@ -116,8 +145,8 @@ namespace BestFood.Core.Services
                 .All()
                 .FirstOrDefaultAsync(o => o.Id == id);
 
-			if (order == null)
-			{
+            if (order == null)
+            {
                 throw new ArgumentException("Unknown order!");
             }
             OrderDetailViewModel orderDetails = new OrderDetailViewModel()
@@ -150,7 +179,7 @@ namespace BestFood.Core.Services
         }
 
         public async Task RejectOrder(RejectOrderViewModel model)
-		{
+        {
             Order order = orderRepository
                 .All()
                 .FirstOrDefault(o => o.Id == model.RejectOrderId);
@@ -163,10 +192,10 @@ namespace BestFood.Core.Services
             order.OrderStatus = OrderStatus.Rejected;
             if (!String.IsNullOrEmpty(model.RejectOrderNote))
             {
-                order.Note =$"{model.RejectOrderNote}";
+                order.Note = $"{model.RejectOrderNote}";
             }
 
             await orderRepository.SaveChangesAsync();
         }
-	}
+    }
 }

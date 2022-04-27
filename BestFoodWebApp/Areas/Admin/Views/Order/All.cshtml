@@ -3,82 +3,98 @@
 @{
 }
 
-@model IEnumerable<OrderViewModel>
+@model OrderListViewModel
 
-<div class="card">
-	<div class="card-header">
-		<h3 class="card-title">All Orders</h3>
+<div class="card card-success">
+	<div class="card-body">
+		@if (Model.Orders == null || Model.Orders.Count() == 0)
+		{
+			<h3 style="text-align:center">No pending orders</h3>
+		}
+		else
+		{
+			<div class="card">
+				<div class="card-header">
+					<h3 class="card-title">All Orders</h3>
+				</div>
+				<div class="card-body p-0">
+					<table class="table table-striped projects" style="height:10px !important">
+						<thead>
+							<tr>
+								<th style="width: 1%">
+									#
+								</th>
+								<th style="width: 35%">
+									Order Id
+								</th>
+								<th style="width: 20%">
+									Address
+								</th>
+								<th>
+									Phone Number
+								</th>
+								<th style="width: 8%" class="text-center">
+									Status
+								</th>
+								<th style="width: 17%">
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (var order in Model.Orders)
+							{
+								<tr>
+									<td>
+										#
+									</td>
+									<td>
+										<a>
+											@order.Id
+										</a>
+										<br>
+										<small>
+											Created @order.CreationDate
+										</small>
+									</td>
+									<td>
+										@order.Address
+									</td>
+									<td>
+										@order.PhoneNumber
+									</td>
+									<td class="project-state">
+										@if (order.OrderStatus == OrderStatus.Pending)
+										{
+											<span class="badge badge-warning">@order.OrderStatus</span>
+										}
+										else if (order.OrderStatus == OrderStatus.Accepted)
+										{
+											<span class="badge badge-success">@order.OrderStatus</span>
+										}
+										else
+										{
+											<span class="badge badge-danger">@order.OrderStatus</span>
+										}
+
+									</td>
+									<td class="project-actions text-right">
+										<a class="btn btn-primary btn-sm" href="/admin/Order/Details/@order.Id">
+											<i class="fas fa-info-circle"></i>
+											View Order Info
+										</a>
+									</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		}
+		<paging page-no="@Model.PageNo"
+				page-size="@Model.PageSize"
+				total-records="@Model.TotalRecords"
+				page-size-dropdown-items="5-10-25">
+		</paging>
 	</div>
-	<div class="card-body p-0">
-		<table class="table table-striped projects" style="height:10px !important">
-			<thead>
-				<tr>
-					<th style="width: 1%">
-						#
-					</th>
-					<th style="width: 35%">
-						Order Id
-					</th>
-					<th style="width: 20%">
-						Address
-					</th>
-					<th>
-						Phone Number
-					</th>
-					<th style="width: 8%" class="text-center">
-						Status
-					</th>
-					<th style="width: 17%">
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach (var order in Model)
-				{
-					<tr>
-						<td>
-							#
-						</td>
-						<td>
-							<a>
-								@order.Id
-							</a>
-							<br>
-							<small>
-								Created @order.CreationDate
-							</small>
-						</td>
-						<td>
-							@order.Address
-						</td>
-						<td>
-							@order.PhoneNumber
-						</td>
-						<td class="project-state">
-							@if (order.OrderStatus == OrderStatus.Pending)
-							{
-								<span class="badge badge-warning">@order.OrderStatus</span>
-							}
-							else if (order.OrderStatus == OrderStatus.Accepted)
-							{
-								<span class="badge badge-success">@order.OrderStatus</span>
-							}
-							else
-							{
-								<span class="badge badge-danger">@order.OrderStatus</span>
-							}
-
-						</td>
-						<td class="project-actions text-right">
-							<a class="btn btn-primary btn-sm" href="/admin/Order/Details/@order.Id">
-								<i class="fas fa-info-circle"></i>
-								View Order Info
-							</a>
-						</td>
-					</tr>
-				}
-			</tbody>
-		</table>
-	</div>
-
 </div>
+
