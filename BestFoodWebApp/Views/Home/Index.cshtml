@@ -1,8 +1,47 @@
 ﻿@{
-    ViewData["Title"] = "Home";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <img class="home-image" src = "https://wallpapercave.com/wp/wp1929358.jpg"/>
+	<div class="homepage-head">
+		<h1 class="display-4">Welcome to BestFood</h1>
+		<h3 class="display-8">We won't leave you hungry!</h3>
+	</div>
+	<img class="home-image" src="https://wallpapercave.com/wp/wc1813154.jpg" />
+	<div class="info-block">
+		<h2 class="display-4">How To Order</h2>
+		<div class="orderSteps">
+			<i class="order-steps-icon far fa-user"></i>
+			<p class="orderSteps-head">REGISTER</p>
+			<p class="orderSteps-bottom">or login into your account</p>
+		</div>
+		<div class="orderSteps">
+			<i class="order-steps-icon fas fa-shopping-cart"></i>
+			<p class="orderSteps-head">ADD TO CART</p>
+			<p class="orderSteps-bottom">products that you want to order</p>
+		</div>
+		<div class="orderSteps">
+			<i class="order-steps-icon fas fa-map-marker-alt"></i>
+			<p class="orderSteps-head">IN ORDER PAGE</p>
+			<p class="orderSteps-bottom">provide your address and phone number</p>
+		</div>
+	</div>
+	<div class="contacts-block">
+		<div class="contacts">
+			<span><i class="fas fa-phone"></i> 0899381224</span>
+		</div>
+		<div class="contacts">
+			<span><i class="fas fa-envelope"></i></i> bestfood@gmail.com</span>
+		</div>
+		<div class="contacts">
+			<span><i class="fab fa-facebook-f"></i></i> Best Food</span>
+		</div>
+		<div class="contacts">
+			<span><i class="fab fa-instagram"></i></i></i> BestFood_Bg</span>
+		</div>
+	</div>
 </div>
+
+
+@section Head{
+<link rel="stylesheet" href="~/css/homePage.css" type="text/css" runat="server" />
+	}

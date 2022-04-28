@@ -1,6 +1,7 @@
 ﻿@using BestFood.Core.ViewModels.Order
 @using BestFood.Infrastructure.Enums
 @{
+	ViewData["Title"] = "All Orders";
 }
 
 @model OrderListViewModel
@@ -9,7 +10,7 @@
 	<div class="card-body">
 		@if (Model.Orders == null || Model.Orders.Count() == 0)
 		{
-			<h3 style="text-align:center">No pending orders</h3>
+			<h3 style="text-align:center">No order history..</h3>
 		}
 		else
 		{

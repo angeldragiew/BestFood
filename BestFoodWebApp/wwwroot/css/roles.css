@@ -1,0 +1,24 @@
+﻿.card-title {
+    font-size: 1.5em;
+    color: #454545;
+}
+.card-header {
+    border-top: 5px solid #454545;
+    background-color: white !important;
+}
+
+.save-button {
+    background-color: #454545;
+    border: none;
+    width: 30%;
+}
+
+    .save-button:hover {
+        background-color: black;
+    }
+
+.role-form {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}

@@ -13,6 +13,10 @@ html {
     min-height: 100%;
 }
 
+.card-success {
+    /*border: 3px solid #EFEFEF !important;*/
+    /*border-radius:0px !important;*/
+}
 
 .home-image {
     width: 100%;
@@ -23,7 +27,11 @@ html {
 }
 
 .content-header {
-    text-align: center ;
+    text-align: center;
+    background-color: #D83B00;
+    color: white;
+    font-family: 'Fantasy', monospace;
+    margin-bottom: 10px;
 }
 
 .content-wrapper {

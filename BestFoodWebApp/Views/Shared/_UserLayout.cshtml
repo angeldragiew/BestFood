@@ -122,13 +122,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
-			<div class="content-header">
-				<h1 class="current-page-title">@ViewData["Title"]</h1>
-			</div>
+			@if (@ViewData["Title"] != null)
+			{
+				<div class="content-header">
+					<h1 class="current-page-title">@ViewData["Title"]</h1>
+				</div>
+			}
 			<!-- /.content-header -->
 			<!-- Main content -->
-			<div class="content">
-				<div class="container-fluid">
+			<div class="">
+				<div class="">
 					@RenderBody()
 				</div><!-- /.container-fluid -->
 			</div>

@@ -1,0 +1,71 @@
+﻿.homepage-head {
+    background-color: #D83B00;
+    padding: 40px;
+    min-height: 250px;
+    /*-webkit-clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 25%, 75% 0);*/
+    clip-path: polygon(0 0, 0 50%, 0 100%, 245% 0%, 0 0);
+    font-family: 'Fantasy', monospace;
+    color: rgb(244,246,249);
+}
+/*h1 {
+    font-family: 'Fantasy', monospace;
+    color:rgb(244,246,249);
+}*/
+
+.home-image {
+    height: 500px;
+    object-fit: cover;
+    margin-top:-125px;
+}
+
+.info-block {
+    padding: 15px;
+    height: 280px;
+    background-color: #FFFFFF;
+    font-family: 'Fantasy', monospace;
+    color: #D83B00;
+}
+
+.orderSteps {
+    width: 27%;
+    display: inline-block;
+    margin-top:20px;
+}
+
+.orderSteps-head {
+    font-size: 1.8em;
+    margin-bottom: 3px;
+}
+
+.orderSteps-bottom {
+    font-size: 1em;
+    color: #454545;
+    margin-top:0px;
+}
+
+.order-steps-icon {
+    color: #454545;
+    font-size:2.8em;
+    margin-bottom:2px;
+}
+
+
+.contacts-block {
+    padding: 15px;
+    height: 90px;
+    background-color: #D83B00;
+    font-family: 'Fantasy', monospace;
+    color: #FFFFFF;
+    font-size:0.9em;
+}
+
+.contacts {
+    width: 23%;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+    .contacts span i {
+        color: #FFFFFF;
+    }
+

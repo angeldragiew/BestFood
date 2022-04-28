@@ -3,11 +3,13 @@
 
 @{
 	string currentUserReviewId = "";
-	var currentUserReview = Model.Reviews.FirstOrDefault(r=>r.ReviewUsername==User.Identity.Name);
+	var currentUserReview = Model.Reviews.FirstOrDefault(r => r.ReviewUsername == User.Identity.Name);
 	if (currentUserReview != null)
 	{
-	 currentUserReviewId = currentUserReview.ReviewId;
+		currentUserReviewId = currentUserReview.ReviewId;
 	}
+
+	ViewData["Title"] = "Product Details";
 }
 
 @model ProductDetailsViewModel
@@ -95,44 +97,55 @@
 							</form>
 						</div>
 					}
-					@foreach (var review in Model.Reviews)
+					@if (Model.Reviews.Count() == 0 || Model.Reviews == null)
 					{
-						@if (review.ReviewUsername == User.Identity.Name)
+						<div class="comment">
+							<h4>No reviews yet..</h4>
+						</div>
+					}
+					else
+					{
+
+
+						@foreach (var review in Model.Reviews)
 						{
-							<div class="comment" id="current-user-review">
-								<div class="btn-group product-review-action-buttons">
-									<button type="button" data-toggle="dropdown" aria-expanded="false">
-										<i class="fas fa-ellipsis-h"></i>
-									</button>
-									<ul class="dropdown-menu" style="">
-										<li value="@review.ReviewId" id="edit-review" class="dropdown-item">Edit</li>
-										<li><a class="dropdown-item" href="/Review/Delete/?reviewId=@review.ReviewId&productId=@Model.Id">Delete</a></li>
-									</ul>
+							@if (review.ReviewUsername == User.Identity.Name)
+							{
+								<div class="comment" id="current-user-review">
+									<div class="btn-group product-review-action-buttons">
+										<button type="button" data-toggle="dropdown" aria-expanded="false">
+											<i class="fas fa-ellipsis-h"></i>
+										</button>
+										<ul class="dropdown-menu" style="">
+											<li value="@review.ReviewId" id="edit-review" class="dropdown-item">Edit</li>
+											<li><a class="dropdown-item" href="/Review/Delete/?reviewId=@review.ReviewId&productId=@Model.Id">Delete</a></li>
+										</ul>
+									</div>
+									<h4>@review.ReviewUsername</h4>
+									<span>
+										@for (int i = 0; i < review.ReviewRating; i++)
+										{
+											<i class="fas fa-star"></i>
+										}
+										@review.Date
+									</span>
+									<p>@review.Text</p>
 								</div>
-								<h4>@review.ReviewUsername</h4>
-								<span>
-									@for (int i = 0; i < review.ReviewRating; i++)
-									{
-										<i class="fas fa-star"></i>
-									}
-									@review.Date
-								</span>
-								<p>@review.Text</p>
-							</div>
-						}
-						else
-						{
-							<div class="comment">
-								<h4>@review.ReviewUsername</h4>
-								<span>
-									@for (int i = 0; i < review.ReviewRating; i++)
-									{
-										<i class="fas fa-star"></i>
-									}
-									@review.Date
-								</span>
-								<p>@review.Text</p>
-							</div>
+							}
+							else
+							{
+								<div class="comment">
+									<h4>@review.ReviewUsername</h4>
+									<span>
+										@for (int i = 0; i < review.ReviewRating; i++)
+										{
+											<i class="fas fa-star"></i>
+										}
+										@review.Date
+									</span>
+									<p>@review.Text</p>
+								</div>
+							}
 						}
 					}
 				</div>
