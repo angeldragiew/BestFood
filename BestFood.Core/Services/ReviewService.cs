@@ -10,13 +10,16 @@ namespace BestFood.Core.Services
     {
         private readonly IRepository<ApplicationUser> userRepo;
         private readonly IRepository<Review> reviewRepo;
+        private readonly IRepository<Product> productRepo;
 
         public ReviewService(
             IRepository<ApplicationUser> userRepo,
-            IRepository<Review> reviewRepo)
+            IRepository<Review> reviewRepo,
+            IRepository<Product> productRepo)
         {
             this.userRepo = userRepo;
             this.reviewRepo = reviewRepo;
+            this.productRepo = productRepo;
         }
 
         public async Task Delete(string id)
@@ -52,7 +55,7 @@ namespace BestFood.Core.Services
                 Id = e.Id,
                 Text = e.Text,
                 Rating = e.Rating,
-                ProductId=e.ProductId
+                ProductId = e.ProductId
             }).FirstOrDefaultAsync(e => e.Id == id);
 
             if (review == null)
@@ -66,11 +69,23 @@ namespace BestFood.Core.Services
 
         public async Task RateProdcutAsync(CreateReviewViewModel model, string username)
         {
+            var user = userRepo
+                           .All()
+                           .FirstOrDefault(u => u.UserName == username);
+
+            if (user == null)
+            {
+                throw new ArgumentNullException("Unknown user!");
+            }
+
+            if (productRepo.All().Any(p => p.Id == model.ProductId) == false)
+            {
+                throw new ArgumentNullException("Unknown product id!");
+            }
+
             Review review = new Review()
             {
-                ApplicationUserId = userRepo
-                                    .All()
-                                    .FirstOrDefault(u => u.UserName == username).Id,
+                ApplicationUserId = user.Id,
                 Text = model.Text,
                 Rating = model.Rating,
                 ProductId = model.ProductId,
