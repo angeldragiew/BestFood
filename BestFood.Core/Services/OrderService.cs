@@ -174,6 +174,12 @@ namespace BestFood.Core.Services
                 throw new ArgumentException("Unknown order");
             }
 
+            if(order.OrderStatus != OrderStatus.Pending)
+            {
+                throw new ArgumentException("Order has been already processed!");
+            }
+
+
             order.OrderStatus = OrderStatus.Accepted;
             await orderRepository.SaveChangesAsync();
         }
@@ -189,11 +195,13 @@ namespace BestFood.Core.Services
                 throw new ArgumentException("Unknown order");
             }
 
-            order.OrderStatus = OrderStatus.Rejected;
-            if (!String.IsNullOrEmpty(model.RejectOrderNote))
+            if (order.OrderStatus != OrderStatus.Pending)
             {
-                order.Note = $"{model.RejectOrderNote}";
+                throw new ArgumentException("Order has been already processed!");
             }
+
+            order.OrderStatus = OrderStatus.Rejected;
+            order.Note = $"{model.RejectOrderNote}";
 
             await orderRepository.SaveChangesAsync();
         }
