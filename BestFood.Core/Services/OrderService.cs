@@ -109,7 +109,7 @@ namespace BestFood.Core.Services
                 .Where(c => c.CartId == shoppingCartId)
                 .ToListAsync();
 
-            if (cartItems == null || cartItems.Count == 0)
+            if (cartItems.Count == 0)
             {
                 throw new ArgumentException("Cart is emtpy!");
             }
