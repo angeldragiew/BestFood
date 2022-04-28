@@ -11,7 +11,7 @@ using NUnit.Framework;
 
 namespace BestFood.Tests
 {
-    public class Tests
+    public class CategoryServiceTests
     {
         private ServiceProvider serviceProvider;
         private InMemoryDbContext dbContext;
