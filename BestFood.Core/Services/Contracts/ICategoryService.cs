@@ -10,5 +10,7 @@ namespace BestFood.Core.Services.Contracts
 
         Task Delete(int id);
         Task<EditCategoryViewModel> FindById(int id);
+
+        Task<string> GetCategoryNameById(int id);
 	}
 }

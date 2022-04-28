@@ -84,5 +84,18 @@ namespace BestFood.Core.Services
 
             return category;
         }
+
+        public async Task<string> GetCategoryNameById(int id)
+        {
+            var categoy =  await repo
+                .All()
+                .FirstOrDefaultAsync(c => c.Id == id);
+            if(categoy == null)
+            {
+                return null;
+            }
+
+            return categoy.Name;
+        }
     }
 }
