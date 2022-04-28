@@ -8,15 +8,18 @@ namespace BestFoodWebApp.Controllers
     public class ProductController : Controller
     {
         private readonly IProductService productService;
-
-        public ProductController(IProductService productService)
+        private readonly ICategoryService categoryService;
+        public ProductController(IProductService productService,
+            ICategoryService categoryService)
         {
             this.productService = productService;
+            this.categoryService=categoryService;
         }
 
         [HttpGet]
         public async Task<IActionResult> All(int id)
         {
+            ViewBag.CategoryName = await categoryService.GetCategoryNameById(id);
             var products = await productService.All(id);
             return View(products);
         }
