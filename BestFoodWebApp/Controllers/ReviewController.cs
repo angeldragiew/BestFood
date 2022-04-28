@@ -32,9 +32,11 @@ namespace BestFoodWebApp.Controllers
                 await reviewService.RateProdcutAsync(model, User.Identity.Name);
                 TempData[MessageConstant.SuccessMessage] = "Review added successfully!";
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                TempData[MessageConstant.ErrorMessage] = "Could not add the review!";
+                TempData[MessageConstant.ErrorMessage] = ex.Message;
+                return RedirectToAction("All", "Category");
+
             }
             return RedirectToAction("Details", "Product", new { id = model.ProductId });
         }
