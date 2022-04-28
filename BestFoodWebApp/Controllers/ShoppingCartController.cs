@@ -1,4 +1,5 @@
-﻿using BestFood.Core.Services.Contracts;
+﻿using BestFood.Core.Constants;
+using BestFood.Core.Services.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,7 +25,14 @@ namespace BestFoodWebApp.Controllers
             {
                 HttpContext.Session.SetString(CartSessionKey, User.Identity.Name);
             }
-            await shoppingCartService.AddItemToCartAsync(HttpContext.Session.GetString(CartSessionKey), id);
+            try
+            {
+                await shoppingCartService.AddItemToCartAsync(HttpContext.Session.GetString(CartSessionKey), id);
+            }
+            catch (Exception ex)
+            {
+                TempData[MessageConstant.ErrorMessage] = "Product was not added to cart! " + ex.Message;
+            }
 
             return RedirectToAction("MyCart", "ShoppingCart");
         }

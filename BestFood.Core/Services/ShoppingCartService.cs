@@ -23,6 +23,11 @@ namespace BestFood.Core.Services
         }
         public async Task AddItemToCartAsync(string shoppingCartId, string productId)
         {
+            if (productRepository.All().Any(p => p.Id == productId) == false)
+            {
+                throw new ArgumentException("Product id is not valid!");
+            }
+
             var cartItem = cartItemRepository
                 .All()
                 .SingleOrDefault(c => c.CartId == shoppingCartId &&
