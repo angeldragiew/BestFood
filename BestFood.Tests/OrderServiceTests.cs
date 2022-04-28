@@ -281,6 +281,7 @@ namespace BestFood.Tests
 
             Assert.That(orderRepo.All().FirstOrDefault(o => o.Id == "da9f8d0f-c849-4b64-8239-d43df2fa25eb").OrderStatus == OrderStatus.Rejected);
             Assert.That(orderRepo.All().FirstOrDefault(o => o.Id == "da9f8d0f-c849-4b64-8239-d43df2fa25eb").Note == rejectOrderViewModel.RejectOrderNote);
+            Assert.That(orderRepo.All().FirstOrDefault(o => o.Id == "da9f8d0f-c849-4b64-8239-d43df2fa25eb").Note != null);
         }
 
         [TearDown]
