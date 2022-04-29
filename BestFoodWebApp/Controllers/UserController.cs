@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BestFoodWebApp.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         private readonly RoleManager<IdentityRole> roleManager;
