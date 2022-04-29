@@ -130,6 +130,29 @@ namespace BestFood.Tests
             Assert.AreEqual(editCategoryViewModel.Name, editedCategory.Name);
         }
 
+        [Test]
+        public async Task GetCategoryNameByIdMustReturnNullOnUnknownId()
+        {
+            var service = serviceProvider.GetService<ICategoryService>();
+
+            var categoryName = await service.GetCategoryNameById(12341);
+
+            Assert.AreEqual(null, categoryName);
+        }
+
+        [Test]
+        public async Task GetCategoryNameByIdMustReturnCategoryNameOnKnownId()
+        {
+            var service = serviceProvider.GetService<ICategoryService>();
+            var repo = serviceProvider.GetService<IRepository<Category>>();
+
+            var categoryName = await service.GetCategoryNameById(1);
+            var category = repo.All().FirstOrDefault(c => c.Id == 1);
+            Assert.AreEqual(category.Name, categoryName);
+        }
+
+
+
         [TearDown]
         public void TearDown()
         {
