@@ -1,0 +1,31 @@
+﻿@{
+}
+
+@*<div class="error-head">
+	<div class="error-text">
+	<h1 class="display-4">404</h1>
+	</div>
+	<div class="error-text">
+	<h1 class="display-4">Error</h1>
+	<p>Something happened! Return to <a href="/">home page</a></p>
+	</div>
+	</div>
+*@
+
+<div class="error-head">
+	<div class="error-page">
+		<h2 class="headline text-warning"> @ViewBag.StatusCode</h2>
+		<div class="error-content">
+			<h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! Something went wrong.</h3>
+			<p>
+				We could not find the page you were looking for.
+				Meanwhile, you may <a class="home-link" href="/">return to dashboard</a>.
+			</p>
+		</div>
+
+	</div>
+</div>
+
+@section Head{
+<link rel="stylesheet" href="~/css/error.css" type="text/css" runat="server" />
+	}

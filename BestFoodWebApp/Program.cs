@@ -63,7 +63,7 @@ else
     app.UseHsts();
 }
 
-app.UseStatusCodePages();
+app.UseStatusCodePagesWithReExecute("/Home/StatusCode", "?statusCode={0}");
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

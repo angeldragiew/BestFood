@@ -25,6 +25,12 @@ namespace BestFoodWebApp.Controllers
             return View();
         }
 
+        public IActionResult StatusCode(int statusCode)
+        {
+            ViewBag.StatusCode = statusCode;
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

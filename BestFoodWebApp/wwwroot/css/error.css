@@ -1,0 +1,20 @@
+﻿.error-head {
+    background-color: darkred;
+    padding: 40px;
+    min-height: 300px;
+    color: rgb(244,246,249);
+    text-align: center;
+}
+
+.error-head h2 {
+   margin-top:-20px !important;
+}
+
+
+.home-link{
+    color:orange;
+}
+
+.home-link:hover {
+    color: darkorange;
+}
