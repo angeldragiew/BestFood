@@ -45,14 +45,14 @@
 								<span asp-validation-for="Input.Password" class="text-danger"></span>
 					</div>
 					<div class="row">
-						<div class="col-8">
+						@*<div class="col-8">
 							<div class="icheck-primary">
 								<label asp-for="Input.RememberMe" class="form-label">
 									<input class="form-check-input" asp-for="Input.RememberMe" />
 									@Html.DisplayNameFor(m => m.Input.RememberMe)
 								</label>
 							</div>
-						</div>
+						</div>*@
 						<!-- /.col -->
 						<div class="col-4">
 							<button id="login-submit" type="submit" class="btn btn-primary btn-block">Log in</button>
@@ -72,9 +72,9 @@
 					</div>*@
 				<!-- /.social-auth-links -->
 
-				<p class="mb-1">
+				@*<p class="mb-1">
 					<a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
-				</p>
+				</p>*@
 				<p class="mb-0">
 					<a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
 				</p>

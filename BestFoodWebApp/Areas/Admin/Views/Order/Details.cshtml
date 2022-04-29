@@ -94,7 +94,7 @@
 							<div class="modal-body">
 								<form asp-action="RejectOrder" asp-controller="Order">
 									<input type="hidden" name="RejectOrderId" value="@Model.Id">
-									<textarea name="RejectOrderNote"></textarea>
+									<textarea placeholder="Rejection note must be at least 5 characters." name="RejectOrderNote" class="RejectOrderNote"></textarea>
 									<button class="btn btn-primary reject-button" type="submit">Reject Order</button>
 								</form>
 							</div>
@@ -119,4 +119,5 @@
 
 @section Scripts{
 <script src="~/js/modal.js"></script>
+<script src="~/js/rejectNote.js"></script>
 }

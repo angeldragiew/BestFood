@@ -30,7 +30,14 @@
 						<span class="info-box-icon bg-warning"><i class="fas fa-bacon"></i></span>
 						<div class="info-box-content">
 							<span class="info-box-number">Ingredients</span>
+							@if (Model.IngredientsNames.Count() == 0)
+							{
+								<span>No Ingredients</span>
+							}
+							else
+							{				
 							<span>@(String.Join(", ", Model.IngredientsNames))</span>
+							}
 						</div>
 					</div>
 					<div class="info-box">
@@ -83,7 +90,7 @@
 						<div class="add-comment-section">
 							<form method="post" asp-controller="Review" asp-action="RateProduct">
 								<input type="hidden" name="ProductId" value="@Model.Id">
-								<input maxlength="300" name="Text" type="text" placeholder="Add review...">
+								<input maxlength="300" name="Text" type="text" class="commentInput" placeholder="Add review...">
 								<div>
 									<select name="Rating">
 										<option>Choose rating..</option>
@@ -92,7 +99,7 @@
 											<option value="@i">@i</option>
 										}
 									</select>
-									<button class="btn btn-block btn-dark btn-sm">Comment</button>
+									<button class="btn btn-block btn-dark btn-sm commentButton">Comment</button>
 								</div>
 							</form>
 						</div>
@@ -157,7 +164,7 @@
 
 @section Scripts{
 <partial name="_ValidationScriptsPartial" />
-
+<script type="text/javascript" src="~/js/comment.js"></script>
 
 <script type="text/javascript">
 		 $( "#edit-review" ).click(function() {
